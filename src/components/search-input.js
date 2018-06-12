@@ -13,7 +13,7 @@ export class Search extends React.Component {
     return (
       <div>
         <form>
-          <label className="search_label">Search Here</label> <br/>
+          <label className="search_label">Find what you need!</label> <br/>
           <input
             type="text"
             className="search_input"

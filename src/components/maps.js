@@ -53,11 +53,21 @@ export class MapContainer extends React.Component {
   render() {
     console.log('here is google ',this.props.google)
     console.log('here is the props',this.props)
+    const style ={
+      
+    }
+
     return (
-      <Map google={this.props.google} 
+      <div>
+        
+
+        <h1>hello world</h1>
+       <div className={'map'}>
+      <Map   google={this.props.google} 
       initialCenter={this.state.fields.location}
                   center={this.state.fields.location}
                   zoom={14}>
+                  
             <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
@@ -65,12 +75,14 @@ export class MapContainer extends React.Component {
               <h1>{this.state.selectedPlace.name}</h1>
             </div>
         </InfoWindow>
-        <Marker onClick={this.onMarkerClick}
+        <Marker position={this.state.fields.location}
                 name={'Current location'} />
-
       </Map>
+      </div>
+      </div>
     );
   }
+
 }
  
 export default GoogleApiWrapper({

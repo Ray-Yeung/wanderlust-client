@@ -11,8 +11,8 @@ export class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
+      <div className="Search">
+        <form onSubmit={event => this.onSubmit(event)}> 
           <label className="search_label">Find what you need!</label> <br/>
           <input
             type="text"

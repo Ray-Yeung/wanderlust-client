@@ -29,3 +29,17 @@ export const fetchProtectedData = () => (dispatch, getState) => {
             dispatch(fetchProtectedDataError(err));
         });
 };
+
+export const fetchSearchApi = (data) => {
+    return(dispatch) => {
+      fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(response => response.json())
+      .catch(err => console.log(err))
+    }
+  };

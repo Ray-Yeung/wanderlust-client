@@ -6,6 +6,7 @@ export class MapContainer extends React.Component {
 
     state = {
         showingInfoWindow: false,
+        markers:[],
         activeMarker: {},
         selectedPlace: {},
         fields: {},
@@ -31,6 +32,12 @@ export class MapContainer extends React.Component {
     //for loop Markers
     //<Markers>
     //input data from JSON Lat, lng 
+    
+    // addMarker(props){
+    //   let marker = new props.google.maps.Marker({
+        
+    //   })
+    }
     onMarkerClick = (props, marker, e) => this.setState({
         selectedPlace: props,
         activeMarker: marker,
@@ -59,7 +66,7 @@ export class MapContainer extends React.Component {
         // ...
     }
     render() {
-        console.log('here is google ', this.props.google)
+        console.log('here is google ', this.props.google.maps.Marker)
         console.log('here is the props', this.props)
         const style = {}
 
@@ -93,4 +100,6 @@ export class MapContainer extends React.Component {
 
 }
 
-export default GoogleApiWrapper({apiKey: ('AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU')})(MapContainer)
+export default GoogleApiWrapper({
+  apiKey: ('AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU'),
+  libraries: ['places']})(MapContainer)

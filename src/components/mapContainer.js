@@ -6,7 +6,7 @@ const MyMapComponent = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    containerElement: <div style={{ height: `100vh` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
@@ -20,7 +20,7 @@ const MyMapComponent = compose(
   </GoogleMap>
 )
 
-class MyFancyComponent extends React.PureComponent {
+ export default class MyFancyComponent extends React.PureComponent {
   state = {
     isMarkerShown: false,
   }

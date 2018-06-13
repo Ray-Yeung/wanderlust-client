@@ -13,6 +13,18 @@ export const fetchProtectedDataError = error => ({
     error
 });
 
+export const FETCH_RESULTS_SUCCESS = 'FETCH_RESULTS_SUCCESS';
+export const fetchResultsSuccess = results => ({
+    type: FETCH_RESULTS_SUCCESS,
+    results
+});
+
+export const FETCH_RESULTS_ERROR = 'FETCH_RESULTS_ERROR';
+export const fetchResultsError = error => ({
+    type: FETCH_RESULTS_ERROR,
+    error
+});
+
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/protected`, {
@@ -24,27 +36,30 @@ export const fetchProtectedData = () => (dispatch, getState) => {
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
+        .then(({data}) => dispatch(fetchResultsSuccess(data)))
         .catch(err => {
             dispatch(fetchProtectedDataError(err));
         });
 };
 
-export const fetchSearchApi = (data) => {
+export const fetchSearchApi = () => (dispatch, getState, data) =>{
     // console.log(data);
-    return(dispatch) => {
-      fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+    const authToken = getState().auth.authToken;
+    console.log(authToken);
+    
+      return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+        //   'Authorization': `Bearer ${authToken}`
         },
       })
       .then(response => {
         console.log(response);
         response.json()
       })
-      
-      .catch(err => console.log(err))
-    }
+      .then(data => dispatch(fetchResultsSuccess(data)))
+      .catch(err => dispatch(fetchResultsError(err)))
+    
   };

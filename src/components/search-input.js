@@ -6,9 +6,7 @@ export class Search extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     const search = document.getElementById("searchInput").value;
-    console.log(this.props);
     this.props.dispatch(fetchSearchApi(search));
-    // console.log(fetchSearchApi(search));
   }
 
   render() {

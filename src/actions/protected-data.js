@@ -42,24 +42,17 @@ export const fetchProtectedData = () => (dispatch, getState) => {
         });
 };
 
-export const fetchSearchApi = () => (dispatch, getState, data) =>{
-    // console.log(data);
+export const fetchSearchApi = (data) => (dispatch, getState) =>{
     const authToken = getState().auth.authToken;
-    console.log(authToken);
-    
-      return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+    return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-        //   'Authorization': `Bearer ${authToken}`
+          'Authorization': `Bearer ${authToken}`
         },
-      })
-      .then(response => {
-        console.log(response);
-        response.json()
-      })
-      .then(data => dispatch(fetchResultsSuccess(data)))
-      .catch(err => dispatch(fetchResultsError(err)))
-    
-  };
+    })
+    .then(response => response.json())
+    .then(data => dispatch(fetchResultsSuccess(data.results)))
+    .catch(err => dispatch(fetchResultsError(err)))
+};

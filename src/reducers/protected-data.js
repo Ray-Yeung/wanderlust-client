@@ -23,7 +23,7 @@ export default function reducer(state = initialState, action) {
         });
     } else if(action.type === FETCH_RESULTS_SUCCESS) {
         return Object.assign({}, state, {
-            results: [...state.results, action.results]
+            results: [...state.results, ...action.results]
         });
     } else if(action.type === FETCH_RESULTS_ERROR) {
         return Object.assign({}, state, {

@@ -31,6 +31,7 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 };
 
 export const fetchSearchApi = (data) => {
+    // console.log(data);
     return(dispatch) => {
       fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
         method: 'GET',
@@ -39,7 +40,11 @@ export const fetchSearchApi = (data) => {
           'Content-Type': 'application/json'
         },
       })
-      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        response.json()
+      })
+      
       .catch(err => console.log(err))
     }
   };

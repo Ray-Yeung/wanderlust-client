@@ -1,12 +1,14 @@
 import React from 'react';
 // import {connect} from 'react-redux';
-import { fetchSearchApi } from '../../actions/protected-data';
+import { fetchSearchApi } from '../actions/protected-data';
 
-export class Search extends React.Component {
+export default class Search extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     const search = document.getElementById("searchInput").value;
+    console.log(search);
     this.props.dispatch(fetchSearchApi(search));
+    // console.log(fetchSearchApi(search));
   }
 
   render() {
@@ -28,4 +30,4 @@ export class Search extends React.Component {
   }
 }
 
-export default Search;
+// export default connect (Search);

@@ -7,7 +7,7 @@ import _  from "lodash";
 // * Manipulating & testing values
 // * Creating composite functions
 import React from 'react'
-import { compose, withProps, lifecycle,withStateHandlers } from "recompose";
+import { compose, withProps, lifecycle } from "recompose";
 // * compose -Use to compose multiple higher-order components into a single higher-order component.
 
 // * withProps - the newly created props are merged with the owner props.
@@ -26,7 +26,6 @@ import {
   withGoogleMap,
   GoogleMap,
   Marker,
-  InfoWindow
 } from "react-google-maps";
 import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
 
@@ -38,13 +37,6 @@ const MapWithASearchBox = compose(
     containerElement: <div style={{ height: `100vh` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
-  withStateHandlers(() => ({
-    isOpen: false,
-  }), {
-    onToggleOpen: ({ isOpen }) => () => ({
-      isOpen: !isOpen,
-    })
-  }),
   lifecycle({
     componentWillMount() {
         
@@ -52,7 +44,6 @@ const MapWithASearchBox = compose(
         console.log("here is my refs",refs)
         console.log('what does LoDash', {_})
       this.setState({
-        isOpen: false,
         bounds: null,
         center: {
           lat: 33.976332, lng: -117.704449
@@ -130,21 +121,9 @@ const MapWithASearchBox = compose(
         }}
       />
     </SearchBox>
-    {console.log("this is our marker props",props.markers.position)}
     {props.markers.map((marker, index) =>
-   
-      <Marker key={index} position={marker.position} onClick={props.showInfo(index)}>
-          {(props.showInfoIndex == index)  && <InfoWindow onCloseClick={props.onToggleOpen}>
-              <div onClick={()=>{alert('hello')}} >
-              
-              <div>Hello</div>
-              <div>myname is</div>
-            </div>
-      </InfoWindow>}
-
-      </Marker>
+      <Marker key={index} position={marker.position} />
     )}
-         
   </GoogleMap>
 );
 export default class MyFancyComponent extends React.PureComponent {

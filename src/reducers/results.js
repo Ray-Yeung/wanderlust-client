@@ -1,10 +1,13 @@
 import {
     OPEN_MORE_DETAILS,
-    CLOSE_MORE_DETAILS
+    CLOSE_MORE_DETAILS,
+    FETCH_DETAILS_ERROR,
+    FETCH_DETAILS_SUCCESS
 } from '../actions/results';
 
 const initialState = {
-    open: false
+    open: false,
+    details: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -16,6 +19,17 @@ export default function reducer(state = initialState, action) {
     if (action.type === CLOSE_MORE_DETAILS) {
         return Object.assign({}, state, {
             open: false
+        })
+    }
+    if (action.type === FETCH_DETAILS_ERROR) {
+        return Object.assign({}, state, {
+            details: null
+        })
+    }
+    if (action.type === FETCH_DETAILS_SUCCESS) {
+        console.log(action.details);
+        return Object.assign({}, state, {
+            details: action.details
         })
     }
     return state;

@@ -3,28 +3,27 @@ import {connect} from 'react-redux';
 import { openMoreDetails, closeMoreDetails } from '../actions/results';
 
 class Results extends React.Component {
-    clicked(e) {
-        if (e.target.id === this.props.clicked) {
+    clicked(inc) {
+        if (inc === this.props.clicked) {
             this.props.dispatch(closeMoreDetails());
         }
         else {
-            this.props.dispatch(openMoreDetails(e.target.id));
+            this.props.dispatch(openMoreDetails(inc));
         }
-        console.log('test',this.props.clicked);
     }
 
     render() {
         let dynamicHeight;
         let list;
         let details;
-        if (this.props.results.length > 1) {
+        if (this.props.results.length >= 1) {
         list = this.props.results.map((result, inc) => { 
             // make sure the 0 index isn't expanded
             if (this.props.clicked === false) {
                 dynamicHeight = '100px'
             }
             // expand the clicked box, include details
-            else if (inc === Number(this.props.clicked)) {
+            if (inc === Number(this.props.clicked) && this.props.clicked !== false) {
                 dynamicHeight = '300px'
                 details = 
                 <div>
@@ -46,16 +45,14 @@ class Results extends React.Component {
                 key={inc} 
                 id={inc} 
                 style={{innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
-                onClick={(e) => this.clicked(e)}
+                onClick={() => this.clicked(inc)}
                 >
                     {result.name}
                     {details}
                 </div>
                 )
             });
-    console.log('here',list);
         }
-    console.log(list);
         return (
             <div>
                 {list}

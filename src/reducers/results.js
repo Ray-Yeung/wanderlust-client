@@ -2,7 +2,9 @@ import {
     OPEN_MORE_DETAILS,
     CLOSE_MORE_DETAILS,
     FETCH_DETAILS_ERROR,
-    FETCH_DETAILS_SUCCESS
+    FETCH_DETAILS_SUCCESS,
+    SAVE_PLACE_ERROR,
+    SAVE_PLACE_SUCCESS
 } from '../actions/results';
 
 const initialState = {
@@ -30,6 +32,16 @@ export default function reducer(state = initialState, action) {
         console.log(action.details);
         return Object.assign({}, state, {
             details: action.details
+        })
+    }
+    if (action.type === SAVE_PLACE_ERROR) {
+        return Object.assign({}, state, {
+
+        })
+    }
+    if (action.type === SAVE_PLACE_SUCCESS) {
+        return Object.assign({}, state, {
+            
         })
     }
     return state;

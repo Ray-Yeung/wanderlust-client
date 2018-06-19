@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { openMoreDetails, closeMoreDetails, fetchPlacesDetails } from '../actions/results';
+import { openMoreDetails, closeMoreDetails, fetchPlacesDetails, savePlace } from '../actions/results';
 
 class Results extends React.Component {
     clicked(inc) {
@@ -8,10 +8,14 @@ class Results extends React.Component {
             this.props.dispatch(closeMoreDetails());
         }
         else {
-            this.props.dispatch(openMoreDetails(inc))
+            this.props.dispatch(openMoreDetails(inc));
             this.props.dispatch(fetchPlacesDetails(this.props.results[inc].place_id));
             console.log(this.props.results[inc].place_id)
         }
+    }
+
+    save(inc) {
+        this.props.dispatch(savePlace(this.props.details, this.props.results[inc].place_id));
     }
 
     render() {
@@ -38,6 +42,12 @@ class Results extends React.Component {
                     <a href={this.props.details.website}>
                         {`${this.props.details.name} official website`}
                     </a>
+                    <div>
+                        <button onClick={(e) => {
+                            e.stopPropagation();
+                            this.save(inc);
+                            }}>save</button>
+                    </div>
                 </div>
             }
             // keep box regular size

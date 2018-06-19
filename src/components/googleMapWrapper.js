@@ -1,5 +1,5 @@
 import React from 'react';
-import GoogleMapComponent from './testmap2';
+import GoogleMapComponent from './googleMap';
 import { connect } from 'react-redux';
 
 import { setUserLocation } from '../actions/searchActions';
@@ -12,11 +12,11 @@ export class GoogleMapWrapper extends React.PureComponent {
       isMarkerShown: true,
       location: {
         lat: 40.650002,
-		lng: -73.94997
+		    lng: -73.94997
       },
       indicatorPin: {
         lat: -34.397,
-		lng: 150.644
+		    lng: 150.644
       },
       popupIsOpen: false
     };
@@ -71,7 +71,7 @@ export class GoogleMapWrapper extends React.PureComponent {
       onHandleClick={e => this.handleMapClick(e)}
       indicatorPin={this.state.indicatorPin}
       isOpen={this.state.popupIsOpen}
-	  onToggleOpen={() => this.onToggleOpen()}
+	    onToggleOpen={() => this.onToggleOpen()}
       results={this.props.results}
       />
     );

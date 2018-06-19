@@ -23,7 +23,7 @@ export default class PlaceMarker extends React.Component {
         onClick={() => this.onToggleOpen()}
       >
         {this.state.isOpen && (
-          <InfoWindow style={{Container: 'red'}} onCloseClick={() => this.onToggleOpen()}>
+          <InfoWindow onCloseClick={() => this.onToggleOpen()}>
             <div className='marker-info'>
               <h1 className='marker-header'>Test</h1>
             </div>

@@ -6,9 +6,7 @@ import {fetchProtectedData} from '../actions/protected-data';
 import Search from './search-input';
 import Results from './results';
 // import Map from './map';
-// import GoogleMapComponent from './testmap';
-// import GoogleMapComponent from './testmap2';
-import GoogleMapWrapper from './testMapWrapper';
+import GoogleMapWrapper from './googleMapWrapper';
 
 
 
@@ -18,7 +16,6 @@ export class Dashboard extends React.Component {
     }
 
     
-
     render() {
         // console.log(this.props.name)
         // console.log(this.props)
@@ -26,8 +23,6 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 <Search />
-                {/* <Map /> */}
-                {/* <GoogleMapComponent /> */}
                 <GoogleMapWrapper />
                 <Results />
                 <div className="dashboard-username">

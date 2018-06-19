@@ -1,7 +1,8 @@
+// VERSION 2.0 MAP COMPONENT
+
 import React from 'react';
-// import {connect} from 'react-redux';
 import PlaceMarker from './place-marker';
-// const fetch = require("isomorphic-fetch");
+
 const { compose, withProps, withHandlers } = require("recompose");
 const {
   withScriptjs,

@@ -38,7 +38,7 @@ export const fetchPlacesDetails = (placeId) => (dispatch) => {
     //reviews
     //types
     //website
-    return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+    return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,formatted_address,opening_hours,place_id&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -58,14 +58,17 @@ export const fetchPlacesDetails = (placeId) => (dispatch) => {
     .catch(err => dispatch(fetchDetailsError(err)))
 };
 
-// export const fetchPhoto = (photoId) => (dispatch) => {
-//     return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${photoId}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+// export const fetchPhoto = (photoId, htmlAtt) => (dispatch) => {
+//     return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${photoId}&html_attributions=${htmlAtt}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
 //         method: 'GET',
 //         headers: {
-//           'Content-Type': 'image/jpeg'
+//           'Content-Type': 'img/jpeg'
 //         },
 //     })
-//     .then(response => response)
-//     .then(data => console.log(data))
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data)
+//         dispatch(fetchPhotoSuccess(data))
+//     })
 //     .catch(err => dispatch(fetchPhotoError()))
 // }

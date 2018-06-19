@@ -43,7 +43,6 @@ const GoogleMapsWrapper = compose(
         <PlaceMarker
           key={index}
           marker={marker}
-        //   position={marker.geometry.location}
         />
       ))}
     </MarkerClusterer>
@@ -57,15 +56,5 @@ class GoogleMapComponent extends React.PureComponent {
     )
   }
 }
-
-// const mapStateToProps = state => {
-//     return {
-//       results: state.protectedData.results
-//     }
-// };
-  
-
-
-// export default connect(mapStateToProps)(GoogleMapComponent);
 
 export default GoogleMapComponent;

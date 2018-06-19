@@ -44,7 +44,7 @@ export const savePlaceSuccess = () => ({
     type: SAVE_PLACE_SUCCESS
 });
 
-export const savePlace = (placeDetails) => (dispatch, getState) => {
+export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/places`, {
         method: 'POST',
@@ -52,7 +52,7 @@ export const savePlace = (placeDetails) => (dispatch, getState) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${authToken}`
         },
-        body: JSON.stringify(placeDetails)
+        body: JSON.stringify({name: placeDetails.name, location: placeDetails.geometry.location, photos: placeDetails.photos, place_id: placeId, types: placeDetails.types, price_level:placeDetails.price_level, rating:placeDetails.rating, phone_number:placeDetails.formatted_phone_number, website:placeDetails.website})
     })
     .then(response => normalizeResponseErrors(response))
     .then(response => response.json())
@@ -61,13 +61,7 @@ export const savePlace = (placeDetails) => (dispatch, getState) => {
 }
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {
-    // to fetch:
-    //geometry - location
-    //icon
-    //reviews
-    //types
-    //website
-    return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -76,25 +70,6 @@ export const fetchPlacesDetails = (placeId) => (dispatch) => {
     .then(response => response.json())
     .then(data => {
         dispatch(fetchDetailsSuccess(data.result))
-        // return data.result;
     })
-    // .then(data => {
-    //     if (data.photos[0]) {
-    //         dispatch(fetchPhoto(data.photos[0].photo_reference));
-    //     }
-    //     else return
-    // })
     .catch(err => dispatch(fetchDetailsError(err)))
 };
-
-// export const fetchPhoto = (photoId) => (dispatch) => {
-//     return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${photoId}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
-//         method: 'GET',
-//         headers: {
-//           'Content-Type': 'image/jpeg'
-//         },
-//     })
-//     .then(response => response)
-//     .then(data => console.log(data))
-//     .catch(err => dispatch(fetchPhotoError()))
-// }

@@ -14,8 +14,8 @@ class Results extends React.Component {
         }
     }
 
-    save() {
-        this.props.dispatch(savePlace(this.props.details));
+    save(inc) {
+        this.props.dispatch(savePlace(this.props.details, this.props.results[inc].place_id));
     }
 
     render() {
@@ -45,7 +45,7 @@ class Results extends React.Component {
                     <div>
                         <button onClick={(e) => {
                             e.stopPropagation();
-                            this.save();
+                            this.save(inc);
                             }}>save</button>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ const GoogleMapsWrapper = compose(
 )(props =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={{ lat: 37.805, lng: -122.257 }}
+    defaultCenter={{ lat: 47.668, lng: -122.362 }}
   >
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}

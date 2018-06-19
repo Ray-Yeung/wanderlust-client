@@ -11,36 +11,56 @@ export class GoogleMapWrapper extends React.PureComponent {
     this.state = {
       isMarkerShown: true,
       location: {
-        lat: 40.650002,
-		    lng: -73.94997
+        lat: 0,
+		    lng: 0
       },
-      indicatorPin: {
-        lat: -34.397,
-		    lng: 150.644
-      },
+      // indicatorPin: {
+      //   lat: -34.397,
+		  //   lng: 150.644
+      // },
       popupIsOpen: false
     };
   };
 
-  componentDidMount() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            position => {
-                const userlocation = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
-                this.props.dispatch(setDefaultLocation({ userlocation }));
-                this.setState({
-                    location: userlocation,
-                });
-            },
-            error => {
-                console.log(error);
+  // componentDidMount() {
+  //   if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(
+  //           position => {
+  //               const userlocation = {
+  //                   lat: position.coords.latitude,
+  //                   lng: position.coords.longitude,
+  //               };
+  //               this.props.dispatch(setDefaultLocation({ userlocation }));
+  //               this.setState({
+  //                   location: userlocation,
+  //               });
+  //           },
+  //           error => {
+  //               console.log(error);
+  //           }
+  //       );
+  //   }
+  // }  
+
+  getGeoLocation = () => {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          console.log("this is our position coords", position.coords);
+          this.setState(prevState => ({
+            location: {
+              ...prevState.location,
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
             }
-        );
+          }))
+        }
+      )
+    } else {
+        error => console.log(error)
     }
-  }  
+  }
+
 
   handleMapClick(event) {
     let lat = event.latLng.lat();
@@ -63,13 +83,15 @@ export class GoogleMapWrapper extends React.PureComponent {
   }
 
   render() {
+    this.getGeoLocation()
+
     return (
       <GoogleMapComponent 
       isMarkerShown={this.state.isMarkerShown}
       onMarkerClick={this.handleMarkerClick}
       position={this.props.defaultLocation}
       onHandleClick={e => this.handleMapClick(e)}
-      indicatorPin={this.state.indicatorPin}
+      // indicatorPin={this.state.indicatorPin}
       isOpen={this.state.popupIsOpen}
 	    onToggleOpen={() => this.onToggleOpen()}
       results={this.props.results}

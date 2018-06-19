@@ -5,6 +5,16 @@ body {
   font-family: sans-serif;
 
 }
+
+.place-photo {
+  max-height: 180px;
+  width: auto;
+}
+
+.html-att {
+  font-size: 10px;
+}
+
 /* h1{
   align-self: flex-start;
   display:inline-block;

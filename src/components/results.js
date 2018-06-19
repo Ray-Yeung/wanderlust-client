@@ -11,6 +11,10 @@ class Results extends React.Component {
             this.props.dispatch(openMoreDetails(inc));
             this.props.dispatch(fetchPlacesDetails(this.props.results[inc].place_id));
             console.log(this.props.results[inc].place_id)
+            console.log(this.props.results[inc].photos[0].photo_reference)
+            console.log(this.props.results[inc].photos[0].html_attributions)
+            // this.props.dispatch(fetchPhoto(this.props.results[inc].photos[0].photo_reference))
+            console.log(this.props)
         }
     }
 
@@ -22,6 +26,7 @@ class Results extends React.Component {
         let dynamicHeight;
         let list;
         let details;
+        let photo;
         if (this.props.results.length >= 1) {
         list = this.props.results.map((result, inc) => { 
             // make sure the 0 index isn't expanded
@@ -29,7 +34,9 @@ class Results extends React.Component {
                 dynamicHeight = '100px'
             }
             // expand the clicked box, include details
-            if (inc === Number(this.props.clicked) && this.props.clicked !== false && this.props.details !== null) {
+            if (inc === Number(this.props.clicked) && this.props.clicked !== false && this.props.details !== null 
+            // &&this.props.photo !== null
+        ) {
                 dynamicHeight = '300px'
                 details = 
                 <div>
@@ -37,17 +44,23 @@ class Results extends React.Component {
                         Rating: {this.props.details.rating}
                     </div>
                     <div>
-                        {this.props.details.formatted_phone_number}
+                        {this.props.details.formatted_address}    
+                    </div>
+                    <div>       {this.props.details.formatted_phone_number}
                     </div>
                     <a href={this.props.details.website}>
                         {`${this.props.details.name} official website`}
                     </a>
-                    <div>
-                        <button onClick={(e) => {
-                            e.stopPropagation();
-                            this.save(inc);
-                            }}>save</button>
+                   <div>
+                        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.details.name}`} className="place-photo"/>
+                        <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
+                     <div>
+                     <button onClick={(e) => {
+                         e.stopPropagation();
+                         this.save(inc);
+                         }}>save</button>
+                 </div>
                 </div>
             }
             // keep box regular size
@@ -82,7 +95,8 @@ const mapStateToProps = state => {
     return {
         results: state.protectedData.results,
         clicked: state.result.open,
-        details: state.result.details
+        details: state.result.details,
+        photo: state.result.photo
     }
 };
 

@@ -50,7 +50,7 @@ class Results extends React.Component {
                     </a>
                     <div>
                         <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.details.name}`} className="place-photo"/>
-                        <span className="html-att">{this.props.details.photos[0].html_attributions[0]}</span>
+                        <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
                     
                 </div>

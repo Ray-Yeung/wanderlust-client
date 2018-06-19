@@ -1,3 +1,6 @@
+import {API_BASE_URL} from '../config';
+import {normalizeResponseErrors} from './utils';
+
 export const OPEN_MORE_DETAILS = 'OPEN_MORE_DETAILS';
 export const openMoreDetails = item => ({
     type: OPEN_MORE_DETAILS,
@@ -30,6 +33,32 @@ export const fetchPhotoSuccess = (photo) => ({
     type: FETCH_PHOTO_SUCCESS,
     photo
 });
+
+export const SAVE_PLACE_ERROR = 'FETCH_PLACE_ERROR';
+export const savePlaceError = () => ({
+    type: SAVE_PLACE_ERROR
+});
+
+export const SAVE_PLACE_SUCCESS = 'SAVE_PLACE_SUCCESS';
+export const savePlaceSuccess = () => ({
+    type: SAVE_PLACE_SUCCESS
+});
+
+export const savePlace = (placeDetails) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/places`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify(placeDetails)
+    })
+    .then(response => normalizeResponseErrors(response))
+    .then(response => response.json())
+    .then(data => dispatch(savePlaceSuccess()))
+    .catch(err => dispatch(savePlaceError()))
+}
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {
     // to fetch:

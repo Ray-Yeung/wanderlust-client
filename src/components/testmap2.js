@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 import PlaceMarker from './place-marker';
 // const fetch = require("isomorphic-fetch");
 const { compose, withProps, withHandlers } = require("recompose");
@@ -35,7 +35,9 @@ const GoogleMapsWrapper = compose(
       onClick={props.onMarkerClustererClick}
       averageCenter
       enableRetinaIcons
-      gridSize={60}
+      gridSize={30}   //changes size of cluster area
+      maxZoom={15}    //changes how far map zooms when clicking cluster
+      defaultMinimumClusterSize={2}  //minimum cluster size
     >
       {props.results.map((marker, index) => (
         <PlaceMarker
@@ -56,12 +58,14 @@ class GoogleMapComponent extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-    return {
-      results: state.protectedData.results
-    }
-};
+// const mapStateToProps = state => {
+//     return {
+//       results: state.protectedData.results
+//     }
+// };
   
 
 
-export default connect(mapStateToProps)(GoogleMapComponent);
+// export default connect(mapStateToProps)(GoogleMapComponent);
+
+export default GoogleMapComponent;

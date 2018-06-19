@@ -7,7 +7,8 @@ import Search from './search-input';
 import Results from './results';
 // import Map from './map';
 // import GoogleMapComponent from './testmap';
-import GoogleMapComponent from './testmap2';
+// import GoogleMapComponent from './testmap2';
+import GoogleMapWrapper from './testMapWrapper';
 
 
 
@@ -26,7 +27,8 @@ export class Dashboard extends React.Component {
             <div className="dashboard">
                 <Search />
                 {/* <Map /> */}
-                <GoogleMapComponent />
+                {/* <GoogleMapComponent /> */}
+                <GoogleMapWrapper />
                 <Results />
                 <div className="dashboard-username">
                     Username: {this.props.username}

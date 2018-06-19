@@ -6,6 +6,7 @@ import {fetchProtectedData} from '../actions/protected-data';
 import Search from './search-input';
 import Results from './results';
 import Map from './map';
+import TestMap from './testmap';
 
 
 export class Dashboard extends React.Component {
@@ -22,7 +23,8 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 <Search />
-                <Map />
+                {/* <Map /> */}
+                <TestMap />
                 <Results />
                 <div className="dashboard-username">
                     Username: {this.props.username}

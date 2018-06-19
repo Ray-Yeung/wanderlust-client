@@ -19,10 +19,7 @@ export default class PlaceMarker extends React.Component {
     return(
       <Marker
         key={this.props.index}
-        position={{
-          lat: this.props.marker.location.lat,
-          lng: this.props.marker.location.lng
-        }}
+        position={this.props.marker.geometry.location}
         onClick={() => this.onToggleOpen()}
       >
         {this.state.isOpen && (

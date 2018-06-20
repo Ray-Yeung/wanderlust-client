@@ -5,6 +5,7 @@ import {fetchProtectedData} from '../actions/protected-data';
 
 import Search from './search-input';
 import Results from './results';
+import Trips from './trips';
 // import Map from './map';
 import GoogleMapWrapper from './googleMapWrapper';
 
@@ -25,6 +26,7 @@ export class Dashboard extends React.Component {
                 <Search />
                 <GoogleMapWrapper />
                 <Results />
+                <Trips />
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>

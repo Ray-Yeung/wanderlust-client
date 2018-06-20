@@ -1,6 +1,5 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
-import { setSearchLocation } from './defaultLocationActions';
 
 export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
 export const fetchProtectedDataSuccess = data => ({
@@ -25,6 +24,26 @@ export const fetchResultsError = error => ({
     type: FETCH_RESULTS_ERROR,
     error
 });
+
+export const DEFAULT_LOCATION = 'DEFAULT_LOCATION';
+export const defaultLocation = location => ({
+  type: DEFAULT_LOCATION,
+  location
+});
+
+export const SEARCH_LOCATION = 'SEARCH_LOCATION';
+export const searchLocation = location => ({
+  type: SEARCH_LOCATION,
+  location
+});
+
+export const setDefaultLocation = locationObj => dispatch => {
+  dispatch(defaultLocation(locationObj));
+};
+  
+export const setSearchLocation = locationObj => dispatch => {
+  dispatch(searchLocation(locationObj));
+};
 
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;

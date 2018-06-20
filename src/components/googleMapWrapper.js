@@ -2,8 +2,8 @@ import React from 'react';
 import GoogleMapComponent from './googleMap';
 import { connect } from 'react-redux';
 
-import { setUserLocation } from '../actions/searchActions';
-import { setDefaultLocation } from '../actions/defaultLocationActions';
+// import { setUserLocation } from '../actions/searchActions';
+import { setDefaultLocation } from '../actions/protected-data';
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
@@ -59,27 +59,28 @@ export class GoogleMapWrapper extends React.PureComponent {
               lng: position.coords.longitude
             }
           }))
+        },
+        error => {
+          console.log(error);
         }
       )
-    } else {
-        error => console.log(error)
-    }
+    } 
   }
 
 
-  handleMapClick(event) {
-    let lat = event.latLng.lat();
-    let lng = event.latLng.lng();
-    console.log('lat:', lat);
-    console.log('lng', lng);
-    this.setState({
-      indicatorPin: {
-        lat,
-        lng
-      },
-    });
-    this.props.dispatch(setUserLocation({ lat, lng }));
-  }
+  // handleMapClick(event) {
+  //   let lat = event.latLng.lat();
+  //   let lng = event.latLng.lng();
+  //   console.log('lat:', lat);
+  //   console.log('lng', lng);
+  //   this.setState({
+  //     indicatorPin: {
+  //       lat,
+  //       lng
+  //     },
+  //   });
+  //   this.props.dispatch(setUserLocation({ lat, lng }));
+  // }
 
   onToggleOpen() {
     this.setState({
@@ -115,6 +116,5 @@ const mapStateToProps = state => {
     }
 };
   
-
 
 export default connect(mapStateToProps)(GoogleMapWrapper);

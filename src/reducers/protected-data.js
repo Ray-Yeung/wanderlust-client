@@ -2,13 +2,11 @@ import {
     FETCH_PROTECTED_DATA_SUCCESS,
     FETCH_PROTECTED_DATA_ERROR,
     FETCH_RESULTS_SUCCESS,
-    FETCH_RESULTS_ERROR
-} from '../actions/protected-data';
-
-import {
+    FETCH_RESULTS_ERROR,
     DEFAULT_LOCATION,
     SEARCH_LOCATION
-} from '../actions/defaultLocationActions';
+} from '../actions/protected-data';
+
 
 const initialState = {
     results: [],

@@ -14,9 +14,10 @@ export const fetchProtectedDataError = error => ({
 });
 
 export const FETCH_RESULTS_SUCCESS = 'FETCH_RESULTS_SUCCESS';
-export const fetchResultsSuccess = results => ({
+export const fetchResultsSuccess = (results, next_page_token) => ({
     type: FETCH_RESULTS_SUCCESS,
-    results
+    results,
+    next_page_token
 });
 
 export const FETCH_RESULTS_ERROR = 'FETCH_RESULTS_ERROR';
@@ -98,7 +99,8 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
     })
     .then(response => response.json())
     .then(data => {
-        dispatch(fetchResultsSuccess(data.results))
+        console.log(data);
+        dispatch(fetchResultsSuccess(data.results, data.next_page_token))
         dispatch(setSearchLocation(data.results[0].geometry.location))
     })
     .catch(err => dispatch(fetchResultsError(err)))

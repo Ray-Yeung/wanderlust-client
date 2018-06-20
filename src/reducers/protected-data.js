@@ -14,6 +14,7 @@ import {
 
 const initialState = {
     results: [],
+    next_page:'',
     trips: [],
     tripResults: [],
     data: '',
@@ -36,7 +37,8 @@ export default function reducer(state = initialState, action) {
         });
     } else if(action.type === FETCH_RESULTS_SUCCESS) {
         return Object.assign({}, state, {
-            results: action.results
+            results: action.results,
+            next_page: action.next_page_token
         });
     } else if(action.type === FETCH_RESULTS_ERROR) {
         return Object.assign({}, state, {

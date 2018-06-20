@@ -17,6 +17,7 @@ const initialState = {
     next_page:'',
     trips: [],
     tripResults: [],
+    tripPlaceDetails: [],
     data: '',
     error: null,
     location: {

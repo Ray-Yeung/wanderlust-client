@@ -12,6 +12,17 @@ export const closeMoreDetails = () => ({
     type: CLOSE_MORE_DETAILS
 });
 
+export const OPEN_TRIP_PLACE_MORE_DETAILS = 'OPEN_TRIP_PLACE_MORE_DETAILS';
+export const openTripPlaceMoreDetails = item => ({
+    type: OPEN_TRIP_PLACE_MORE_DETAILS,
+    item
+});
+
+export const CLOSE_TRIP_PLACE_MORE_DETAILS = 'CLOSE_TRIP_PLACE_MORE_DETAILS';
+export const closeTripPlaceMoreDetails = () => ({
+    type: CLOSE_TRIP_PLACE_MORE_DETAILS
+});
+
 export const FETCH_DETAILS_ERROR = 'FETCH_DETAILS_ERROR';
 export const fetchDetailsError = () => ({
     type: FETCH_DETAILS_ERROR
@@ -42,6 +53,18 @@ export const savePlaceError = () => ({
 export const SAVE_PLACE_SUCCESS = 'SAVE_PLACE_SUCCESS';
 export const savePlaceSuccess = () => ({
     type: SAVE_PLACE_SUCCESS
+});
+
+export const FETCH_TRIP_PLACE_DETAILS_SUCCESS = 'FETCH_TRIP_PLACE_DETAILS_SUCCESS';
+export const fetchTripPlaceDetailsSuccess = details => ({
+    type: FETCH_TRIP_PLACE_DETAILS_SUCCESS,
+    details
+});
+
+export const FETCH_TRIP_PLACE_DETAILS_ERROR = 'FETCH_TRIP_PLACE_DETAILS_ERROR';
+export const fetchTripPlaceDetailsError = error => ({
+    type: FETCH_TRIP_PLACE_DETAILS_ERROR,
+    error
 });
 
 export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
@@ -81,4 +104,18 @@ export const fetchPlacesDetails = (placeId) => (dispatch) => {
         dispatch(fetchDetailsSuccess(data.result))
     })
     .catch(err => dispatch(fetchDetailsError(err)))
+};
+
+export const fetchTripPlacesDetails = (placeId) => (dispatch) => {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        dispatch(fetchTripPlaceDetailsSuccess(data.result))
+    })
+    .catch(err => dispatch(fetchTripPlaceDetailsError(err)))
 };

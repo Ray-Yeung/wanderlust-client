@@ -1,5 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import { setSearchLocation } from './defaultLocationActions';
 
 export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
 export const fetchProtectedDataSuccess = data => ({
@@ -53,6 +54,9 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
         },
     })
     .then(response => response.json())
-    .then(data => dispatch(fetchResultsSuccess(data.results)))
+    .then(data => {
+        dispatch(fetchResultsSuccess(data.results))
+        dispatch(setSearchLocation(data.results[0].geometry.location))
+    })
     .catch(err => dispatch(fetchResultsError(err)))
 };

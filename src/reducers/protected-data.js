@@ -5,10 +5,19 @@ import {
     FETCH_RESULTS_ERROR
 } from '../actions/protected-data';
 
+import {
+    DEFAULT_LOCATION,
+    SEARCH_LOCATION
+} from '../actions/defaultLocationActions';
+
 const initialState = {
     results: [],
     data: '',
-    error: null
+    error: null,
+    location: {
+      lat: 0,
+      lng: 0
+    }
 };
 
 export default function reducer(state = initialState, action) {
@@ -28,6 +37,14 @@ export default function reducer(state = initialState, action) {
     } else if(action.type === FETCH_RESULTS_ERROR) {
         return Object.assign({}, state, {
             error: action.error
+        });
+    } else if(action.type === DEFAULT_LOCATION) {
+        return Object.assign({}, state, {
+            location: action.location
+        });
+    } else if(action.type === SEARCH_LOCATION) {
+        return Object.assign({}, state, {
+            location: action.location
         });
     }
     return state;

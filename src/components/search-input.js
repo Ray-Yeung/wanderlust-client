@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { fetchSearchApi } from '../actions/protected-data';
+// import { setSearchLocation } from '../actions/searchActions';
 
 export class Search extends React.Component {
   onSubmit(event) {

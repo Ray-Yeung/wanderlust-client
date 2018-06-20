@@ -3,7 +3,7 @@
 import React from 'react';
 import PlaceMarker from './place-marker';
 
-const { compose, withProps, withHandlers } = require("recompose");
+const { compose, withProps, withHandlers} = require("recompose");
 const {
   withScriptjs,
   withGoogleMap,
@@ -18,19 +18,21 @@ const GoogleMapsWrapper = compose(
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
+  
   withHandlers({
     onMarkerClustererClick: () => (markerClusterer) => {
       const clickedMarkers = markerClusterer.getMarkers()
       console.log(`Current clicked markers length: ${clickedMarkers.length}`)
     //   console.log(clickedMarkers)
-    },
+    }
   }),
   withScriptjs,
   withGoogleMap
 )(props =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={{ lat: 47.668, lng: -122.362 }}
+    center={props.location}
+    onBoundsChanged={props.onBoundsChanged}
   >
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
@@ -53,7 +55,10 @@ const GoogleMapsWrapper = compose(
 class GoogleMapComponent extends React.PureComponent {
   render() {
     return (
-      <GoogleMapsWrapper results={this.props.results} />
+      <GoogleMapsWrapper 
+        results={this.props.results} 
+        location={this.props.location}
+      />
     )
   }
 }

@@ -13,9 +13,13 @@ export const searchLocation = location => ({
 });
 
 export const setDefaultLocation = locationObj => dispatch => {
+  // console.log(locationObj);
   dispatch(defaultLocation(locationObj));
 };
 
 export const setSearchLocation = locationObj => dispatch => {
+  // console.log(locationObj);
   dispatch(searchLocation(locationObj));
 };
+
+

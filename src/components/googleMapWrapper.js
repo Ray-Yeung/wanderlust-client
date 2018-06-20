@@ -47,6 +47,11 @@ export class GoogleMapWrapper extends React.PureComponent {
       navigator.geolocation.getCurrentPosition(
         position => {
           console.log("this is our position coords", position.coords);
+          const userlocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          this.props.dispatch(setDefaultLocation(userlocation));
           this.setState(prevState => ({
             location: {
               ...prevState.location,
@@ -89,12 +94,14 @@ export class GoogleMapWrapper extends React.PureComponent {
       <GoogleMapComponent 
       isMarkerShown={this.state.isMarkerShown}
       onMarkerClick={this.handleMarkerClick}
-      position={this.props.defaultLocation}
+      // position={this.props.defaultLocation}
+      position={this.state.location}
       onHandleClick={e => this.handleMapClick(e)}
       // indicatorPin={this.state.indicatorPin}
       isOpen={this.state.popupIsOpen}
 	    onToggleOpen={() => this.onToggleOpen()}
       results={this.props.results}
+      location={this.props.location}
       />
     );
   }
@@ -104,7 +111,7 @@ export class GoogleMapWrapper extends React.PureComponent {
 const mapStateToProps = state => {
     return {
       results: state.protectedData.results,
-    //   location: state.defaultLocation.location
+      location: state.protectedData.location
     }
 };
   

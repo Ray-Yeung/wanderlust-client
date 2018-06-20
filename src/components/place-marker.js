@@ -1,6 +1,7 @@
 import React from 'react';
 import { Marker, InfoWindow } from 'react-google-maps';
 // const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel");
+// import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel";
 import DollarSign from '../images/price-tag.png'
 
 const style = {

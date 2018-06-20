@@ -1,3 +1,7 @@
+// VERSION 1.0 MAP COMPONENT
+// IGNORE FOR NOW
+
+
 import React from 'react';
 import {connect} from 'react-redux';
 import { GoogleMap, Marker, withScriptjs, withGoogleMap } from 'react-google-maps';

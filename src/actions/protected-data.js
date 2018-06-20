@@ -25,6 +25,26 @@ export const fetchResultsError = error => ({
     error
 });
 
+export const DEFAULT_LOCATION = 'DEFAULT_LOCATION';
+export const defaultLocation = location => ({
+  type: DEFAULT_LOCATION,
+  location
+});
+
+export const SEARCH_LOCATION = 'SEARCH_LOCATION';
+export const searchLocation = location => ({
+  type: SEARCH_LOCATION,
+  location
+});
+
+export const setDefaultLocation = locationObj => dispatch => {
+  dispatch(defaultLocation(locationObj));
+};
+  
+export const setSearchLocation = locationObj => dispatch => {
+  dispatch(searchLocation(locationObj));
+};
+
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/protected`, {
@@ -53,6 +73,9 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
         },
     })
     .then(response => response.json())
-    .then(data => dispatch(fetchResultsSuccess(data.results)))
+    .then(data => {
+        dispatch(fetchResultsSuccess(data.results))
+        dispatch(setSearchLocation(data.results[0].geometry.location))
+    })
     .catch(err => dispatch(fetchResultsError(err)))
 };

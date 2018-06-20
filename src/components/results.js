@@ -10,7 +10,7 @@ class Results extends React.Component {
         else {
             this.props.dispatch(openMoreDetails(inc));
             this.props.dispatch(fetchPlacesDetails(this.props.results[inc].place_id));
-            console.log(this.props.results[inc].place_id)
+            console.log(this.props.results)
             console.log(this.props.results[inc].photos[0].photo_reference)
             console.log(this.props.results[inc].photos[0].html_attributions)
             // this.props.dispatch(fetchPhoto(this.props.results[inc].photos[0].photo_reference))

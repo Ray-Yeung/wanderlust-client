@@ -18,7 +18,7 @@ export class Dashboard extends React.Component {
     
     render() {
         // console.log(this.props.name)
-        // console.log(this.props)
+        console.log(this.props)
         // console.log(this.props.currentUser)
         return (
             <div className="dashboard">

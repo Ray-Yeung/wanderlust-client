@@ -52,7 +52,16 @@ export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${authToken}`
         },
-        body: JSON.stringify({name: placeDetails.name, location: placeDetails.geometry.location, photos: placeDetails.photos, place_id: placeId, types: placeDetails.types, price_level:placeDetails.price_level, rating:placeDetails.rating, phone_number:placeDetails.formatted_phone_number, website:placeDetails.website})
+        body: JSON.stringify({
+            name: placeDetails.name, 
+            location: placeDetails.geometry.location, 
+            photos: placeDetails.photos, 
+            place_id: placeId, 
+            types: placeDetails.types, 
+            price_level:placeDetails.price_level, 
+            rating:placeDetails.rating, 
+            phone_number:placeDetails.formatted_phone_number, website:placeDetails.website}),
+            address: placeDetails.formatted_address
     })
     .then(response => normalizeResponseErrors(response))
     .then(response => response.json())
@@ -61,7 +70,7 @@ export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
 }
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {
-    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

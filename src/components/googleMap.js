@@ -2,7 +2,6 @@
 
 import React from 'react';
 import PlaceMarker from './place-marker';
-
 const { compose, withProps, withHandlers} = require("recompose");
 const {
   withScriptjs,
@@ -32,7 +31,6 @@ const GoogleMapsWrapper = compose(
   <GoogleMap
     defaultZoom={8}
     center={props.location}
-    onBoundsChanged={props.onBoundsChanged}
   >
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}

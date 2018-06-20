@@ -13,8 +13,8 @@ const initialState = {
     data: '',
     error: null,
     location: {
-      lat: 0,
-      lng: 0
+      lat: 37.782,
+      lng: -122.403
     }
 };
 

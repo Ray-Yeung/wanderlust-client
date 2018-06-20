@@ -2,7 +2,6 @@ import React from 'react';
 import GoogleMapComponent from './googleMap';
 import { connect } from 'react-redux';
 
-// import { setUserLocation } from '../actions/searchActions';
 import { setDefaultLocation } from '../actions/protected-data';
 
 export class GoogleMapWrapper extends React.PureComponent {
@@ -22,27 +21,7 @@ export class GoogleMapWrapper extends React.PureComponent {
     };
   };
 
-  // componentDidMount() {
-  //   if (navigator.geolocation) {
-  //       navigator.geolocation.getCurrentPosition(
-  //           position => {
-  //               const userlocation = {
-  //                   lat: position.coords.latitude,
-  //                   lng: position.coords.longitude,
-  //               };
-  //               this.props.dispatch(setDefaultLocation({ userlocation }));
-  //               this.setState({
-  //                   location: userlocation,
-  //               });
-  //           },
-  //           error => {
-  //               console.log(error);
-  //           }
-  //       );
-  //   }
-  // }  
-
-  getGeoLocation = () => {
+  componentDidMount() {
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
@@ -89,8 +68,6 @@ export class GoogleMapWrapper extends React.PureComponent {
   }
 
   render() {
-    this.getGeoLocation()
-
     return (
       <GoogleMapComponent 
       isMarkerShown={this.state.isMarkerShown}
@@ -108,7 +85,6 @@ export class GoogleMapWrapper extends React.PureComponent {
   }
 };
 
-
 const mapStateToProps = state => {
     return {
       results: state.protectedData.results,
@@ -116,5 +92,4 @@ const mapStateToProps = state => {
     }
 };
   
-
 export default connect(mapStateToProps)(GoogleMapWrapper);

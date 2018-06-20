@@ -36,7 +36,7 @@ class Results extends React.Component {
             // expand the clicked box, include details
             if (inc === Number(this.props.clicked) && this.props.clicked !== false && this.props.details !== null 
             // &&this.props.photo !== null
-        ) {
+            ) {
                 dynamicHeight = '300px'
                 details = 
                 <div>
@@ -72,7 +72,7 @@ class Results extends React.Component {
                 <div 
                 key={inc} 
                 id={inc} 
-                style={{innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
+                style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
                 onClick={() => {
                     this.clicked(inc)
                 }}

@@ -10,9 +10,9 @@ class Results extends React.Component {
         else {
             this.props.dispatch(openMoreDetails(inc));
             this.props.dispatch(fetchPlacesDetails(this.props.results[inc].place_id));
-            console.log(this.props.results[inc].place_id)
-            console.log(this.props.results[inc].photos[0].photo_reference)
-            console.log(this.props.results[inc].photos[0].html_attributions)
+            console.log(this.props.results)
+            // console.log(this.props.results[inc].photos[0].photo_reference)
+            // console.log(this.props.results[inc].photos[0].html_attributions)
             // this.props.dispatch(fetchPhoto(this.props.results[inc].photos[0].photo_reference))
             console.log(this.props)
         }
@@ -26,7 +26,6 @@ class Results extends React.Component {
         let dynamicHeight;
         let list;
         let details;
-        let photo;
         if (this.props.results.length >= 1) {
         list = this.props.results.map((result, inc) => { 
             // make sure the 0 index isn't expanded
@@ -96,7 +95,7 @@ const mapStateToProps = state => {
         results: state.protectedData.results,
         clicked: state.result.open,
         details: state.result.details,
-        photo: state.result.photo
+        next_page_token: state.protectedData.next_page_token
     }
 };
 

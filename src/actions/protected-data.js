@@ -25,6 +25,30 @@ export const fetchResultsError = error => ({
     error
 });
 
+export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS';
+export const fetchTripsSuccess = results => ({
+    type: FETCH_TRIPS_SUCCESS,
+    results
+});
+
+export const FETCH_TRIPS_ERROR = 'FETCH_TRIPS_ERROR';
+export const fetchTripsError = error => ({
+    type: FETCH_TRIPS_ERROR,
+    error
+});
+
+export const FETCH_TRIP_DETAILS_SUCCESS = 'FETCH_TRIP_DETAILS_SUCCESS';
+export const fetchTripDetailsSuccess = results => ({
+    type: FETCH_TRIP_DETAILS_SUCCESS,
+    results
+});
+
+export const FETCH_TRIP_DETAILS_ERROR = 'FETCH_TRIP_DETAILS_ERROR';
+export const fetchTripDetailsError = error => ({
+    type: FETCH_TRIP_DETAILS_ERROR,
+    error
+});
+
 export const DEFAULT_LOCATION = 'DEFAULT_LOCATION';
 export const defaultLocation = location => ({
   type: DEFAULT_LOCATION,
@@ -78,4 +102,36 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
         dispatch(setSearchLocation(data.results[0].geometry.location))
     })
     .catch(err => dispatch(fetchResultsError(err)))
+};
+
+export const fetchTrips = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/trips`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        dispatch(fetchTripsSuccess(data))
+    })
+    .catch(err => dispatch(fetchTripsError(err)))
+};
+
+export const fetchTripDetails = (tripId) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/trips/${tripId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        dispatch(fetchTripDetailsSuccess(data))
+    })
+    .catch(err => dispatch(fetchTripDetailsError(err)))
 };

@@ -61,8 +61,9 @@ export default function reducer(state = initialState, action) {
             error: action.error
         });
     } else if(action.type === FETCH_TRIP_DETAILS_SUCCESS) {
+        console.log(action.results)
         return Object.assign({}, state, {
-            tripResults: action.details
+            tripResults: action.results
         });
     } else if(action.type === FETCH_TRIP_DETAILS_ERROR) {
         return Object.assign({}, state, {

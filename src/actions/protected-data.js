@@ -123,8 +123,9 @@ export const fetchTrips = () => (dispatch, getState) => {
 };
 
 export const fetchTripDetails = (tripId) => (dispatch, getState) => {
+    console.log(tripId)
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/trips/${tripId}`, {
+    return fetch(`${API_BASE_URL}/places/?tripid=${tripId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

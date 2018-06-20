@@ -1,3 +1,6 @@
+// VERSION 1.0 (ONLY FOR REFERENCE)
+// IGNORE
+
 /*global google*/
 import _  from "lodash";
 //Why using loDash?

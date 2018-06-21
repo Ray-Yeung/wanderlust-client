@@ -127,6 +127,8 @@ export const fetchTrips = () => (dispatch, getState) => {
     })
     .then(response => response.json())
     .then(data => {
+        data.forEach(data => {data.location.lat = parseFloat(data.location.lat, 10), data.location.lng = parseFloat(data.location.lng, 10)});
+        console.log(data);
         dispatch(fetchTripsSuccess(data))
     })
     .catch(err => dispatch(fetchTripsError(err)))
@@ -144,7 +146,8 @@ export const fetchTripDetails = (tripId) => (dispatch, getState) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        data.forEach(data => {data.location.lat = parseFloat(data.location.lat, 10), data.location.lng = parseFloat(data.location.lng, 10)});
+        console.log(data, typeof data[0].location.lat);
         dispatch(fetchTripDetailsSuccess(data))
     })
     .catch(err => dispatch(fetchTripDetailsError(err)))

@@ -69,6 +69,7 @@ export const markerLocation = location => ({
 });
 
 export const setDefaultLocation = locationObj => dispatch => {
+//   console.log(locationObj);
   dispatch(defaultLocation(locationObj));
 };
   

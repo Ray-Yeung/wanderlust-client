@@ -30,6 +30,7 @@ export class GoogleMapWrapper extends React.PureComponent {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+          // console.log(userlocation);
           this.props.dispatch(setDefaultLocation(userlocation));
           this.setState(prevState => ({
             location: {
@@ -74,7 +75,7 @@ export class GoogleMapWrapper extends React.PureComponent {
     return (
       <GoogleMapComponent 
       isMarkerShown={this.state.isMarkerShown}
-      panTo={e => this.panTo(e)}
+      // panTo={e => this.panTo(e)}
       // position={this.props.defaultLocation}
       position={this.state.location}
       onHandleClick={e => this.handleMapClick(e)}

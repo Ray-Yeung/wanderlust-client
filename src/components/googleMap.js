@@ -66,19 +66,13 @@ const GoogleMapsWrapper = compose(
 );
 
 class GoogleMapComponent extends React.PureComponent {
-  
-  handleMarkerLocation = () => {
-
-  }
-
-
   render() {
     return (
       <GoogleMapsWrapper 
         results={this.props.results} 
         location={this.props.location}
         tripResults={this.props.tripResults}
-        panTo={this.props.panTo}
+        // panTo={this.props.panTo}
       />
     )
   }

@@ -55,6 +55,22 @@ export const savePlaceSuccess = () => ({
     type: SAVE_PLACE_SUCCESS
 });
 
+export const SAVE_TRIP_REQUEST = 'SAVE_TRIP_REQUEST';
+export const saveTripRequest = () => ({
+    type: SAVE_TRIP_REQUEST
+})
+
+export const SAVE_TRIP_ERROR = 'FETCH_TRIP_ERROR';
+export const saveTripError = () => ({
+    type: SAVE_TRIP_ERROR
+});
+
+export const SAVE_TRIP_SUCCESS = 'SAVE_TRIP_SUCCESS';
+export const saveTripSuccess = (trip) => ({
+    type: SAVE_TRIP_SUCCESS,
+    trip
+});
+
 export const FETCH_TRIP_PLACE_DETAILS_SUCCESS = 'FETCH_TRIP_PLACE_DETAILS_SUCCESS';
 export const fetchTripPlaceDetailsSuccess = details => ({
     type: FETCH_TRIP_PLACE_DETAILS_SUCCESS,

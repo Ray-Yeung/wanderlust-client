@@ -2,6 +2,8 @@
 
 import React from 'react';
 import PlaceMarker from './place-marker';
+import TripMarker from './trip-marker';
+// import tripResultsIcon from '../icons/icons';
 const { compose, withProps, withHandlers} = require("recompose");
 const {
   withScriptjs,
@@ -32,6 +34,7 @@ const GoogleMapsWrapper = compose(
     defaultZoom={8}
     center={props.location}
   >
+    {/* results */}
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
       averageCenter
@@ -42,6 +45,17 @@ const GoogleMapsWrapper = compose(
     >
       {props.results.map((marker, index) => (
         <PlaceMarker
+          // icon={tripsResultsIcon}
+          key={index}
+          marker={marker}
+        />
+      ))}
+    </MarkerClusterer>
+
+    {/* tripResults */}
+    <MarkerClusterer>
+      {props.tripResults.map((marker, index) => (
+        <TripMarker
           key={index}
           marker={marker}
         />
@@ -56,6 +70,9 @@ class GoogleMapComponent extends React.PureComponent {
       <GoogleMapsWrapper 
         results={this.props.results} 
         location={this.props.location}
+        tripResults={this.props.tripResults}
+        onMarkerClick={this.props.onMarkerClick}
+
       />
     )
   }

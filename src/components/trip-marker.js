@@ -3,14 +3,14 @@ import { Marker, InfoWindow } from 'react-google-maps';
 // const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel");
 // import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel";
 import DollarSign from '../images/price-tag.png'
-import resultIcon from '../icons/resultIcon';
+import tripIcon from '../icons/tripIcon';
 
 const style = {
   width:'10px',
   height:'10px'
 }
 
-export default class PlaceMarker extends React.Component {
+export default class TripMarker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,10 +22,6 @@ export default class PlaceMarker extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  }
-
-  getPosition(marker) {
-    marker.getPosition()
   }
   
   priceLevel(priceTag){
@@ -62,8 +58,8 @@ export default class PlaceMarker extends React.Component {
         key={this.props.index}
         position={this.props.marker.geometry.location}
         label={this.props.marker.name}
-        icon={resultIcon}
-        opacity={0.9}
+        icon={tripIcon}
+        opacity={0.95}
         onMouseOver={() => this.onToggleOpen()}
         onMouseOut={() => this.onToggleOpen()}
         // onClick={() => getPosition()}

@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapComponent from './googleMap';
 import { connect } from 'react-redux';
 
-import { setDefaultLocation } from '../actions/protected-data';
+import { setDefaultLocation, setMarkerLocation } from '../actions/protected-data';
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
@@ -45,7 +45,12 @@ export class GoogleMapWrapper extends React.PureComponent {
       )
     } 
   }
-
+  
+  handleMarkerClick(event) {
+    let location = event.getPostition();
+    console.log(location);
+    this.props.dispatch(setMarkerLocation(location));
+  }
 
   // handleMapClick(event) {
   //   let lat = event.latLng.lat();
@@ -80,6 +85,7 @@ export class GoogleMapWrapper extends React.PureComponent {
 	    onToggleOpen={() => this.onToggleOpen()}
       results={this.props.results}
       location={this.props.location}
+      tripResults={this.props.tripResults}
       />
     );
   }
@@ -88,7 +94,8 @@ export class GoogleMapWrapper extends React.PureComponent {
 const mapStateToProps = state => {
     return {
       results: state.protectedData.results,
-      location: state.protectedData.location
+      location: state.protectedData.location,
+      tripResults: state.protectedData.tripResults
     }
 };
   

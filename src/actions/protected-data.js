@@ -62,6 +62,12 @@ export const searchLocation = location => ({
   location
 });
 
+export const MARKER_LOCATION = 'MARKER_LOCATION';
+export const markerLocation = location => ({
+  type: MARKER_LOCATION,
+  location
+});
+
 export const setDefaultLocation = locationObj => dispatch => {
   dispatch(defaultLocation(locationObj));
 };
@@ -69,6 +75,10 @@ export const setDefaultLocation = locationObj => dispatch => {
 export const setSearchLocation = locationObj => dispatch => {
   dispatch(searchLocation(locationObj));
 };
+
+export const setMarkerLocation = locationObj => dispatch => {
+  dispatch(markerLocation(locationObj));
+}
 
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;

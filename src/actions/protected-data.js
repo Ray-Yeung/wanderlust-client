@@ -134,6 +134,7 @@ export const fetchTripDetails = (tripId) => (dispatch, getState) => {
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         dispatch(fetchTripDetailsSuccess(data))
     })
     .catch(err => dispatch(fetchTripDetailsError(err)))

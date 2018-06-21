@@ -3,7 +3,6 @@
 import React from 'react';
 import PlaceMarker from './place-marker';
 import TripMarker from './trip-marker';
-// import tripResultsIcon from '../icons/icons';
 const { compose, withProps, withHandlers} = require("recompose");
 const {
   withScriptjs,
@@ -34,7 +33,6 @@ const GoogleMapsWrapper = compose(
   <GoogleMap
     defaultZoom={8}
     center={props.location}
-    // center={props.panTo(props.location)}
   >
     <TrafficLayer autoUpdate />
     {/* results */}

@@ -52,7 +52,7 @@ class Results extends React.Component {
                         {`${this.props.details.name} official website`}
                     </a>
                    <div>
-                        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.details.name}`} className="place-photo"/>
+                        <img className={'results-pic'}src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.details.name}`} className="place-photo"/>
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
                      <div>
@@ -72,7 +72,7 @@ class Results extends React.Component {
                 <div 
                 key={inc} 
                 id={inc} 
-                classsName={'result-map-list'}
+                className={'result-map-list'}
                 style={{innerWidth: '100px', height: dynamicHeight, border: 'solid 1px black'}} 
                 onClick={() => {
                     this.clicked(inc)

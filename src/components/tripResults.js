@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlacesDetails } from '../actions/results';
+import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess } from '../actions/results';
 
 class TripResults extends Component {
 
@@ -10,7 +10,12 @@ class TripResults extends Component {
         }
         else {
             this.props.dispatch(openTripPlaceMoreDetails(inc));
-            this.props.dispatch(fetchTripPlacesDetails(this.props.results[inc].place_id));
+            try {
+                this.props.dispatch(fetchTripPlaceDetailsSuccess(this.props.results[inc]));
+            }
+            catch(err) {
+                this.props.dispatch(fetchTripPlaceDetailsError('Sorry something went wrong with grabbing that place!'));
+            }
         }
     }
 

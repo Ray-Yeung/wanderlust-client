@@ -14,7 +14,7 @@ class TripResults extends Component {
             try {
                 this.props.dispatch(fetchTripPlaceDetailsSuccess(this.props.results[inc]));
                 this.props.dispatch(setMarkerLocation(this.props.results[inc].geometry.location))
-                // console.log(this.props.results[inc])
+                console.log(this.props.results[inc])
             }
             catch(err) {
                 this.props.dispatch(fetchTripPlaceDetailsError('Sorry something went wrong with grabbing that place!'));

@@ -59,12 +59,24 @@ class Results extends React.Component {
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
                      <div>
+                    {/* if user has a trip display save button (this.props.tripResults >= 1) */}
                      <button onClick={(e) => {
                         e.stopPropagation();
+                        // dispatch action to toggle state of display for dropdown
                         this.save(inc);
                      }}>
                         add to trip
                      </button>
+                     {/* pseudo-
+                        this.props.showDropdown ? 
+                        this.props.tripResults.map((trip, index) => {
+                            <button onClick={(e) => {
+                                e.stopPropagation();
+                                this.save(index)
+                            }}>trip.name</button>
+                        }) :
+                        null
+                     */}
                      <button onClick={(e) => {
                         e.stopPropagation();
                          
@@ -105,6 +117,7 @@ class Results extends React.Component {
 const mapStateToProps = state => {
     return {
         results: state.protectedData.results,
+        tripResults: state.protectedData.tripResults,
         clicked: state.result.open,
         details: state.result.details,
         next_page_token: state.protectedData.next_page_token

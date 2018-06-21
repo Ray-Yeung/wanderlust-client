@@ -127,6 +127,8 @@ export const fetchTrips = () => (dispatch, getState) => {
     })
     .then(response => response.json())
     .then(data => {
+        data.forEach(data => {data.location.lat = parseFloat(data.location.lat, 10), data.location.lng = parseFloat(data.location.lng, 10)});
+        console.log(data);
         dispatch(fetchTripsSuccess(data))
     })
     .catch(err => dispatch(fetchTripsError(err)))
@@ -135,7 +137,7 @@ export const fetchTrips = () => (dispatch, getState) => {
 export const fetchTripDetails = (tripId) => (dispatch, getState) => {
     console.log(tripId)
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/places/?tripid=${tripId}`, {
+    return fetch(`${API_BASE_URL}/places/?tripId=${tripId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -144,7 +146,8 @@ export const fetchTripDetails = (tripId) => (dispatch, getState) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        data.forEach(data => {data.location.lat = parseFloat(data.location.lat, 10), data.location.lng = parseFloat(data.location.lng, 10)});
+        console.log(data, typeof data[0].location.lat);
         dispatch(fetchTripDetailsSuccess(data))
     })
     .catch(err => dispatch(fetchTripDetailsError(err)))

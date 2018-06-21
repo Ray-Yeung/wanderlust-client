@@ -56,7 +56,7 @@ export default class TripMarker extends React.Component {
     return(
       <Marker
         key={this.props.index}
-        position={this.props.marker.geometry.location}
+        position={this.props.marker.location}
         label={this.props.marker.name}
         icon={tripIcon}
         opacity={0.95}

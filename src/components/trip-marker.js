@@ -53,7 +53,7 @@ export default class TripMarker extends React.Component {
   render() {
     // let rating = this.props.marker.rating;
     let newPrice =  this.props.marker.price_level ;
-    console.log(this.props.marker);
+    // console.log(this.props.marker);
     return(
       <Marker
         key={this.props.index}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
+import { setMarkerLocation } from '../actions/protected-data';
 import {fetchTrips, fetchTripDetails} from '../actions/protected-data';
 
 class Trip extends Component {
@@ -12,6 +12,7 @@ class Trip extends Component {
     openTrip(inc) {
         console.log('works')
         this.props.dispatch(fetchTripDetails(this.props.trips[inc].id));
+        this.props.dispatch(setMarkerLocation(this.props.trips[inc].location))
     }
 
     render() {

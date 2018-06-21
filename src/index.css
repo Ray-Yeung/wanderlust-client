@@ -6,8 +6,12 @@
 }
 body{
 
-  overflow-x: hidden;
+
   /* overflow-y: hidden; */
+}
+
+.home{
+  background: url('./images/home.jpg') 
 }
 /* this the header -- showing the Wanderlust and button within the header-bar */
 .header-bar{

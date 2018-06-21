@@ -95,12 +95,8 @@ class Results extends React.Component {
                 <div 
                 key={inc} 
                 id={inc} 
-<<<<<<< HEAD
                 className={'result-map-list'}
                 style={{innerWidth: '100px', height: dynamicHeight, border: 'solid 1px black'}} 
-=======
-                style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
->>>>>>> f8523a3a9a70a2f930166fddc054ab4292382de9
                 onClick={() => {
                     this.clicked(inc)
                 }}

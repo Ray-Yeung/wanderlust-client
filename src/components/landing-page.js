@@ -13,12 +13,9 @@ export function LandingPage(props) {
 
     return (
         <div className="home">
-<<<<<<< HEAD
         <div className="header">
             <h2>Welcome to Wanderlust</h2>
             </div>
-=======
->>>>>>> f8523a3a9a70a2f930166fddc054ab4292382de9
             <LoginForm />
             <Link to="/register">Register</Link>
         </div>

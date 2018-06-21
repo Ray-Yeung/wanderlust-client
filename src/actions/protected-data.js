@@ -14,14 +14,39 @@ export const fetchProtectedDataError = error => ({
 });
 
 export const FETCH_RESULTS_SUCCESS = 'FETCH_RESULTS_SUCCESS';
-export const fetchResultsSuccess = results => ({
+export const fetchResultsSuccess = (results, next_page_token) => ({
     type: FETCH_RESULTS_SUCCESS,
-    results
+    results,
+    next_page_token
 });
 
 export const FETCH_RESULTS_ERROR = 'FETCH_RESULTS_ERROR';
 export const fetchResultsError = error => ({
     type: FETCH_RESULTS_ERROR,
+    error
+});
+
+export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS';
+export const fetchTripsSuccess = results => ({
+    type: FETCH_TRIPS_SUCCESS,
+    results
+});
+
+export const FETCH_TRIPS_ERROR = 'FETCH_TRIPS_ERROR';
+export const fetchTripsError = error => ({
+    type: FETCH_TRIPS_ERROR,
+    error
+});
+
+export const FETCH_TRIP_DETAILS_SUCCESS = 'FETCH_TRIP_DETAILS_SUCCESS';
+export const fetchTripDetailsSuccess = results => ({
+    type: FETCH_TRIP_DETAILS_SUCCESS,
+    results
+});
+
+export const FETCH_TRIP_DETAILS_ERROR = 'FETCH_TRIP_DETAILS_ERROR';
+export const fetchTripDetailsError = error => ({
+    type: FETCH_TRIP_DETAILS_ERROR,
     error
 });
 
@@ -37,13 +62,24 @@ export const searchLocation = location => ({
   location
 });
 
+export const MARKER_LOCATION = 'MARKER_LOCATION';
+export const markerLocation = location => ({
+  type: MARKER_LOCATION,
+  location
+});
+
 export const setDefaultLocation = locationObj => dispatch => {
+//   console.log(locationObj);
   dispatch(defaultLocation(locationObj));
 };
   
 export const setSearchLocation = locationObj => dispatch => {
   dispatch(searchLocation(locationObj));
 };
+
+export const setMarkerLocation = locationObj => dispatch => {
+  dispatch(markerLocation(locationObj));
+}
 
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
@@ -74,8 +110,46 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
     })
     .then(response => response.json())
     .then(data => {
-        dispatch(fetchResultsSuccess(data.results))
+        console.log(data);
+        dispatch(fetchResultsSuccess(data.results, data.next_page_token))
         dispatch(setSearchLocation(data.results[0].geometry.location))
     })
     .catch(err => dispatch(fetchResultsError(err)))
+};
+
+export const fetchTrips = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/trips`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(data => {data.location.lat = parseFloat(data.location.lat, 10), data.location.lng = parseFloat(data.location.lng, 10)});
+        console.log(data);
+        dispatch(fetchTripsSuccess(data))
+    })
+    .catch(err => dispatch(fetchTripsError(err)))
+};
+
+export const fetchTripDetails = (tripId) => (dispatch, getState) => {
+    console.log(tripId)
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/places/?tripId=${tripId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(data => {data.location.lat = parseFloat(data.location.lat, 10), data.location.lng = parseFloat(data.location.lng, 10)});
+        console.log(data, typeof data[0].location.lat);
+        dispatch(fetchTripDetailsSuccess(data))
+    })
+    .catch(err => dispatch(fetchTripDetailsError(err)))
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { openMoreDetails, closeMoreDetails, fetchPlacesDetails, savePlace } from '../actions/results';
+import { setMarkerLocation } from '../actions/protected-data';
 
 class Results extends React.Component {
     clicked(inc) {
@@ -10,9 +11,12 @@ class Results extends React.Component {
         else {
             this.props.dispatch(openMoreDetails(inc));
             this.props.dispatch(fetchPlacesDetails(this.props.results[inc].place_id));
-            console.log(this.props.results[inc].place_id)
-            console.log(this.props.results[inc].photos[0].photo_reference)
-            console.log(this.props.results[inc].photos[0].html_attributions)
+            this.props.dispatch(setMarkerLocation(this.props.results[inc].geometry.location))
+            console.log(this.props.results)
+            // console.log(this.props.results[inc].geometry.location)
+            // console.log(this.props.result.details.geometry);
+            // console.log(this.props.results[inc].photos[0].photo_reference)
+            // console.log(this.props.results[inc].photos[0].html_attributions)
             // this.props.dispatch(fetchPhoto(this.props.results[inc].photos[0].photo_reference))
             console.log(this.props)
         }
@@ -26,7 +30,6 @@ class Results extends React.Component {
         let dynamicHeight;
         let list;
         let details;
-        let photo;
         if (this.props.results.length >= 1) {
         list = this.props.results.map((result, inc) => { 
             // make sure the 0 index isn't expanded
@@ -36,7 +39,7 @@ class Results extends React.Component {
             // expand the clicked box, include details
             if (inc === Number(this.props.clicked) && this.props.clicked !== false && this.props.details !== null 
             // &&this.props.photo !== null
-        ) {
+            ) {
                 dynamicHeight = '300px'
                 details = 
                 <div className="search-result">
@@ -48,7 +51,7 @@ class Results extends React.Component {
                     </div>
                     <div>       {this.props.details.formatted_phone_number}
                     </div>
-                    <a href={this.props.details.website}>
+                    <a href={this.props.details.website} target="_blank">
                         {`${this.props.details.name} official website`}
                     </a>
                    <div>
@@ -56,10 +59,30 @@ class Results extends React.Component {
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
                      <div>
+                    {/* if user has a trip display save button (this.props.tripResults >= 1) */}
                      <button onClick={(e) => {
-                         e.stopPropagation();
-                         this.save(inc);
-                         }}>save</button>
+                        e.stopPropagation();
+                        // dispatch action to toggle state of display for dropdown
+                        this.save(inc);
+                     }}>
+                        add to trip
+                     </button>
+                     {/* pseudo-
+                        this.props.showDropdown ? 
+                        this.props.tripResults.map((trip, index) => {
+                            <button onClick={(e) => {
+                                e.stopPropagation();
+                                this.save(index)
+                            }}>trip.name</button>
+                        }) :
+                        null
+                     */}
+                     <button onClick={(e) => {
+                        e.stopPropagation();
+                         
+                     }}>
+                        start new trip
+                     </button>
                  </div>
                 </div>
             }
@@ -72,8 +95,12 @@ class Results extends React.Component {
                 <div 
                 key={inc} 
                 id={inc} 
+<<<<<<< HEAD
                 className={'result-map-list'}
                 style={{innerWidth: '100px', height: dynamicHeight, border: 'solid 1px black'}} 
+=======
+                style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
+>>>>>>> f8523a3a9a70a2f930166fddc054ab4292382de9
                 onClick={() => {
                     this.clicked(inc)
                 }}
@@ -95,9 +122,10 @@ class Results extends React.Component {
 const mapStateToProps = state => {
     return {
         results: state.protectedData.results,
+        tripResults: state.protectedData.tripResults,
         clicked: state.result.open,
         details: state.result.details,
-        photo: state.result.photo
+        next_page_token: state.protectedData.next_page_token
     }
 };
 

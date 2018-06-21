@@ -12,6 +12,17 @@ export const closeMoreDetails = () => ({
     type: CLOSE_MORE_DETAILS
 });
 
+export const OPEN_TRIP_PLACE_MORE_DETAILS = 'OPEN_TRIP_PLACE_MORE_DETAILS';
+export const openTripPlaceMoreDetails = item => ({
+    type: OPEN_TRIP_PLACE_MORE_DETAILS,
+    item
+});
+
+export const CLOSE_TRIP_PLACE_MORE_DETAILS = 'CLOSE_TRIP_PLACE_MORE_DETAILS';
+export const closeTripPlaceMoreDetails = () => ({
+    type: CLOSE_TRIP_PLACE_MORE_DETAILS
+});
+
 export const FETCH_DETAILS_ERROR = 'FETCH_DETAILS_ERROR';
 export const fetchDetailsError = () => ({
     type: FETCH_DETAILS_ERROR
@@ -44,6 +55,18 @@ export const savePlaceSuccess = () => ({
     type: SAVE_PLACE_SUCCESS
 });
 
+export const FETCH_TRIP_PLACE_DETAILS_SUCCESS = 'FETCH_TRIP_PLACE_DETAILS_SUCCESS';
+export const fetchTripPlaceDetailsSuccess = details => ({
+    type: FETCH_TRIP_PLACE_DETAILS_SUCCESS,
+    details
+});
+
+export const FETCH_TRIP_PLACE_DETAILS_ERROR = 'FETCH_TRIP_PLACE_DETAILS_ERROR';
+export const fetchTripPlaceDetailsError = error => ({
+    type: FETCH_TRIP_PLACE_DETAILS_ERROR,
+    error
+});
+
 export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/places`, {
@@ -52,7 +75,16 @@ export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${authToken}`
         },
-        body: JSON.stringify({name: placeDetails.name, location: placeDetails.geometry.location, photos: placeDetails.photos, place_id: placeId, types: placeDetails.types, price_level:placeDetails.price_level, rating:placeDetails.rating, phone_number:placeDetails.formatted_phone_number, website:placeDetails.website})
+        body: JSON.stringify({
+            name: placeDetails.name, 
+            location: placeDetails.geometry.location, 
+            photos: placeDetails.photos, 
+            place_id: placeId, 
+            types: placeDetails.types, 
+            price_level:placeDetails.price_level, 
+            rating:placeDetails.rating, 
+            phone_number:placeDetails.formatted_phone_number, website:placeDetails.website}),
+            address: placeDetails.formatted_address
     })
     .then(response => normalizeResponseErrors(response))
     .then(response => response.json())
@@ -61,7 +93,7 @@ export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
 }
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {
-    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -72,4 +104,18 @@ export const fetchPlacesDetails = (placeId) => (dispatch) => {
         dispatch(fetchDetailsSuccess(data.result))
     })
     .catch(err => dispatch(fetchDetailsError(err)))
+};
+
+export const fetchTripPlacesDetails = (placeId) => (dispatch) => {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        dispatch(fetchTripPlaceDetailsSuccess(data.result))
+    })
+    .catch(err => dispatch(fetchTripPlaceDetailsError(err)))
 };

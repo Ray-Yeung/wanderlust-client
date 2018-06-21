@@ -2,11 +2,13 @@
 
 import React from 'react';
 import PlaceMarker from './place-marker';
+import TripMarker from './trip-marker';
 const { compose, withProps, withHandlers} = require("recompose");
 const {
   withScriptjs,
   withGoogleMap,
-  GoogleMap
+  GoogleMap,
+  TrafficLayer
 } = require("react-google-maps");
 const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
 
@@ -33,6 +35,8 @@ const GoogleMapsWrapper = compose(
     defaultZoom={8}
     center={props.location}
   >
+    <TrafficLayer autoUpdate />
+    {/* results */}
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
       averageCenter
@@ -43,6 +47,17 @@ const GoogleMapsWrapper = compose(
     >
       {props.results.map((marker, index) => (
         <PlaceMarker
+          // icon={tripsResultsIcon}
+          key={index}
+          marker={marker}
+        />
+      ))}
+    </MarkerClusterer>
+
+    {/* tripResults */}
+    <MarkerClusterer>
+      {props.tripResults.map((marker, index) => (
+        <TripMarker
           key={index}
           marker={marker}
         />
@@ -57,6 +72,8 @@ class GoogleMapComponent extends React.PureComponent {
       <GoogleMapsWrapper 
         results={this.props.results} 
         location={this.props.location}
+        tripResults={this.props.tripResults}
+        // panTo={this.props.panTo}
       />
     )
   }

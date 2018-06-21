@@ -39,7 +39,7 @@ class Results extends React.Component {
         ) {
                 dynamicHeight = '300px'
                 details = 
-                <div>
+                <div className="search-result">
                     <div>
                         Rating: {this.props.details.rating}
                     </div>
@@ -72,7 +72,8 @@ class Results extends React.Component {
                 <div 
                 key={inc} 
                 id={inc} 
-                style={{innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
+                classsName={'result-map-list'}
+                style={{innerWidth: '100px', height: dynamicHeight, border: 'solid 1px black'}} 
                 onClick={() => {
                     this.clicked(inc)
                 }}
@@ -84,7 +85,7 @@ class Results extends React.Component {
             });
         }
         return (
-            <div>
+            <div className={"result-map-view"}>
                 {list}
             </div>
         );

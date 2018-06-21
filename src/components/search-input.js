@@ -12,16 +12,16 @@ export class Search extends React.Component {
 
   render() {
     return (
-      <div className="Search">
-        <form onSubmit={event => this.onSubmit(event)}> 
-          <label className="search_label">Find what you need!</label> <br/>
+      <div className={"search"}>
+        <form className={'form-search'}onSubmit={event => this.onSubmit(event)}> 
+          <label className={"search-label"}>Find what you need!</label> <br/>
           <input
             type="text"
-            className="search_input"
+            className={'search-input'}
             id="searchInput"
             placeholder="E.g. Restaurants in San Francisco"
           /> <br/>
-          <button className="search_button" type="submit">Search</button>
+          <button className={"search-button"} type="submit">Search</button>
           <br/>
         </form>
       </div>

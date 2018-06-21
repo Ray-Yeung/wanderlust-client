@@ -51,7 +51,7 @@ class Results extends React.Component {
                     </div>
                     <div>       {this.props.details.formatted_phone_number}
                     </div>
-                    <a href={this.props.details.website}>
+                    <a href={this.props.details.website} target="_blank">
                         {`${this.props.details.name} official website`}
                     </a>
                    <div>

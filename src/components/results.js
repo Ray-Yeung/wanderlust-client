@@ -60,9 +60,17 @@ class Results extends React.Component {
                     </div>
                      <div>
                      <button onClick={(e) => {
-                         e.stopPropagation();
-                         this.save(inc);
-                         }}>save</button>
+                        e.stopPropagation();
+                        this.save(inc);
+                     }}>
+                        add to trip
+                     </button>
+                     <button onClick={(e) => {
+                        e.stopPropagation();
+                         
+                     }}>
+                        start new trip
+                     </button>
                  </div>
                 </div>
             }

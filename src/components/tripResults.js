@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess } from '../actions/results';
+import { setMarkerLocation } from '../actions/protected-data';
 
 class TripResults extends Component {
 
@@ -12,6 +13,8 @@ class TripResults extends Component {
             this.props.dispatch(openTripPlaceMoreDetails(inc));
             try {
                 this.props.dispatch(fetchTripPlaceDetailsSuccess(this.props.results[inc]));
+                this.props.dispatch(setMarkerLocation(this.props.results[inc].geometry.location))
+                // console.log(this.props.results[inc])
             }
             catch(err) {
                 this.props.dispatch(fetchTripPlaceDetailsError('Sorry something went wrong with grabbing that place!'));

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { openMoreDetails, closeMoreDetails, fetchPlacesDetails, savePlace } from '../actions/results';
+import { setMarkerLocation } from '../actions/protected-data';
 
 class Results extends React.Component {
     clicked(inc) {
@@ -10,7 +11,10 @@ class Results extends React.Component {
         else {
             this.props.dispatch(openMoreDetails(inc));
             this.props.dispatch(fetchPlacesDetails(this.props.results[inc].place_id));
+            this.props.dispatch(setMarkerLocation(this.props.results[inc].geometry.location))
             console.log(this.props.results)
+            // console.log(this.props.results[inc].geometry.location)
+            // console.log(this.props.result.details.geometry);
             // console.log(this.props.results[inc].photos[0].photo_reference)
             // console.log(this.props.results[inc].photos[0].html_attributions)
             // this.props.dispatch(fetchPhoto(this.props.results[inc].photos[0].photo_reference))

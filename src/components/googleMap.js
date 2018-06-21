@@ -8,7 +8,8 @@ const { compose, withProps, withHandlers} = require("recompose");
 const {
   withScriptjs,
   withGoogleMap,
-  GoogleMap
+  GoogleMap,
+  TrafficLayer
 } = require("react-google-maps");
 const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
 
@@ -33,7 +34,9 @@ const GoogleMapsWrapper = compose(
   <GoogleMap
     defaultZoom={8}
     center={props.location}
+    // center={props.panTo(props.location)}
   >
+    <TrafficLayer autoUpdate />
     {/* results */}
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
@@ -65,14 +68,19 @@ const GoogleMapsWrapper = compose(
 );
 
 class GoogleMapComponent extends React.PureComponent {
+  
+  handleMarkerLocation = () => {
+
+  }
+
+
   render() {
     return (
       <GoogleMapsWrapper 
         results={this.props.results} 
         location={this.props.location}
         tripResults={this.props.tripResults}
-        onMarkerClick={this.props.onMarkerClick}
-
+        panTo={this.props.panTo}
       />
     )
   }

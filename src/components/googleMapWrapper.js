@@ -46,10 +46,8 @@ export class GoogleMapWrapper extends React.PureComponent {
     } 
   }
   
-  handleMarkerClick(event) {
-    let location = event.getPostition();
-    console.log(location);
-    this.props.dispatch(setMarkerLocation(location));
+  panTo(location) {
+    setMarkerLocation(location);
   }
 
   // handleMapClick(event) {
@@ -76,7 +74,7 @@ export class GoogleMapWrapper extends React.PureComponent {
     return (
       <GoogleMapComponent 
       isMarkerShown={this.state.isMarkerShown}
-      onMarkerClick={this.handleMarkerClick}
+      panTo={e => this.panTo(e)}
       // position={this.props.defaultLocation}
       position={this.state.location}
       onHandleClick={e => this.handleMapClick(e)}

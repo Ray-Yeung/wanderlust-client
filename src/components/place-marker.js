@@ -23,10 +23,6 @@ export default class PlaceMarker extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
-
-  getPosition(marker) {
-    marker.getPosition()
-  }
   
   priceLevel(priceTag){
     if(priceTag === 1){
@@ -55,7 +51,7 @@ export default class PlaceMarker extends React.Component {
   }
 
   render() {
-    let rating = this.props.marker.rating;
+    // let rating = this.props.marker.rating;
     let newPrice =  this.props.marker.price_level ;
     return(
       <Marker

@@ -13,7 +13,7 @@ class TripResults extends Component {
             this.props.dispatch(openTripPlaceMoreDetails(inc));
             try {
                 this.props.dispatch(fetchTripPlaceDetailsSuccess(this.props.results[inc]));
-                this.props.dispatch(setMarkerLocation(this.props.results[inc].geometry.location))
+                this.props.dispatch(setMarkerLocation(this.props.results[inc].location))
                 console.log(this.props.results[inc])
             }
             catch(err) {

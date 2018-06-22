@@ -1,6 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { openMoreDetails, closeMoreDetails, fetchPlacesDetails, savePlace } from '../actions/results';
+import { 
+    openMoreDetails, 
+    closeMoreDetails, 
+    openTripDropdown,
+    closeTripDropdown,
+    fetchPlacesDetails, 
+    savePlace 
+} from '../actions/results';
 import { setMarkerLocation } from '../actions/protected-data';
 
 class Results extends React.Component {
@@ -26,6 +33,17 @@ class Results extends React.Component {
         this.props.dispatch(savePlace(this.props.details, this.props.results[inc].place_id));
     }
 
+    closeDropdown(e) {
+        // if user clicked out of the menu
+        if (!this.dropdownMenu.contains(e.target)) {
+
+            // close the menu, remove the old listener
+            this.props.dispatch(closeTripDropdown(), () => {
+                document.removeEventListener('click', this.closeDropdown(e));
+            });
+        }
+    }
+
     render() {
         let dynamicHeight;
         let list;
@@ -40,6 +58,40 @@ class Results extends React.Component {
             if (inc === Number(this.props.clicked) && this.props.clicked !== false && this.props.details !== null 
             // &&this.props.photo !== null
             ) {
+                let saveTripDropdownBtn;
+                let saveTripDropdown;
+
+                // create button allowing user to save a place to a trip if they have a trip
+                if (this.props.tripResults >= 1) {
+                    saveTripDropdownBtn = <button onClick={(e) => {
+                        e.stopPropagation();
+
+                        // show the dropdown of trips
+                        this.props.dispatch(openTripDropdown());
+
+                        // add listener for closing dropdown on click anywhere but the dropdown
+                        document.addEventListener('click', this.closeDropdown(e));
+                     }}
+                     >
+                        add to trip
+                     </button>
+                    
+                    // if the button was clicked
+                    if (this.props.tripDropdown) {
+                        // uses ref to reference the dropdown element from the dom
+                        // which will be used to check if user clicked outside of it
+                        saveTripDropdown = 
+                            <div
+                                ref={(element) => {
+                                    this.dropdownMenu = element;
+                                }}
+                            >
+                                {this.props.tripResults.map(trip => {
+                                    <button onClick={() => {}}>{trip.name}</button>
+                                })}
+                            </div>
+                    }
+                }
                 dynamicHeight = '300px'
                 details = 
                 <div>
@@ -59,24 +111,8 @@ class Results extends React.Component {
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
                      <div>
-                    {/* if user has a trip display save button (this.props.tripResults >= 1) */}
-                     <button onClick={(e) => {
-                        e.stopPropagation();
-                        // dispatch action to toggle state of display for dropdown
-                        this.save(inc);
-                     }}>
-                        add to trip
-                     </button>
-                     {/* pseudo-
-                        this.props.showDropdown ? 
-                        this.props.tripResults.map((trip, index) => {
-                            <button onClick={(e) => {
-                                e.stopPropagation();
-                                this.save(index)
-                            }}>trip.name</button>
-                        }) :
-                        null
-                     */}
+                     {saveTripDropdownBtn}
+                     {saveTripDropdown}
                      <button onClick={(e) => {
                         e.stopPropagation();
                          
@@ -120,6 +156,7 @@ const mapStateToProps = state => {
         tripResults: state.protectedData.tripResults,
         clicked: state.result.open,
         details: state.result.details,
+        tripDropdown: state.result.tripDropdown,
         next_page_token: state.protectedData.next_page_token
     }
 };

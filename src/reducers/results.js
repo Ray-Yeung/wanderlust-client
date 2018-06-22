@@ -8,14 +8,17 @@ import {
     SAVE_PLACE_ERROR,
     SAVE_PLACE_SUCCESS,
     FETCH_TRIP_PLACE_DETAILS_SUCCESS,
-    FETCH_TRIP_PLACE_DETAILS_ERROR
+    FETCH_TRIP_PLACE_DETAILS_ERROR,
+    OPEN_TRIP_DROPDOWN,
+    CLOSE_TRIP_DROPDOWN
 } from '../actions/results';
 
 const initialState = {
     open: false,
     details: null,
     tripPlaceDetails: null,
-    tripPlaceOpen: false
+    tripPlaceOpen: false,
+    tripDropdown: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -69,6 +72,16 @@ export default function reducer(state = initialState, action) {
     else if (action.type === CLOSE_TRIP_PLACE_MORE_DETAILS) {
         return Object.assign({}, state, {
             tripPlaceOpen: false
+        })
+    }
+    else if (action.type === OPEN_TRIP_DROPDOWN) {
+        return Object.assign({}, state, {
+            tripDropdown: true
+        })
+    }
+    else if (action.type === CLOSE_TRIP_DROPDOWN) {
+        return Object.assign({}, state, {
+            tripDropdown: false
         })
     }
     return state;

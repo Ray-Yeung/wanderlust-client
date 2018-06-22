@@ -12,6 +12,16 @@ export const closeMoreDetails = () => ({
     type: CLOSE_MORE_DETAILS
 });
 
+export const OPEN_TRIP_DROPDOWN = 'OPEN_TRIP_DROPDOWN';
+export const openTripDropdown = () => ({
+    type: OPEN_TRIP_DROPDOWN
+});
+
+export const CLOSE_TRIP_DROPDOWN = 'CLOSE_TRIP_DROPDOWN';
+export const closeTripDropdown = () => ({
+    type: CLOSE_TRIP_DROPDOWN
+});
+
 export const OPEN_TRIP_PLACE_MORE_DETAILS = 'OPEN_TRIP_PLACE_MORE_DETAILS';
 export const openTripPlaceMoreDetails = item => ({
     type: OPEN_TRIP_PLACE_MORE_DETAILS,

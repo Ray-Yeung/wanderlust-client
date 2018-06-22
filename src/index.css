@@ -46,9 +46,7 @@ z-index: -1;
   width: auto;
 }
 
-.home{
-  background: url('./images/home.jpg') 
-}
+
 /* this the header -- showing the Wanderlust and button within the header-bar */
 .header-bar{
   text-align: center;
@@ -129,9 +127,7 @@ div .map-view{
 .search-result{
   float: left;
 }
- div .result-map-list{
-  /* text-align: center; */
-}
+
 .place-photo{
   max-width: 20em;
 }

@@ -21,12 +21,9 @@ const initialState = {
     details: null,
     tripPlaceDetails: null,
     tripPlaceOpen: false,
-<<<<<<< HEAD
-    tripDropdown: false
-=======
+    tripDropdown: false,
     error: null,
     loading: false
->>>>>>> master
 };
 
 export default function reducer(state = initialState, action) {
@@ -100,7 +97,6 @@ export default function reducer(state = initialState, action) {
             tripPlaceOpen: false
         })
     }
-<<<<<<< HEAD
     else if (action.type === OPEN_TRIP_DROPDOWN) {
         return Object.assign({}, state, {
             tripDropdown: true
@@ -111,9 +107,7 @@ export default function reducer(state = initialState, action) {
             tripDropdown: false
         })
     }
-=======
 
     //Create trip here
->>>>>>> master
     return state;
 }

@@ -19,8 +19,8 @@ export class HeaderBar extends React.Component {
         }
         return (
             <div className="header-bar">
-                <h1>Wanderlust</h1>
-                <p>Welcome to Wanderlust. Search, save your destinations and go!</p>
+                {/* <h1>Wanderlust</h1>
+                <p>Welcome to Wanderlust. Search, save your destinations and go!</p> */}
                 {logOutButton}
             </div>
         );

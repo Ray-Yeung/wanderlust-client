@@ -9,15 +9,11 @@ export class GoogleMapWrapper extends React.PureComponent {
     super(props);
     this.state = {
       isMarkerShown: true,
+      popupIsOpen: false,
       location: {
         lat: 0,
 		    lng: 0
-      },
-      // indicatorPin: {
-      //   lat: -34.397,
-		  //   lng: 150.644
-      // },
-      popupIsOpen: false
+      }
     };
   };
 
@@ -30,7 +26,6 @@ export class GoogleMapWrapper extends React.PureComponent {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-          // console.log(userlocation);
           this.props.dispatch(setDefaultLocation(userlocation));
           this.setState(prevState => ({
             location: {
@@ -46,24 +41,6 @@ export class GoogleMapWrapper extends React.PureComponent {
       )
     } 
   }
-  
-  panTo(location) {
-    setMarkerLocation(location);
-  }
-
-  // handleMapClick(event) {
-  //   let lat = event.latLng.lat();
-  //   let lng = event.latLng.lng();
-  //   console.log('lat:', lat);
-  //   console.log('lng', lng);
-  //   this.setState({
-  //     indicatorPin: {
-  //       lat,
-  //       lng
-  //     },
-  //   });
-  //   this.props.dispatch(setUserLocation({ lat, lng }));
-  // }
 
   onToggleOpen() {
     this.setState({
@@ -75,11 +52,9 @@ export class GoogleMapWrapper extends React.PureComponent {
     return (
       <GoogleMapComponent 
       isMarkerShown={this.state.isMarkerShown}
-      // panTo={e => this.panTo(e)}
       // position={this.props.defaultLocation}
       position={this.state.location}
       onHandleClick={e => this.handleMapClick(e)}
-      // indicatorPin={this.state.indicatorPin}
       isOpen={this.state.popupIsOpen}
 	    onToggleOpen={() => this.onToggleOpen()}
       results={this.props.results}

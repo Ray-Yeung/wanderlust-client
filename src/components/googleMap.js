@@ -46,7 +46,6 @@ const GoogleMapsWrapper = compose(
     >
       {props.results.map((marker, index) => (
         <PlaceMarker
-          icon={tripsResultsIcon}
           key={index}
           marker={marker}
         />

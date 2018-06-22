@@ -14,7 +14,9 @@ import {
     FETCH_TRIP_PLACE_DETAILS_ERROR,
     OPEN_TRIP_DROPDOWN,
     CLOSE_TRIP_DROPDOWN,
-    HOLD_DROPDOWN_ELEMENT
+    HOLD_DROPDOWN_ELEMENT,
+    SAVE_PLACE_TO_TRIP_REQUEST,
+    SAVE_PLACE_TO_TRIP_ERROR
 } from '../actions/results';
 
 const initialState = {
@@ -113,6 +115,17 @@ export default function reducer(state = initialState, action) {
     else if (action.type === HOLD_DROPDOWN_ELEMENT) {
         return Object.assign({}, state, {
             tripDropdownElement: action.item
+        })
+    }
+    else if (action.type === SAVE_PLACE_TO_TRIP_REQUEST) {
+        //PLACE LOADING: TRUE ONCE TRIP DETAILS ARE REFACTORED INTO RESULTS REDUCER
+        return Object.assign({}, state, {
+        })
+    }
+    else if (action.type === SAVE_PLACE_TO_TRIP_ERROR) {
+        return Object.assign({}, state, {
+            error: action.err,
+            loading: false
         })
     }
     //Create trip here

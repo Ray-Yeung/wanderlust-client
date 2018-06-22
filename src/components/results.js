@@ -7,7 +7,7 @@ import {
     holdDropdownElement,
     closeTripDropdown,
     fetchPlacesDetails,
-    savePlace,
+    savePlaceToTrip,
     saveTrip
 } from '../actions/results';
 
@@ -37,10 +37,6 @@ class Results extends React.Component {
             // this.props.dispatch(fetchPhoto(this.props.results[inc].photos[0].photo_reference))
             // console.log(this.props)
         }
-    }
-
-    save(inc) {
-        this.props.dispatch(savePlace(this.props.details, this.props.results[inc].place_id));
     }
 
     closeDropdown(e) {
@@ -94,6 +90,7 @@ class Results extends React.Component {
                             {this.props.trips.map((trip, counter) => {
                                 return <button key={counter} onClick={(e) => {
                                     e.stopPropagation();
+                                    this.props.dispatch(savePlaceToTrip(this.props.details, this.props.trips[counter].id))
                                 }}>{trip.name}</button>
                             })}
                         </div>

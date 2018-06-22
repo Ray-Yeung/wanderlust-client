@@ -87,6 +87,22 @@ export const saveTripSuccess = (trip) => ({
     trip
 });
 
+export const SAVE_PLACE_TO_TRIP_REQUEST = 'SAVE_PLACE_TO_TRIP_REQUEST';
+export const savePlaceToTripRequest = () => ({
+    type: SAVE_PLACE_TO_TRIP_REQUEST
+})
+
+export const SAVE_PLACE_TO_TRIP_ERROR = 'SAVE_PLACE_TO_TRIP_ERROR';
+export const savePlaceToTripError = (err) => ({
+    type: SAVE_PLACE_TO_TRIP_ERROR
+});
+
+export const SAVE_PLACE_TO_TRIP_SUCCESS = 'SAVE_PLACE_TO_TRIP_SUCCESS';
+export const savePlaceToTripSuccess = (place) => ({
+    type: SAVE_PLACE_TO_TRIP_SUCCESS,
+    place
+});
+
 export const FETCH_TRIP_PLACE_DETAILS_SUCCESS = 'FETCH_TRIP_PLACE_DETAILS_SUCCESS';
 export const fetchTripPlaceDetailsSuccess = details => ({
     type: FETCH_TRIP_PLACE_DETAILS_SUCCESS,
@@ -99,32 +115,34 @@ export const fetchTripPlaceDetailsError = error => ({
     error
 });
 
-export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
-    const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/places`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-        },
-        body: JSON.stringify({
-            name: placeDetails.name, 
-            location: placeDetails.geometry.location, 
-            photos: placeDetails.photos, 
-            place_id: placeId, 
-            types: placeDetails.types, 
-            price_level:placeDetails.price_level, 
-            rating:placeDetails.rating, 
-            phone_number:placeDetails.formatted_phone_number, 
-            website: placeDetails.website,
-            address: placeDetails.formatted_address
-        })
-    })
-    .then(response => normalizeResponseErrors(response))
-    .then(response => response.json())
-    .then(data => dispatch(savePlaceSuccess()))
-    .catch(err => dispatch(savePlaceError()))
-}
+// COMMENTED OUT FOR NOW AS WE ARE SAVING TO TRIPS - DELETE ONCE FINISHED
+
+// export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
+//     const authToken = getState().auth.authToken;
+//     return fetch(`${API_BASE_URL}/places`, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${authToken}`
+//         },
+//         body: JSON.stringify({
+//             name: placeDetails.name, 
+//             location: placeDetails.geometry.location, 
+//             photos: placeDetails.photos, 
+//             place_id: placeId, 
+//             types: placeDetails.types, 
+//             price_level:placeDetails.price_level, 
+//             rating:placeDetails.rating, 
+//             phone_number:placeDetails.formatted_phone_number, 
+//             website: placeDetails.website,
+//             address: placeDetails.formatted_address
+//         })
+//     })
+//     .then(response => normalizeResponseErrors(response))
+//     .then(response => response.json())
+//     .then(data => dispatch(savePlaceSuccess()))
+//     .catch(err => dispatch(savePlaceError()))
+// }
 
 export const saveTrip = (placeDetails, placeId) => (dispatch, getState) => {
     dispatch(saveTripRequest()); //tells us we have bugun loading
@@ -147,9 +165,45 @@ export const saveTrip = (placeDetails, placeId) => (dispatch, getState) => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        dispatch(saveTripSuccess())
+        data.location.lat = parseFloat(data.location.lat, 10);
+        data.location.lng = parseFloat(data.location.lng, 10);
+        dispatch(saveTripSuccess(data))
     })
     .catch(err => dispatch(saveTripError()))
+}
+
+export const savePlaceToTrip = (placeDetails, tripId) => (dispatch, getState) => {
+    dispatch(savePlaceToTripRequest()); //tells us we have bugun loading
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/places`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+            name: placeDetails.name, 
+            location: placeDetails.geometry.location, 
+            photos: placeDetails.photos, 
+            place_id: placeDetails.place_id,
+            types: placeDetails.types, 
+            price_level: placeDetails.price_level, 
+            rating: placeDetails.rating, 
+            phone_number: placeDetails.formatted_phone_number, 
+            website: placeDetails.website,
+            address: placeDetails.formatted_address,
+            tripId: tripId
+        })
+    })
+    .then(response => normalizeResponseErrors(response))
+    .then(response => response.json())
+    .then(data => {
+        data.location.lat = parseFloat(data.location.lat, 10);
+        data.location.lng = parseFloat(data.location.lng, 10);
+        console.log(data);
+        dispatch(savePlaceToTripSuccess(data))
+    })
+    .catch(err => dispatch(savePlaceToTripError(err)))
 }
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {

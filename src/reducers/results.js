@@ -63,7 +63,6 @@ export default function reducer(state = initialState, action) {
     }
     else if(action.type === SAVE_TRIP_SUCCESS) {
         return Object.assign({}, state, {
-            trip: action.trip,
             loading: false,
             error: null
         });

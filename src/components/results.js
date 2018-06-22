@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { openMoreDetails, closeMoreDetails, fetchPlacesDetails, savePlace } from '../actions/results';
+import { openMoreDetails, closeMoreDetails, fetchPlacesDetails, savePlace, saveTrip } from '../actions/results';
 import { setMarkerLocation } from '../actions/protected-data';
 
 class Results extends React.Component {
@@ -24,6 +24,10 @@ class Results extends React.Component {
 
     save(inc) {
         this.props.dispatch(savePlace(this.props.details, this.props.results[inc].place_id));
+    }
+
+    saveNewTrip(inc) {
+        this.props.dispatch(saveTrip(this.props.details, this.props.results[inc].place_id));
     }
 
     render() {
@@ -59,10 +63,31 @@ class Results extends React.Component {
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
                      <div>
+                    {/* if user has a trip display save button (this.props.tripResults >= 1) */}
                      <button onClick={(e) => {
-                         e.stopPropagation();
-                         this.save(inc);
-                         }}>save</button>
+                        e.stopPropagation();
+                        // dispatch action to toggle state of display for dropdown
+                        this.save(inc);
+                     }}>
+                        add to trip
+                     </button>
+                     {/* pseudo-
+                        this.props.showDropdown ? 
+                        this.props.tripResults.map((trip, index) => {
+                            <button onClick={(e) => {
+                                e.stopPropagation();
+                                this.save(index)
+                            }}>trip.name</button>
+                        }) :
+                        null
+                     */}
+                     <button onClick={(e) => {
+                        e.stopPropagation();
+                         console.log('clicked');
+                         this.saveNewTrip(inc);
+                     }}>
+                        start new trip
+                     </button>
                  </div>
                 </div>
             }
@@ -97,6 +122,7 @@ class Results extends React.Component {
 const mapStateToProps = state => {
     return {
         results: state.protectedData.results,
+        tripResults: state.protectedData.tripResults,
         clicked: state.result.open,
         details: state.result.details,
         next_page_token: state.protectedData.next_page_token

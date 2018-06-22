@@ -99,13 +99,41 @@ export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
             types: placeDetails.types, 
             price_level:placeDetails.price_level, 
             rating:placeDetails.rating, 
-            phone_number:placeDetails.formatted_phone_number, website:placeDetails.website}),
+            phone_number:placeDetails.formatted_phone_number, 
+            website: placeDetails.website,
             address: placeDetails.formatted_address
+        })
     })
     .then(response => normalizeResponseErrors(response))
     .then(response => response.json())
     .then(data => dispatch(savePlaceSuccess()))
     .catch(err => dispatch(savePlaceError()))
+}
+
+export const saveTrip = (placeDetails, placeId) => (dispatch, getState) => {
+    dispatch(saveTripRequest()); //tells us we have bugun loading
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/trips`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+            name: placeDetails.name, 
+            location: placeDetails.geometry.location, 
+            photos: placeDetails.photos, 
+            place_id: placeId, 
+            address: placeDetails.formatted_address
+        })
+    })
+    .then(response => normalizeResponseErrors(response))
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        dispatch(saveTripSuccess())
+    })
+    .catch(err => dispatch(saveTripError()))
 }
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {

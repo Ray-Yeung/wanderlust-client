@@ -15,7 +15,7 @@ import {
     REMOVE_TRIP_SUCCESS,
     REMOVE_TRIP_ERROR
 } from '../actions/protected-data';
-
+import {SAVE_TRIP_SUCCESS} from '../actions/results'
 
 const initialState = {
     results: [],
@@ -88,6 +88,7 @@ export default function reducer(state = initialState, action) {
             error: action.error
         });
     } else if(action.type === REMOVE_TRIP_SUCCESS) {
+        console.log("this is our updated save",action)
         return Object.assign({}, state, {
             trips: action.trip
         });

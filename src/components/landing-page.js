@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import Photo from '../images/Clippy.png'
+import Ballon from '../images/ballon.png'
 import LoginForm from './login-form';
 const mainBg = {
     maxWith:"100%",
@@ -22,6 +23,7 @@ render(){
     }
     return (
         <div className="home">
+        <h1 className={"header-name-shower"}>wanderLust</h1>
         <header className={"header-name"}>
             <h1>WanderLust</h1>
             </header>
@@ -30,6 +32,11 @@ render(){
             <Link to="/register">Register</Link>
         </div>
         <img className={"clippy-man"} src={Photo} />
+        <img className={'hot-air-balloon'} src={Ballon} />
+        <div>
+
+
+            </div>
         </div>
     );
 }

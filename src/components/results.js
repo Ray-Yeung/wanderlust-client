@@ -17,7 +17,7 @@ class Results extends React.Component {
 
     constructor() {
         super();
-    // bind for use in named function
+    // bind for use in named function - required for removing event listener
     this.closeDropdown = this.closeDropdown.bind(this);
     }
 

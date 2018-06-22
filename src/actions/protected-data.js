@@ -116,7 +116,6 @@ export const removePlace = (placeId) => (dispatch, getState) => {
     })
     .then(response => response.json())
     .then(data => dispatch(removePlaceSuccess(data)))
-    // .then(history.push('/dashboard'))
     .catch(error => dispatch(removePlaceError(error)))
 };
 

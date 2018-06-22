@@ -93,9 +93,25 @@ export default function reducer(state = initialState, action) {
             error: action.error
         });
     } else if(action.type === REMOVE_TRIP_SUCCESS) {
-        return Object.assign({}, state, {
-            trips: action.trip
-        });
+    let tripArray = [...state.trips]
+    console.log(tripArray);
+    let deleteIndex = tripArray.map(function(trip){
+        console.log(trip.id);
+      return trip.id;
+    }).indexOf(action.id)
+    // let deleteIndex = brewArray.find(brew => {
+    //   brew[brews.id] === action.id;
+    
+      // })
+    const newArray = tripArray.splice(deleteIndex, 1)
+    console.log(newArray)
+    // history.push('/brews')
+    return Object.assign({}, state, {
+      trips: tripArray
+    })
+        // return Object.assign({}, state, {
+        //     trips: action.trip
+        // })
     } else if(action.type === REMOVE_TRIP_ERROR) {
         return Object.assign({}, state, {
             error: action.error

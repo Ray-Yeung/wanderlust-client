@@ -81,7 +81,7 @@ export default function reducer(state = initialState, action) {
         });
     } else if(action.type === REMOVE_PLACE_SUCCESS) {
         return Object.assign({}, state, {
-            tripResults: action.place
+            tripResults: action.place.tripResults
         });
     } else if(action.type === REMOVE_PLACE_ERROR) {
         return Object.assign({}, state, {

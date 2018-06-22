@@ -16,7 +16,7 @@ const GoogleMapsWrapper = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    containerElement: <div style={{ height: `800px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   
@@ -30,7 +30,7 @@ const GoogleMapsWrapper = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={8}
+    zoom={12}
     ref={(map) => map && map.panTo(props.location)}
     // center={props.location}
   >

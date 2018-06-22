@@ -29,13 +29,13 @@ class Results extends React.Component {
             this.props.dispatch(openMoreDetails(inc));
             this.props.dispatch(fetchPlacesDetails(this.props.results[inc].place_id));
             this.props.dispatch(setMarkerLocation(this.props.results[inc].geometry.location))
-            console.log(this.props.results)
+            // console.log(this.props.results)
             // console.log(this.props.results[inc].geometry.location)
             // console.log(this.props.result.details.geometry);
             // console.log(this.props.results[inc].photos[0].photo_reference)
             // console.log(this.props.results[inc].photos[0].html_attributions)
             // this.props.dispatch(fetchPhoto(this.props.results[inc].photos[0].photo_reference))
-            console.log(this.props)
+            // console.log(this.props)
         }
     }
 

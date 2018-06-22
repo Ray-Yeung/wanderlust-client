@@ -1,7 +1,5 @@
 import React from 'react';
 import { Marker, InfoWindow } from 'react-google-maps';
-// const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel");
-// import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel";
 import DollarSign from '../images/price-tag.png'
 import resultIcon from '../icons/resultIcon';
 
@@ -57,7 +55,7 @@ export default class PlaceMarker extends React.Component {
       <Marker
         key={this.props.index}
         position={this.props.marker.geometry.location}
-        label={this.props.marker.name}
+        label={{text: this.props.marker.name, color: 'gray'}}
         icon={resultIcon}
         opacity={0.9}
         onMouseOver={() => this.onToggleOpen()}
@@ -66,7 +64,7 @@ export default class PlaceMarker extends React.Component {
         // labelStyle={{ fontSize: '10px', padding: '15px', opacity: 0.50 }}
       >
         {this.state.isOpen && (
-          <InfoWindow onCloseClick={() => this.onToggleOpen()}>
+          <InfoWindow onClick={() => this.onToggleOpen()}>
             <div className='marker-info'>
               <h1 className='marker-header'>
                 {this.props.marker.name} <br/>

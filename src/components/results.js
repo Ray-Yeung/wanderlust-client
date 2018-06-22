@@ -6,7 +6,8 @@ import {
     openTripDropdown,
     closeTripDropdown,
     fetchPlacesDetails, 
-    savePlace 
+    savePlace,
+    saveTrip
 } from '../actions/results';
 import { setMarkerLocation } from '../actions/protected-data';
 
@@ -42,6 +43,10 @@ class Results extends React.Component {
                 document.removeEventListener('click', this.closeDropdown(e));
             });
         }
+    }
+    
+    saveNewTrip(inc) {
+        this.props.dispatch(saveTrip(this.props.details, this.props.results[inc].place_id));
     }
 
     render() {
@@ -115,7 +120,8 @@ class Results extends React.Component {
                      {saveTripDropdown}
                      <button onClick={(e) => {
                         e.stopPropagation();
-                         
+                         console.log('clicked');
+                         this.saveNewTrip(inc);
                      }}>
                         start new trip
                      </button>

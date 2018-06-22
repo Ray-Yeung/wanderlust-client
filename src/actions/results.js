@@ -165,7 +165,9 @@ export const saveTrip = (placeDetails, placeId) => (dispatch, getState) => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        dispatch(saveTripSuccess())
+        data.location.lat = parseFloat(data.location.lat, 10);
+        data.location.lng = parseFloat(data.location.lng, 10);
+        dispatch(saveTripSuccess(data))
     })
     .catch(err => dispatch(saveTripError()))
 }

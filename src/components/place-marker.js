@@ -21,6 +21,8 @@ export default class PlaceMarker extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  
   
   priceLevel(priceTag){
     if(priceTag === 1){
@@ -55,7 +57,7 @@ export default class PlaceMarker extends React.Component {
       <Marker
         key={this.props.index}
         position={this.props.marker.geometry.location}
-        label={{text: this.props.marker.name, color: 'gray'}}
+        label={{text: this.props.marker.name, color: 'dark gray', fontStyle: 'roboto'}}
         icon={resultIcon}
         opacity={0.9}
         onMouseOver={() => this.onToggleOpen()}

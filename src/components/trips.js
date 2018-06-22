@@ -23,12 +23,10 @@ class Trip extends Component {
                     return (
                         <div key={inc} onClick={() => this.openTrip(inc)}>
                             {trip.name}
-                            <button onClick={(e) => {
-                              e.stopPropagation();
-                              this.props.dispatch(removeTrip(this.props.trips[inc].id))
-                            //   console.log(this.props.trips[inc].id)
-                            }}
-                            >delete trip</button>
+                            <button onClick={(e) => { 
+                                e.stopPropagation();
+                                if (window.confirm(`Are you sure you want to delete ${this.props.trips[inc].name}?`)) this.props.dispatch(removeTrip(this.props.trips[inc].id))
+                            }}>delete trip</button>
                         </div>
                         
                     );

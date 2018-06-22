@@ -55,13 +55,12 @@ class TripResults extends Component {
                         <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.details.name}`} className="place-photo"/>
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
-                     <div>
-                     <button onClick={(e) => {
-                         e.stopPropagation();
-                         this.props.dispatch(removePlace(this.props.results[inc].id))
-                        //  console.log(this.props.results[inc].id)
-                         }}>delete stub</button>
-                 </div>
+                    <div className='delete-button'>
+                        <button onClick={(e) => { 
+                            e.stopPropagation();
+                            if (window.confirm(`Are you sure you want to delete ${this.props.results[inc].name}?`)) this.props.dispatch(removePlace(this.props.results[inc].id))
+                        }}>delete place</button>
+                    </div>
                 </div>
             }
             // keep box regular size

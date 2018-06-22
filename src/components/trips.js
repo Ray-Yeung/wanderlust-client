@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { setMarkerLocation } from '../actions/protected-data';
-import {fetchTrips, fetchTripDetails} from '../actions/protected-data';
+import {fetchTrips, fetchTripDetails, removeTrip} from '../actions/protected-data';
 
 class Trip extends Component {
 
@@ -23,7 +23,12 @@ class Trip extends Component {
                     return (
                         <div key={inc} onClick={() => this.openTrip(inc)}>
                             {trip.name}
+                            <button onClick={(e) => { 
+                                e.stopPropagation();
+                                if (window.confirm(`Are you sure you want to delete ${this.props.trips[inc].name}?`)) this.props.dispatch(removeTrip(this.props.trips[inc].id))
+                            }}>delete trip</button>
                         </div>
+                        
                     );
                 }
             );

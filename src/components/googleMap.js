@@ -25,15 +25,15 @@ const GoogleMapsWrapper = compose(
     onMarkerClustererClick: () => (markerClusterer) => {
       const clickedMarkers = markerClusterer.getMarkers()
       console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-    //   console.log(clickedMarkers)
     }
   }),
   withScriptjs,
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={8}
-    center={props.location}
+    zoom={12}
+    ref={(map) => map && map.panTo(props.location)}
+    // center={props.location}
   >
     <TrafficLayer autoUpdate />
     {/* results */}
@@ -47,7 +47,6 @@ const GoogleMapsWrapper = compose(
     >
       {props.results.map((marker, index) => (
         <PlaceMarker
-          // icon={tripsResultsIcon}
           key={index}
           marker={marker}
         />
@@ -73,7 +72,6 @@ class GoogleMapComponent extends React.PureComponent {
         results={this.props.results} 
         location={this.props.location}
         tripResults={this.props.tripResults}
-        // panTo={this.props.panTo}
       />
     )
   }

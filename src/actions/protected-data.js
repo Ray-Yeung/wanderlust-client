@@ -50,6 +50,30 @@ export const fetchTripDetailsError = error => ({
     error
 });
 
+export const REMOVE_PLACE_SUCCESS = 'REMOVE_PLACE_SUCCESS';
+export const removePlaceSuccess = place => ({
+    type: REMOVE_PLACE_SUCCESS,
+    place
+});
+
+export const REMOVE_PLACE_ERROR = 'REMOVE_PLACE_ERROR';
+export const removePlaceError = error => ({
+    type: REMOVE_PLACE_ERROR,
+    error
+});
+
+export const REMOVE_TRIP_SUCCESS = 'REMOVE_TRIP_SUCCESS';
+export const removeTripSuccess = trip => ({
+    type: REMOVE_TRIP_SUCCESS,
+    trip
+});
+
+export const REMOVE_TRIP_ERROR = 'REMOVE_TRIP_ERROR';
+export const removeTripError = error => ({
+    type: REMOVE_TRIP_ERROR,
+    error
+});
+
 export const DEFAULT_LOCATION = 'DEFAULT_LOCATION';
 export const defaultLocation = location => ({
   type: DEFAULT_LOCATION,
@@ -69,7 +93,6 @@ export const markerLocation = location => ({
 });
 
 export const setDefaultLocation = locationObj => dispatch => {
-//   console.log(locationObj);
   dispatch(defaultLocation(locationObj));
 };
   
@@ -80,6 +103,36 @@ export const setSearchLocation = locationObj => dispatch => {
 export const setMarkerLocation = locationObj => dispatch => {
   dispatch(markerLocation(locationObj));
 }
+
+export const removePlace = (placeId) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/places/${placeId}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => dispatch(removePlaceSuccess(data)))
+    .catch(error => dispatch(removePlaceError(error)))
+};
+
+export const removeTrip = (tripId) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/trips/${tripId}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => dispatch(removeTripSuccess(data)))
+    .catch(error => dispatch(removeTripError(error)))
+};
 
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
@@ -110,7 +163,6 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         dispatch(fetchResultsSuccess(data.results, data.next_page_token))
         dispatch(setSearchLocation(data.results[0].geometry.location))
     })
@@ -129,14 +181,12 @@ export const fetchTrips = () => (dispatch, getState) => {
     .then(response => response.json())
     .then(data => {
         data.forEach(data => {data.location.lat = parseFloat(data.location.lat, 10), data.location.lng = parseFloat(data.location.lng, 10)});
-        console.log(data);
         dispatch(fetchTripsSuccess(data))
     })
     .catch(err => dispatch(fetchTripsError(err)))
 };
 
 export const fetchTripDetails = (tripId) => (dispatch, getState) => {
-    console.log(tripId)
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/places/?tripId=${tripId}`, {
         method: 'GET',
@@ -148,7 +198,6 @@ export const fetchTripDetails = (tripId) => (dispatch, getState) => {
     .then(response => response.json())
     .then(data => {
         data.forEach(data => {data.location.lat = parseFloat(data.location.lat, 10), data.location.lng = parseFloat(data.location.lng, 10)});
-        console.log(data, typeof data[0].location.lat);
         dispatch(fetchTripDetailsSuccess(data))
     })
     .catch(err => dispatch(fetchTripDetailsError(err)))

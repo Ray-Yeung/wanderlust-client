@@ -9,7 +9,11 @@ import {
     FETCH_TRIPS_SUCCESS,
     FETCH_TRIPS_ERROR,
     FETCH_TRIP_DETAILS_SUCCESS,
-    FETCH_TRIP_DETAILS_ERROR
+    FETCH_TRIP_DETAILS_ERROR,
+    REMOVE_PLACE_SUCCESS,
+    REMOVE_PLACE_ERROR,
+    REMOVE_TRIP_SUCCESS,
+    REMOVE_TRIP_ERROR
 } from '../actions/protected-data';
 
 
@@ -72,6 +76,22 @@ export default function reducer(state = initialState, action) {
             tripResults: action.results
         });
     } else if(action.type === FETCH_TRIP_DETAILS_ERROR) {
+        return Object.assign({}, state, {
+            error: action.error
+        });
+    } else if(action.type === REMOVE_PLACE_SUCCESS) {
+        return Object.assign({}, state, {
+            tripResults: action.place.tripResults
+        });
+    } else if(action.type === REMOVE_PLACE_ERROR) {
+        return Object.assign({}, state, {
+            error: action.error
+        });
+    } else if(action.type === REMOVE_TRIP_SUCCESS) {
+        return Object.assign({}, state, {
+            trips: action.trip
+        });
+    } else if(action.type === REMOVE_TRIP_ERROR) {
         return Object.assign({}, state, {
             error: action.error
         });

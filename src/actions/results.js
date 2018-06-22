@@ -7,9 +7,25 @@ export const openMoreDetails = item => ({
     item
 });
 
+export const HOLD_DROPDOWN_ELEMENT = 'HOLD_DROPDOWN_ELEMENT';
+export const holdDropdownElement = item => ({
+    type: HOLD_DROPDOWN_ELEMENT,
+    item
+});
+
 export const CLOSE_MORE_DETAILS = 'CLOSE_MORE_DETAILS';
 export const closeMoreDetails = () => ({
     type: CLOSE_MORE_DETAILS
+});
+
+export const OPEN_TRIP_DROPDOWN = 'OPEN_TRIP_DROPDOWN';
+export const openTripDropdown = () => ({
+    type: OPEN_TRIP_DROPDOWN
+});
+
+export const CLOSE_TRIP_DROPDOWN = 'CLOSE_TRIP_DROPDOWN';
+export const closeTripDropdown = () => ({
+    type: CLOSE_TRIP_DROPDOWN
 });
 
 export const OPEN_TRIP_PLACE_MORE_DETAILS = 'OPEN_TRIP_PLACE_MORE_DETAILS';
@@ -55,6 +71,22 @@ export const savePlaceSuccess = () => ({
     type: SAVE_PLACE_SUCCESS
 });
 
+export const SAVE_TRIP_REQUEST = 'SAVE_TRIP_REQUEST';
+export const saveTripRequest = () => ({
+    type: SAVE_TRIP_REQUEST
+})
+
+export const SAVE_TRIP_ERROR = 'FETCH_TRIP_ERROR';
+export const saveTripError = () => ({
+    type: SAVE_TRIP_ERROR
+});
+
+export const SAVE_TRIP_SUCCESS = 'SAVE_TRIP_SUCCESS';
+export const saveTripSuccess = (trip) => ({
+    type: SAVE_TRIP_SUCCESS,
+    trip
+});
+
 export const FETCH_TRIP_PLACE_DETAILS_SUCCESS = 'FETCH_TRIP_PLACE_DETAILS_SUCCESS';
 export const fetchTripPlaceDetailsSuccess = details => ({
     type: FETCH_TRIP_PLACE_DETAILS_SUCCESS,
@@ -83,13 +115,41 @@ export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {
             types: placeDetails.types, 
             price_level:placeDetails.price_level, 
             rating:placeDetails.rating, 
-            phone_number:placeDetails.formatted_phone_number, website:placeDetails.website}),
+            phone_number:placeDetails.formatted_phone_number, 
+            website: placeDetails.website,
             address: placeDetails.formatted_address
+        })
     })
     .then(response => normalizeResponseErrors(response))
     .then(response => response.json())
     .then(data => dispatch(savePlaceSuccess()))
     .catch(err => dispatch(savePlaceError()))
+}
+
+export const saveTrip = (placeDetails, placeId) => (dispatch, getState) => {
+    dispatch(saveTripRequest()); //tells us we have bugun loading
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/trips`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+            name: placeDetails.name, 
+            location: placeDetails.geometry.location, 
+            photos: placeDetails.photos, 
+            place_id: placeId, 
+            address: placeDetails.formatted_address
+        })
+    })
+    .then(response => normalizeResponseErrors(response))
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        dispatch(saveTripSuccess())
+    })
+    .catch(err => dispatch(saveTripError()))
 }
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {
@@ -119,3 +179,5 @@ export const fetchTripPlacesDetails = (placeId) => (dispatch) => {
     })
     .catch(err => dispatch(fetchTripPlaceDetailsError(err)))
 };
+
+

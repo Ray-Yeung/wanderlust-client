@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+// import {fetchProtectedData} from '../actions/protected-data';
 
 import Search from './search-input';
 import Results from './results';
@@ -14,7 +14,7 @@ import GoogleMapWrapper from './googleMapWrapper';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchProtectedData());
+        // this.props.dispatch(fetchProtectedData());
     }
 
     
@@ -26,8 +26,8 @@ export class Dashboard extends React.Component {
             <div className="dashboard">
                 <Search />
                 <GoogleMapWrapper />
-                <Results />
                 <Trips />
+                <Results />
                 <TripResults />
                 <div className="dashboard-username">
                     Username: {this.props.username}

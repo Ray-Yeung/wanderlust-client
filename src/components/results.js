@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { openMoreDetails, closeMoreDetails, fetchPlacesDetails, savePlace } from '../actions/results';
+import { openMoreDetails, closeMoreDetails, fetchPlacesDetails, savePlace, saveTrip } from '../actions/results';
 import { setMarkerLocation } from '../actions/protected-data';
 
 class Results extends React.Component {
@@ -24,6 +24,10 @@ class Results extends React.Component {
 
     save(inc) {
         this.props.dispatch(savePlace(this.props.details, this.props.results[inc].place_id));
+    }
+
+    saveNewTrip(inc) {
+        this.props.dispatch(saveTrip(this.props.details, this.props.results[inc].place_id));
     }
 
     render() {
@@ -79,7 +83,8 @@ class Results extends React.Component {
                      */}
                      <button onClick={(e) => {
                         e.stopPropagation();
-                         
+                         console.log('clicked');
+                         this.saveNewTrip(inc);
                      }}>
                         start new trip
                      </button>

@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapComponent from './googleMap';
 import { connect } from 'react-redux';
 
-import { setDefaultLocation, setMarkerLocation } from '../actions/protected-data';
+import { setDefaultLocation } from '../actions/protected-data';
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {

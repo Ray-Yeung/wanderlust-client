@@ -179,3 +179,5 @@ export const fetchTripPlacesDetails = (placeId) => (dispatch) => {
     })
     .catch(err => dispatch(fetchTripPlaceDetailsError(err)))
 };
+
+

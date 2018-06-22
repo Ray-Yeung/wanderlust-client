@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess } from '../actions/results';
-import { setMarkerLocation } from '../actions/protected-data';
+import { setMarkerLocation, removePlace } from '../actions/protected-data';
 
 class TripResults extends Component {
 
@@ -58,6 +58,8 @@ class TripResults extends Component {
                      <div>
                      <button onClick={(e) => {
                          e.stopPropagation();
+                         this.props.dispatch(removePlace(this.props.results[inc].id))
+                        //  console.log(this.props.results[inc].id)
                          }}>delete stub</button>
                  </div>
                 </div>

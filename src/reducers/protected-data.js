@@ -17,6 +17,11 @@ import {
 } from '../actions/protected-data';
 
 
+// REFACTOR AT SOME POINT - PERHAPS PLACE TRIPS STATE IN RESULTS
+import {
+    SAVE_PLACE_TO_TRIP_SUCCESS
+} from '../actions/results'
+
 const initialState = {
     results: [],
     next_page:'',
@@ -94,6 +99,13 @@ export default function reducer(state = initialState, action) {
     } else if(action.type === REMOVE_TRIP_ERROR) {
         return Object.assign({}, state, {
             error: action.error
+        });
+    } 
+    // RESULTS ACTION - REFACTOR AT SOME POINT 
+    // - SAVE_PLACE_TO_TRIP REQUEST AND ERROR ARE IN RESULTS REDUCER
+    else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
+        return Object.assign({}, state, {
+            tripResults: [...state.tripResults, action.place]
         });
     }
     return state;

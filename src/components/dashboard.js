@@ -26,8 +26,8 @@ export class Dashboard extends React.Component {
             <div className="dashboard">
                 <Search />
                 <GoogleMapWrapper />
-                <Results />
                 <Trips />
+                <Results />
                 <TripResults />
                 <div className="dashboard-username">
                     Username: {this.props.username}

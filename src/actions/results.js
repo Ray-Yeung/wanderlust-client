@@ -7,6 +7,12 @@ export const openMoreDetails = item => ({
     item
 });
 
+export const HOLD_DROPDOWN_ELEMENT = 'HOLD_DROPDOWN_ELEMENT';
+export const holdDropdownElement = item => ({
+    type: HOLD_DROPDOWN_ELEMENT,
+    item
+});
+
 export const CLOSE_MORE_DETAILS = 'CLOSE_MORE_DETAILS';
 export const closeMoreDetails = () => ({
     type: CLOSE_MORE_DETAILS

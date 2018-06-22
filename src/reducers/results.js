@@ -13,7 +13,8 @@ import {
     FETCH_TRIP_PLACE_DETAILS_SUCCESS,
     FETCH_TRIP_PLACE_DETAILS_ERROR,
     OPEN_TRIP_DROPDOWN,
-    CLOSE_TRIP_DROPDOWN
+    CLOSE_TRIP_DROPDOWN,
+    HOLD_DROPDOWN_ELEMENT
 } from '../actions/results';
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
     tripPlaceDetails: null,
     tripPlaceOpen: false,
     tripDropdown: false,
+    tripDropdownElement: null,
     error: null,
     loading: false
 };
@@ -104,10 +106,15 @@ export default function reducer(state = initialState, action) {
     }
     else if (action.type === CLOSE_TRIP_DROPDOWN) {
         return Object.assign({}, state, {
-            tripDropdown: false
+            tripDropdown: false,
+            tripDropdownElement: null
         })
     }
-
+    else if (action.type === HOLD_DROPDOWN_ELEMENT) {
+        return Object.assign({}, state, {
+            tripDropdownElement: action.item
+        })
+    }
     //Create trip here
     return state;
 }

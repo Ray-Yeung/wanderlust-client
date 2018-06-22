@@ -19,7 +19,8 @@ import {
 
 // REFACTOR AT SOME POINT - PERHAPS PLACE TRIPS STATE IN RESULTS
 import {
-    SAVE_PLACE_TO_TRIP_SUCCESS
+    SAVE_PLACE_TO_TRIP_SUCCESS,
+    SAVE_TRIP_SUCCESS
 } from '../actions/results'
 
 const initialState = {
@@ -117,11 +118,16 @@ export default function reducer(state = initialState, action) {
             error: action.error
         });
     } 
-    // RESULTS ACTION - REFACTOR AT SOME POINT 
+    // RESULTS ACTIONS - REFACTOR AT SOME POINT 
     // - SAVE_PLACE_TO_TRIP REQUEST AND ERROR ARE IN RESULTS REDUCER
     else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
         return Object.assign({}, state, {
             tripResults: [...state.tripResults, action.place]
+        });
+    }
+    else if(action.type === SAVE_TRIP_SUCCESS) {
+        return Object.assign({}, state, {
+            trips: [...state.trips, action.trip]
         });
     }
     return state;

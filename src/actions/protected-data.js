@@ -105,7 +105,6 @@ export const setMarkerLocation = locationObj => dispatch => {
 }
 
 export const removePlace = (placeId) => (dispatch, getState) => {
-    console.log(placeId);
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/places/${placeId}`, {
         method: 'DELETE',
@@ -116,13 +115,11 @@ export const removePlace = (placeId) => (dispatch, getState) => {
         }
     })
     .then(response => {
-        console.log(response);
         if(!response.ok) {
             return Promise.reject(response.statusText);
         }
         return dispatch(removePlaceSuccess(placeId))
     })
-    // .then(data => dispatch(removePlaceSuccess(data)))
     .catch(error => dispatch(removePlaceError(error)))
 };
 
@@ -137,15 +134,11 @@ export const removeTrip = (tripId) => (dispatch, getState) => {
         }
     })
     .then(response => {
-        // console.log(response);
         if (!response.ok) {
             return Promise.reject(response.statusText);
         }
         return dispatch(removeTripSuccess(tripId))
     })
-    // .then(data => {
-    //     console.log(data)
-    //     return dispatch(removeTripSuccess(data))})
     .catch(error => dispatch(removeTripError(error)))
 };
 

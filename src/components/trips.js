@@ -4,13 +4,11 @@ import { setMarkerLocation } from '../actions/protected-data';
 import {fetchTrips, fetchTripDetails, removeTrip} from '../actions/protected-data';
 
 class Trip extends Component {
-
     componentDidMount() {
         this.props.dispatch(fetchTrips())
     }
 
     openTrip(inc) {
-        // console.log('works')
         this.props.dispatch(fetchTripDetails(this.props.trips[inc].id));
         this.props.dispatch(setMarkerLocation(this.props.trips[inc].location))
     }

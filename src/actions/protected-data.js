@@ -51,9 +51,9 @@ export const fetchTripDetailsError = error => ({
 });
 
 export const REMOVE_PLACE_SUCCESS = 'REMOVE_PLACE_SUCCESS';
-export const removePlaceSuccess = place => ({
+export const removePlaceSuccess = id => ({
     type: REMOVE_PLACE_SUCCESS,
-    place
+    id
 });
 
 export const REMOVE_PLACE_ERROR = 'REMOVE_PLACE_ERROR';
@@ -105,6 +105,7 @@ export const setMarkerLocation = locationObj => dispatch => {
 }
 
 export const removePlace = (placeId) => (dispatch, getState) => {
+    console.log(placeId);
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/places/${placeId}`, {
         method: 'DELETE',
@@ -116,10 +117,12 @@ export const removePlace = (placeId) => (dispatch, getState) => {
     })
     .then(response => {
         console.log(response);
-        
-        response.json()
+        if(!response.ok) {
+            return Promise.reject(response.statusText);
+        }
+        return dispatch(removePlaceSuccess(placeId))
     })
-    .then(data => dispatch(removePlaceSuccess(data)))
+    // .then(data => dispatch(removePlaceSuccess(data)))
     .catch(error => dispatch(removePlaceError(error)))
 };
 

@@ -25,7 +25,6 @@ class Trip extends Component {
                             {trip.name}
                             <button onClick={(e) => { 
                                 e.stopPropagation();
-                                console.log('clicked')
                                 if (window.confirm(`Are you sure you want to delete ${this.props.trips[inc].name}?`)) this.props.dispatch(removeTrip(this.props.trips[inc].id))
                             }}>delete trip</button>
                         </div>

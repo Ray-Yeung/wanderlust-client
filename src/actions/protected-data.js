@@ -114,7 +114,11 @@ export const removePlace = (placeId) => (dispatch, getState) => {
             'Authorization': `Bearer ${authToken}`
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+        
+        response.json()
+    })
     .then(data => dispatch(removePlaceSuccess(data)))
     .catch(error => dispatch(removePlaceError(error)))
 };
@@ -130,7 +134,7 @@ export const removeTrip = (tripId) => (dispatch, getState) => {
         }
     })
     .then(response => {
-        console.log(response);
+        // console.log(response);
         if (!response.ok) {
             return Promise.reject(response.statusText);
         }

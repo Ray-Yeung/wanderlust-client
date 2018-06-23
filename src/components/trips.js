@@ -10,7 +10,7 @@ class Trip extends Component {
     }
 
     openTrip(inc) {
-        console.log('works')
+        // console.log('works')
         this.props.dispatch(fetchTripDetails(this.props.trips[inc].id));
         this.props.dispatch(setMarkerLocation(this.props.trips[inc].location))
     }

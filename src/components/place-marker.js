@@ -60,9 +60,9 @@ export default class PlaceMarker extends React.Component {
         label={{text: this.props.marker.name, color: 'dark gray', fontStyle: 'roboto'}}
         icon={resultIcon}
         opacity={0.9}
-        onMouseOver={() => this.onToggleOpen()}
-        onMouseOut={() => this.onToggleOpen()}
-        // onClick={() => getPosition()}
+        // onMouseOver={() => this.onToggleOpen()}
+        // onMouseOut={() => this.onToggleOpen()}
+        onClick={() => this.onToggleOpen()}
         // labelStyle={{ fontSize: '10px', padding: '15px', opacity: 0.50 }}
       >
         {this.state.isOpen && (

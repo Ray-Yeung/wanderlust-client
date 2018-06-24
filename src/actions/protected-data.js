@@ -51,9 +51,9 @@ export const fetchTripDetailsError = error => ({
 });
 
 export const REMOVE_PLACE_SUCCESS = 'REMOVE_PLACE_SUCCESS';
-export const removePlaceSuccess = place => ({
+export const removePlaceSuccess = id => ({
     type: REMOVE_PLACE_SUCCESS,
-    place
+    id
 });
 
 export const REMOVE_PLACE_ERROR = 'REMOVE_PLACE_ERROR';
@@ -63,9 +63,9 @@ export const removePlaceError = error => ({
 });
 
 export const REMOVE_TRIP_SUCCESS = 'REMOVE_TRIP_SUCCESS';
-export const removeTripSuccess = trip => ({
+export const removeTripSuccess = id => ({
     type: REMOVE_TRIP_SUCCESS,
-    trip
+    id
 });
 
 export const REMOVE_TRIP_ERROR = 'REMOVE_TRIP_ERROR';
@@ -114,8 +114,12 @@ export const removePlace = (placeId) => (dispatch, getState) => {
             'Authorization': `Bearer ${authToken}`
         }
     })
-    .then(response => response.json())
-    .then(data => dispatch(removePlaceSuccess(data)))
+    .then(response => {
+        if(!response.ok) {
+            return Promise.reject(response.statusText);
+        }
+        return dispatch(removePlaceSuccess(placeId))
+    })
     .catch(error => dispatch(removePlaceError(error)))
 };
 
@@ -129,8 +133,12 @@ export const removeTrip = (tripId) => (dispatch, getState) => {
             'Authorization': `Bearer ${authToken}`
         }
     })
-    .then(response => response.json())
-    .then(data => dispatch(removeTripSuccess(data)))
+    .then(response => {
+        if (!response.ok) {
+            return Promise.reject(response.statusText);
+        }
+        return dispatch(removeTripSuccess(tripId))
+    })
     .catch(error => dispatch(removeTripError(error)))
 };
 

@@ -77,7 +77,6 @@ export default function reducer(state = initialState, action) {
             error: action.error
         });
     } else if(action.type === FETCH_TRIP_DETAILS_SUCCESS) {
-        console.log(action.results)
         return Object.assign({}, state, {
             tripResults: action.results
         });
@@ -86,17 +85,26 @@ export default function reducer(state = initialState, action) {
             error: action.error
         });
     } else if(action.type === REMOVE_PLACE_SUCCESS) {
+        let placeArray = [...state.tripResults]
+        let deleteIndex = placeArray.map(function(place){
+        return place.id;
+        }).indexOf(action.id)
+        placeArray.splice(deleteIndex, 1)
         return Object.assign({}, state, {
-            tripResults: action.place.tripResults
+            tripResults: placeArray
         });
     } else if(action.type === REMOVE_PLACE_ERROR) {
         return Object.assign({}, state, {
             error: action.error
         });
     } else if(action.type === REMOVE_TRIP_SUCCESS) {
-        console.log("this is our updated save",action)
+        let tripArray = [...state.trips]
+        let deleteIndex = tripArray.map(function(trip){
+        return trip.id;
+        }).indexOf(action.id)
+        tripArray.splice(deleteIndex, 1)
         return Object.assign({}, state, {
-            trips: action.trip
+            trips: tripArray
         });
     } else if(action.type === REMOVE_TRIP_ERROR) {
         return Object.assign({}, state, {

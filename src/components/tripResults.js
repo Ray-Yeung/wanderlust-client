@@ -58,6 +58,7 @@ class TripResults extends Component {
                     <div className='delete-button'>
                         <button onClick={(e) => { 
                             e.stopPropagation();
+                            // console.log('clicked')
                             if (window.confirm(`Are you sure you want to delete ${this.props.results[inc].name}?`)) this.props.dispatch(removePlace(this.props.results[inc].id))
                         }}>delete place</button>
                     </div>

@@ -15,7 +15,7 @@ import {
     REMOVE_TRIP_SUCCESS,
     REMOVE_TRIP_ERROR
 } from '../actions/protected-data';
-import {SAVE_TRIP_SUCCESS} from '../actions/results'
+
 
 // REFACTOR AT SOME POINT - PERHAPS PLACE TRIPS STATE IN RESULTS
 import {

@@ -161,7 +161,7 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 
 export const fetchSearchApi = (data) => (dispatch, getState) =>{
     const authToken = getState().auth.authToken;
-    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

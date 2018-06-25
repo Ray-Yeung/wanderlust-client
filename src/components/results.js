@@ -105,6 +105,9 @@ class Results extends React.Component {
                 if (inc === Number(this.props.clicked) && this.props.clicked !== false && this.props.details !== null
                     // &&this.props.photo !== null
                 ) {
+                    if (this.props.loading) {
+                        details = <p>loading...</p>
+                    }
                     dynamicHeight = '300px'
                     details =
                         <div>
@@ -120,7 +123,7 @@ class Results extends React.Component {
                                 {`${this.props.details.name} official website`}
                             </a>
                             <div>
-                                <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.details.name}`} className="place-photo" />
+                                <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo" />
                                 <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                             </div>
                             <div>
@@ -135,9 +138,6 @@ class Results extends React.Component {
                      </button>
                             </div>
                         </div>
-                        if (this.props.loading) {
-                            details = <p>loading...</p>
-                        }
                 }
                 // keep box regular size
                 else {

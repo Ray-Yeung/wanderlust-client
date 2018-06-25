@@ -105,9 +105,17 @@ export default function reducer(state = initialState, action) {
         let deleteIndex = tripArray.map(function(trip){
         return trip.id;
         }).indexOf(action.id)
-        tripArray.splice(deleteIndex, 1)
+        
+        let deletedTrip = tripArray.splice(deleteIndex, 1)
+        // check to see if first result of selected trip matched our deleted trip
+        // if it did, remove the tripResults from the dom...
+        let currentResults = [...state.tripResults];
+        if (currentResults[currentResults.length - 1].name.includes(deletedTrip[0].name)) {
+            currentResults = [];
+        }
         return Object.assign({}, state, {
-            trips: tripArray
+            trips: tripArray,
+            tripResults: currentResults
         });
     } else if(action.type === REMOVE_TRIP_ERROR) {
         return Object.assign({}, state, {
@@ -118,7 +126,7 @@ export default function reducer(state = initialState, action) {
     // - SAVE_PLACE_TO_TRIP REQUEST AND ERROR ARE IN RESULTS REDUCER
     else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
         return Object.assign({}, state, {
-            tripResults: [...state.tripResults, action.place]
+            tripResults: [action.place, ...state.tripResults]
         });
     }
     else if(action.type === SAVE_TRIP_SUCCESS) {

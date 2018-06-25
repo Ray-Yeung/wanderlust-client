@@ -20,6 +20,10 @@ import {
     SAVE_PLACE_TO_TRIP_ERROR
 } from '../actions/results';
 
+import {
+    REMOVE_PLACE_SUCCESS
+} from '../actions/protected-data';
+
 const initialState = {
     open: false,
     details: null,
@@ -137,6 +141,13 @@ export default function reducer(state = initialState, action) {
             loading: false
         })
     }
+    //COMING FROM THE PROTECTED DATA ACTIONS
+    else if(action.type === REMOVE_PLACE_SUCCESS) {
+        return Object.assign({}, state, {
+            tripPlaceDetails: null
+        });
+    }
+
     //Create trip here
     return state;
 }

@@ -59,6 +59,7 @@ const GoogleMapsWrapper = compose(
       {props.tripResults.map((marker, index) => (
         <TripMarker
           key={index}
+          index={index}
           marker={marker}
         />
       ))}

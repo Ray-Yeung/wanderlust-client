@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess } from '../actions/results';
-import { setMarkerLocation, removePlace } from '../actions/protected-data';
+import { setMarkerLocation, removePlace, openMarker, closeMarker } from '../actions/protected-data';
 
 class TripResults extends Component {
 
     clicked(inc) {
         if (inc === this.props.clicked) {
             this.props.dispatch(closeTripPlaceMoreDetails());
+            this.props.dispatch(closeMarker());
         }
         else {
             this.props.dispatch(openTripPlaceMoreDetails(inc));
+            this.props.dispatch(openMarker());
             try {
                 this.props.dispatch(fetchTripPlaceDetailsSuccess(this.props.results[inc]));
                 this.props.dispatch(setMarkerLocation(this.props.results[inc].location))

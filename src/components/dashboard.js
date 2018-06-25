@@ -24,6 +24,15 @@ export class Dashboard extends React.Component {
         // console.log(this.props.currentUser)
         return (
             <div className="dashboard">
+            <header className={'dash-header'}>
+            <h1 className={"dash-name"}>Wanderlust</h1>
+            <nav>
+                <ul>
+                <li><a href="#"> Welcome</a> </li>
+                    </ul>
+                </nav>
+                </header>
+                <h1 className={"app-name-overview"}>Wanderlust</h1>
                 <Search />
                 <GoogleMapWrapper />
                 <Trips />

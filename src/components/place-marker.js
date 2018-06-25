@@ -89,10 +89,6 @@ export class PlaceMarker extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    results: state.protectedData.results,
-    location: state.protectedData.location,
-    tripResults: state.protectedData.tripResults,
-    isOpen: state.protectedData.isOpen,
     clicked: state.result.open
   }
 };

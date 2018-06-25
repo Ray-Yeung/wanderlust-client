@@ -135,6 +135,9 @@ class Results extends React.Component {
                      </button>
                             </div>
                         </div>
+                        if (this.props.loading) {
+                            details = <p>loading...</p>
+                        }
                 }
                 // keep box regular size
                 else {
@@ -167,6 +170,7 @@ class Results extends React.Component {
 const mapStateToProps = state => {
     return {
         results: state.protectedData.results,
+        loading: state.result.loading,
         trips: state.protectedData.trips,
         clicked: state.result.open,
         details: state.result.details,

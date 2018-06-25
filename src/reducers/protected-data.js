@@ -34,7 +34,8 @@ const initialState = {
     location: {
       lat: 37.782,
       lng: -122.403
-    }
+    },
+    loading: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -50,11 +51,13 @@ export default function reducer(state = initialState, action) {
     } else if(action.type === FETCH_RESULTS_SUCCESS) {
         return Object.assign({}, state, {
             results: action.results,
-            next_page: action.next_page_token
+            next_page: action.next_page_token,
+            loading: false
         });
     } else if(action.type === FETCH_RESULTS_ERROR) {
         return Object.assign({}, state, {
-            error: action.error
+            error: action.error,
+            loading: false
         });
     } else if(action.type === DEFAULT_LOCATION) {
         return Object.assign({}, state, {

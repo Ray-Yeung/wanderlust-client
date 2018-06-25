@@ -23,8 +23,6 @@ export class PlaceMarker extends React.Component {
   //   });
   // }
 
-  
-  
   priceLevel(priceTag){
     if(priceTag === 1){
       return(

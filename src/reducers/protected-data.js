@@ -13,7 +13,9 @@ import {
     REMOVE_PLACE_SUCCESS,
     REMOVE_PLACE_ERROR,
     REMOVE_TRIP_SUCCESS,
-    REMOVE_TRIP_ERROR
+    REMOVE_TRIP_ERROR,
+    OPEN_MARKER,
+    CLOSE_MARKER
 } from '../actions/protected-data';
 
 
@@ -31,6 +33,7 @@ const initialState = {
     tripPlaceDetails: [],
     data: '',
     error: null,
+    isOpen: false,
     location: {
       lat: 37.782,
       lng: -122.403
@@ -132,11 +135,18 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {
             tripResults: [action.place, ...state.tripResults]
         });
-    }
-    else if(action.type === SAVE_TRIP_SUCCESS) {
+    } else if(action.type === SAVE_TRIP_SUCCESS) {
         return Object.assign({}, state, {
             trips: [...state.trips, action.trip]
         });
-    }
+    } else if(action.type === OPEN_MARKER) {
+        return Object.assign({}, state, {
+            isOpen: true
+        });
+    } else if(action.type === CLOSE_MARKER) {
+        return Object.assign({}, state, {
+            isOpen: false
+        });
+    } 
     return state;
 }

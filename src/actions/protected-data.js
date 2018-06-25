@@ -92,6 +92,16 @@ export const markerLocation = location => ({
   location
 });
 
+export const OPEN_MARKER = 'OPEN_MARKER';
+export const openMarker = () => ({
+  type: OPEN_MARKER
+});
+
+export const CLOSE_MARKER = 'CLOSE_MARKER';
+export const closeMarker = () => ({
+  type: CLOSE_MARKER
+});
+
 export const setDefaultLocation = locationObj => dispatch => {
   dispatch(defaultLocation(locationObj));
 };

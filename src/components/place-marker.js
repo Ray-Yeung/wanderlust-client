@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Marker, InfoWindow } from 'react-google-maps';
 import DollarSign from '../images/price-tag.png'
 import resultIcon from '../icons/resultIcon';
@@ -8,7 +9,7 @@ const style = {
   height:'10px'
 }
 
-export default class PlaceMarker extends React.Component {
+export class PlaceMarker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,11 +17,11 @@ export default class PlaceMarker extends React.Component {
     };
   }
   
-  onToggleOpen() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  // onToggleOpen() {
+  //   this.setState({
+  //     isOpen: !this.state.isOpen
+  //   });
+  // }
 
   
   
@@ -57,16 +58,18 @@ export default class PlaceMarker extends React.Component {
       <Marker
         key={this.props.index}
         position={this.props.marker.geometry.location}
-        label={{text: this.props.marker.name, color: 'dark gray', fontStyle: 'roboto'}}
+        // label={{text: this.props.marker.name, color: 'dark gray', fontStyle: 'roboto'}}
         icon={resultIcon}
         opacity={0.9}
         // onMouseOver={() => this.onToggleOpen()}
         // onMouseOut={() => this.onToggleOpen()}
-        onClick={() => this.onToggleOpen()}
+        // onClick={() => this.onToggleOpen()}
         // labelStyle={{ fontSize: '10px', padding: '15px', opacity: 0.50 }}
       >
-        {this.state.isOpen && (
-          <InfoWindow onClick={() => this.onToggleOpen()}>
+        {/* {this.state.isOpen && ( */}
+          {this.props.index === this.props.clicked&&(
+          // <InfoWindow onClick={() => this.onToggleOpen()}>
+          <InfoWindow>
             <div className='marker-info'>
               <h1 className='marker-header'>
                 {this.props.marker.name} <br/>
@@ -83,3 +86,15 @@ export default class PlaceMarker extends React.Component {
     );
   }
 };
+
+const mapStateToProps = state => {
+  return {
+    results: state.protectedData.results,
+    location: state.protectedData.location,
+    tripResults: state.protectedData.tripResults,
+    isOpen: state.protectedData.isOpen,
+    clicked: state.result.open
+  }
+};
+
+export default connect(mapStateToProps)(PlaceMarker);

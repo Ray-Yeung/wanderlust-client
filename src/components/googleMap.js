@@ -8,7 +8,7 @@ const {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  TrafficLayer
+  // TrafficLayer
 } = require("react-google-maps");
 const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
 
@@ -35,7 +35,7 @@ const GoogleMapsWrapper = compose(
     ref={(map) => map && map.panTo(props.location)}
     // center={props.location}
   >
-    <TrafficLayer autoUpdate />
+    {/* <TrafficLayer autoUpdate /> */}
     {/* results */}
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
@@ -48,6 +48,7 @@ const GoogleMapsWrapper = compose(
       {props.results.map((marker, index) => (
         <PlaceMarker
           key={index}
+          index={index}
           marker={marker}
         />
       ))}

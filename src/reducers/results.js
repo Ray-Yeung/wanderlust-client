@@ -3,6 +3,7 @@ import {
     CLOSE_MORE_DETAILS,
     OPEN_TRIP_PLACE_MORE_DETAILS,
     CLOSE_TRIP_PLACE_MORE_DETAILS,
+    FETCH_DETAILS_REQUEST,
     FETCH_DETAILS_ERROR,
     FETCH_DETAILS_SUCCESS,
     SAVE_PLACE_ERROR,
@@ -41,15 +42,23 @@ export default function reducer(state = initialState, action) {
             open: false
         })
     }
+    else if (action.type === FETCH_DETAILS_REQUEST) {
+        return Object.assign({}, state, {
+            details: null,
+            loading: true
+        })
+    }
     else if (action.type === FETCH_DETAILS_ERROR) {
         return Object.assign({}, state, {
-            details: null
+            details: null,
+            loading: false
         })
     }
     else if (action.type === FETCH_DETAILS_SUCCESS) {
         console.log(action.details);
         return Object.assign({}, state, {
-            details: action.details
+            details: action.details,
+            loading: false
         })
     }
     else if (action.type === SAVE_PLACE_ERROR) {

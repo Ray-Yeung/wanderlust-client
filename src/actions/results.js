@@ -44,6 +44,11 @@ export const fetchDetailsError = () => ({
     type: FETCH_DETAILS_ERROR
 });
 
+export const FETCH_DETAILS_REQUEST = 'FETCH_DETAILS_REQUEST';
+export const fetchDetailsRequest = () => ({
+    type: FETCH_DETAILS_REQUEST
+});
+
 export const FETCH_DETAILS_SUCCESS = 'FETCH_DETAILS_SUCCESS';
 export const fetchDetailsSuccess = (details) => ({
     type: FETCH_DETAILS_SUCCESS,
@@ -208,6 +213,7 @@ export const savePlaceToTrip = (placeDetails, tripId) => (dispatch, getState) =>
 }
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {
+    dispatch(fetchDetailsRequest());
     return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`, {
         method: 'GET',
         headers: {

@@ -39,7 +39,7 @@ class TripResults extends Component {
                 console.log(this.props.details)
                 dynamicHeight = '300px'
                 details = 
-                <div>
+                <div className={'trips-class'}>
                     <div>
                         Rating: {this.props.details.rating}
                     </div>
@@ -85,7 +85,8 @@ class TripResults extends Component {
             });
         }
         return (
-            <div>
+            <div
+            className={'trips-class'}>
                 {list}
             </div>
         );

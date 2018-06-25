@@ -25,11 +25,14 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
             <header className={'dash-header'}>
-            <h1 className={"dash-name"}>Wanderlust</h1>
-            <nav>
-                <ul>
-                <li><a href="#"> Welcome</a> </li>
-                    </ul>
+            {/* <h1 className={"dash-name"}>Wanderlust</h1> */}
+            <nav className={"nav-links"}>
+            <ul className={"header-nav"}>
+                <li><a href="default.asp">Home</a></li>
+                <li><a href="news.asp">News</a></li>
+                <li><a href="contact.asp">Contact</a></li>
+                <li><a href="about.asp">About</a></li>
+            </ul>
                 </nav>
                 </header>
                 <h1 className={"app-name-overview"}>Wanderlust</h1>

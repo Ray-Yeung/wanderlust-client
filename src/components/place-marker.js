@@ -17,11 +17,11 @@ export class PlaceMarker extends React.Component {
     };
   }
   
-  // onToggleOpen() {
-  //   this.setState({
-  //     isOpen: !this.state.isOpen
-  //   });
-  // }
+  onToggleOpen() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
   priceLevel(priceTag){
     if(priceTag === 1){
@@ -59,14 +59,27 @@ export class PlaceMarker extends React.Component {
         // label={{text: this.props.marker.name, color: 'dark gray', fontStyle: 'roboto'}}
         icon={resultIcon}
         opacity={0.9}
-        // onMouseOver={() => this.onToggleOpen()}
-        // onMouseOut={() => this.onToggleOpen()}
+        onMouseOver={() => this.onToggleOpen()}
+        onMouseOut={() => this.onToggleOpen()}
         // onClick={() => this.onToggleOpen()}
         // labelStyle={{ fontSize: '10px', padding: '15px', opacity: 0.50 }}
       >
-        {/* {this.state.isOpen && ( */}
           {this.props.index === this.props.clicked&&(
-          // <InfoWindow onClick={() => this.onToggleOpen()}>
+          <InfoWindow>
+            <div className='marker-info'>
+              <h1 className='marker-header'>
+                {this.props.marker.name} <br/>
+              </h1>
+              <p className={'marker-extra-info'}>
+                Rating:{this.props.marker.rating}<br/>
+                Price Level:{this.props.marker.price_level}<br/>
+                {this.priceLevel(newPrice)}
+              </p>
+            </div>
+          </InfoWindow>
+        )}
+
+         {this.state.isOpen&&(
           <InfoWindow>
             <div className='marker-info'>
               <h1 className='marker-header'>

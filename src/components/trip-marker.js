@@ -17,11 +17,11 @@ export class TripMarker extends React.Component {
     };
   }
   
-  // onToggleOpen() {
-  //   this.setState({
-  //     isOpen: !this.state.isOpen
-  //   });
-  // }
+  onToggleOpen() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   
   priceLevel(priceTag){
     if(priceTag === 1){
@@ -60,8 +60,8 @@ export class TripMarker extends React.Component {
         // label={this.props.marker.name}
         icon={tripIcon}
         opacity={0.95}
-        // onMouseOver={() => this.onToggleOpen()}
-        // onMouseOut={() => this.onToggleOpen()}
+        onMouseOver={() => this.onToggleOpen()}
+        onMouseOut={() => this.onToggleOpen()}
         // labelStyle={{ fontSize: '10px', padding: '15px', opacity: 0.50 }}
       >
         {/* {this.state.isOpen && ( */}
@@ -78,7 +78,22 @@ export class TripMarker extends React.Component {
               </p>
             </div>
           </InfoWindow>
-        )}
+          )}
+
+          {this.state.isOpen&&(
+            <InfoWindow>
+              <div className='marker-info'>
+                <h1 className='marker-header'>
+                  {this.props.marker.name} <br/>
+                </h1>
+                <p className={'marker-extra-info'}>
+                  Rating:{this.props.marker.rating}<br/>
+                  Price Level:{this.props.marker.price_level}<br/>
+                  {this.priceLevel(newPrice)}
+                </p>
+              </div>
+            </InfoWindow>
+          )}
       </Marker>
     );
   }

@@ -43,7 +43,7 @@ const GoogleMapsWrapper = compose(
       enableRetinaIcons
       gridSize={30}   //changes size of cluster area
       maxZoom={15}    //changes how far map zooms when clicking cluster
-      defaultMinimumClusterSize={2}  //minimum cluster size
+      defaultMinimumClusterSize={10}  //minimum cluster size
     >
       {props.results.map((marker, index) => (
         <PlaceMarker
@@ -55,7 +55,14 @@ const GoogleMapsWrapper = compose(
     </MarkerClusterer>
 
     {/* tripResults */}
-    <MarkerClusterer>
+    <MarkerClusterer
+      onClick={props.onMarkerClustererClick}
+      averageCenter
+      enableRetinaIcons
+      gridSize={30}   //changes size of cluster area
+      maxZoom={15}    //changes how far map zooms when clicking cluster
+      defaultMinimumClusterSize={5}  //minimum cluster size
+    >
       {props.tripResults.map((marker, index) => (
         <TripMarker
           key={index}

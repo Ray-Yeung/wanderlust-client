@@ -188,7 +188,7 @@ class Results extends React.Component {
                     <div
                         key={inc}
                         id={inc}
-                        style={{ width: '100%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black' }}
+                        className='search-result-view'
                         onClick={() => {
                             this.clicked(inc)
                         }}

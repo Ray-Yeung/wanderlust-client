@@ -24,11 +24,10 @@ export class Dashboard extends React.Component {
         // console.log(this.props.currentUser)
         return (
             <div className="dashboard">
-                <Search />
-                <GoogleMapWrapper />
-                <Trips />
-                <Results />
-                <TripResults />
+            <header className={'dash-header'}>
+            <h1 className={"dash-name"}>Wanderlust</h1>  
+                </header>
+                <div className="user-info">
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>
@@ -36,6 +35,13 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
+                </div>
+                <Search />
+                <GoogleMapWrapper />
+                <Trips />
+                <Results />
+                <TripResults />
+
             </div>
         );
     }

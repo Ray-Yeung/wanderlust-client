@@ -181,6 +181,25 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data.results, data.next_page_token);
+        dispatch(fetchResultsSuccess(data.results, data.next_page_token))
+        dispatch(setSearchLocation(data.results[0].geometry.location))
+    })
+    .catch(err => dispatch(fetchResultsError(err)))
+};
+
+export const fetchNextSearchApi = (data) => (dispatch, getState) =>{
+    const authToken = getState().auth.authToken;
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?pagetoken=${data}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
         dispatch(fetchResultsSuccess(data.results, data.next_page_token))
         dispatch(setSearchLocation(data.results[0].geometry.location))
     })

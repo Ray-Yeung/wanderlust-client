@@ -11,7 +11,7 @@ import {
     saveTrip
 } from '../actions/results';
 
-import { setMarkerLocation, openMarker, closeMarker } from '../actions/protected-data';
+import { setMarkerLocation, openMarker, closeMarker, fetchNextSearchApi } from '../actions/protected-data';
 
 class Results extends React.Component {
 
@@ -59,8 +59,18 @@ class Results extends React.Component {
         let dynamicHeight;
         let list;
         let details;
+        let page;
 
         if (this.props.results.length >= 1) {
+            //create but if there is a next page token to paginate through results
+            if(this.props.next_page_token){
+                page = <button
+                className="nextPage"
+                onClick={ (e) => {
+                    //    e.preventDefault();
+                    console.log('clicked', this.props);
+                    this.props.dispatch(fetchNextSearchApi(this.props.next_page_token))}}
+                >Next Page</button>}
             // create button allowing user to save a place to a trip if they have a trip
             let saveTripDropdownBtn;
             let saveTripDropdown;
@@ -164,6 +174,7 @@ class Results extends React.Component {
         return (
             <div className={"result-map-view"}>
                 {list}
+                {page}
             </div>
         );
     }

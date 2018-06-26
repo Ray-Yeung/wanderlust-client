@@ -22,7 +22,8 @@ import {
 
 import {
     REMOVE_PLACE_SUCCESS,
-    FETCH_RESULTS_SUCCESS
+    FETCH_RESULTS_SUCCESS,
+    FETCH_TRIP_DETAILS_SUCCESS
 } from '../actions/protected-data';
 
 const initialState = {
@@ -152,6 +153,12 @@ export default function reducer(state = initialState, action) {
     else if(action.type === FETCH_RESULTS_SUCCESS) {
         return Object.assign({}, state, {
             details: null
+        });
+    }
+
+    else if(action.type === FETCH_TRIP_DETAILS_SUCCESS) {
+        return Object.assign({}, state, {
+            tripPlaceOpen: false
         });
     }
 

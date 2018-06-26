@@ -17,14 +17,18 @@ import {
     CLOSE_TRIP_DROPDOWN,
     HOLD_DROPDOWN_ELEMENT,
     SAVE_PLACE_TO_TRIP_REQUEST,
-    SAVE_PLACE_TO_TRIP_ERROR
+    SAVE_PLACE_TO_TRIP_ERROR,
+    SAVE_PLACE_TO_TRIP_SUCCESS
 } from '../actions/results';
 
 import {
-    REMOVE_PLACE_SUCCESS
+    REMOVE_PLACE_SUCCESS,
+    FETCH_RESULTS_SUCCESS,
+    FETCH_TRIP_DETAILS_SUCCESS
 } from '../actions/protected-data';
 
 const initialState = {
+    added: false,
     open: false,
     details: null,
     tripPlaceDetails: null,
@@ -62,7 +66,8 @@ export default function reducer(state = initialState, action) {
         console.log(action.details);
         return Object.assign({}, state, {
             details: action.details,
-            loading: false
+            loading: false,
+            added: false
         })
     }
     else if (action.type === SAVE_PLACE_ERROR) {
@@ -145,6 +150,25 @@ export default function reducer(state = initialState, action) {
     else if(action.type === REMOVE_PLACE_SUCCESS) {
         return Object.assign({}, state, {
             tripPlaceDetails: null
+        });
+    }
+
+    else if(action.type === FETCH_RESULTS_SUCCESS) {
+        return Object.assign({}, state, {
+            details: null
+        });
+    }
+
+    else if(action.type === FETCH_TRIP_DETAILS_SUCCESS) {
+        return Object.assign({}, state, {
+            tripPlaceOpen: false
+        });
+    }
+
+    else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
+        return Object.assign({}, state, {
+            tripPlaceOpen: false,
+            added: true
         });
     }
 

@@ -113,8 +113,10 @@ export default function reducer(state = initialState, action) {
         // check to see if first result of selected trip matched our deleted trip
         // if it did, remove the tripResults from the dom...
         let currentResults = [...state.tripResults];
-        if (currentResults[currentResults.length - 1].name.includes(deletedTrip[0].name)) {
-            currentResults = [];
+        if (currentResults.length >= 1) {
+            if(currentResults[0].tripId.includes(deletedTrip[0].id)) {
+                currentResults = [];
+            }
         }
         return Object.assign({}, state, {
             trips: tripArray,
@@ -128,12 +130,15 @@ export default function reducer(state = initialState, action) {
     // RESULTS ACTIONS - REFACTOR AT SOME POINT 
     // - SAVE_PLACE_TO_TRIP REQUEST AND ERROR ARE IN RESULTS REDUCER
     else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
-        // let currentResults = [...state.tripResults];
-        // if (currentResults[currentResults.length - 1].name.includes(deletedTrip[0].name)) {
-        //     currentResults = [];
-        // }
+        let currentResults = [...state.tripResults];
+        let updateResults = [...state.tripResults];
+        if (currentResults.length >= 1) {
+            if (currentResults[0].tripId.includes(action.tripId)) {
+                updateResults = [action.place, ...state.tripResults];
+            }
+        }
         return Object.assign({}, state, {
-            tripResults: [action.place, ...state.tripResults]
+            tripResults: updateResults
         });
     } else if(action.type === SAVE_TRIP_SUCCESS) {
         return Object.assign({}, state, {

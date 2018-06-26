@@ -123,20 +123,24 @@ class Results extends React.Component {
                     dynamicHeight = '100%'
                     details =
                         <div>
-                            <div>
+                            {!this.props.details.rating ? '' :
+                            (<div>
                                 Rating: {this.props.details.rating}
-                            </div>
+                            </div>)}
                             {/* <div>
                                 Open now: {this.props.details.opening_hours.open_now}
                             </div> */}
-                            <ul>
+                            <div>
+                            {!this.props.details.opening_hours ? '' :
+                            (<ul>
                                 {this.props.details.opening_hours.weekday_text.map((day, index) => {
                                     return <li
                                     key={index}>
                                     {day}
                                     </li>
                                 })}
-                            </ul>
+                            </ul>)}
+                            </div>
                             <div>
                                 {this.props.details.formatted_address}
                             </div>
@@ -149,8 +153,10 @@ class Results extends React.Component {
                                 <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo" />
                                 <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                             </div>
-                            <div>
-                                Reviews: 
+                            
+                                {!this.props.details.reviews ? '' :
+                                (<div>
+                                <h2> Reviews: </h2>
                                 <ul>
                                 {this.props.details.reviews.map((review, index) => {
                                     return <li 
@@ -158,15 +164,16 @@ class Results extends React.Component {
                                     {review.author_name} 
                                     <a href={review.author_url} /> 
                                     <img src={review.profile_photo_url} alt="reviewer's profile"/>
-                                    {review.rating} 
+                                    <div>Rating: {review.rating} </div>
                                     {review.relative_time_description} 
                                     <p>{review.text}</p>
                                     </li>
                                 })
                                 }
                                 </ul>
-                            </div>
+                            </div>)}
                             <div>
+                                {this.props.added ? <p>Success!</p> : ''}
                                 {saveTripDropdownBtn}
                                 {saveTripDropdown}
                                 <button onClick={(e) => {
@@ -210,6 +217,7 @@ class Results extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        added: state.result.added,
         results: state.protectedData.results,
         loading: state.result.loading,
         trips: state.protectedData.trips,

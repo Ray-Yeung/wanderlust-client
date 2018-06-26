@@ -129,14 +129,17 @@ class Results extends React.Component {
                             {/* <div>
                                 Open now: {this.props.details.opening_hours.open_now}
                             </div> */}
-                            <ul>
+                            <div>
+                            {!this.props.details.opening_hours ? '' :
+                            (<ul>
                                 {this.props.details.opening_hours.weekday_text.map((day, index) => {
                                     return <li
                                     key={index}>
                                     {day}
                                     </li>
                                 })}
-                            </ul>
+                            </ul>)}
+                            </div>
                             <div>
                                 {this.props.details.formatted_address}
                             </div>
@@ -158,7 +161,7 @@ class Results extends React.Component {
                                     {review.author_name} 
                                     <a href={review.author_url} /> 
                                     <img src={review.profile_photo_url} alt="reviewer's profile"/>
-                                    {review.rating} 
+                                    <div>Rating: {review.rating} </div>
                                     {review.relative_time_description} 
                                     <p>{review.text}</p>
                                     </li>

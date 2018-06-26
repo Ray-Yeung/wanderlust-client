@@ -188,6 +188,7 @@ color:white;
   z-index: 3;
   overflow: auto;
   height: 500px;
+  max-width: 25%;
 
 }
 @-webkit-keyframes roll-in-left {

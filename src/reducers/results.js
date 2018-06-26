@@ -17,7 +17,8 @@ import {
     CLOSE_TRIP_DROPDOWN,
     HOLD_DROPDOWN_ELEMENT,
     SAVE_PLACE_TO_TRIP_REQUEST,
-    SAVE_PLACE_TO_TRIP_ERROR
+    SAVE_PLACE_TO_TRIP_ERROR,
+    SAVE_PLACE_TO_TRIP_SUCCESS
 } from '../actions/results';
 
 import {
@@ -157,6 +158,12 @@ export default function reducer(state = initialState, action) {
     }
 
     else if(action.type === FETCH_TRIP_DETAILS_SUCCESS) {
+        return Object.assign({}, state, {
+            tripPlaceOpen: false
+        });
+    }
+
+    else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
         return Object.assign({}, state, {
             tripPlaceOpen: false
         });

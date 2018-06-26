@@ -130,10 +130,6 @@ export default function reducer(state = initialState, action) {
     // RESULTS ACTIONS - REFACTOR AT SOME POINT 
     // - SAVE_PLACE_TO_TRIP REQUEST AND ERROR ARE IN RESULTS REDUCER
     else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
-        // let currentResults = [...state.tripResults];
-        // if (currentResults[currentResults.length - 1].name.includes(deletedTrip[0].name)) {
-        //     currentResults = [];
-        // }
         let currentResults = [...state.tripResults];
         let updateResults = [...state.tripResults];
         if (currentResults.length >= 1) {

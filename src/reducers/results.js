@@ -28,6 +28,7 @@ import {
 } from '../actions/protected-data';
 
 const initialState = {
+    added: false,
     open: false,
     details: null,
     tripPlaceDetails: null,
@@ -65,7 +66,8 @@ export default function reducer(state = initialState, action) {
         console.log(action.details);
         return Object.assign({}, state, {
             details: action.details,
-            loading: false
+            loading: false,
+            added: false
         })
     }
     else if (action.type === SAVE_PLACE_ERROR) {
@@ -165,7 +167,8 @@ export default function reducer(state = initialState, action) {
 
     else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
         return Object.assign({}, state, {
-            tripPlaceOpen: false
+            tripPlaceOpen: false,
+            added: true
         });
     }
 

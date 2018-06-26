@@ -173,6 +173,7 @@ class Results extends React.Component {
                                 </ul>
                             </div>)}
                             <div>
+                                {this.props.added ? <p>Success!</p> : ''}
                                 {saveTripDropdownBtn}
                                 {saveTripDropdown}
                                 <button onClick={(e) => {
@@ -216,6 +217,7 @@ class Results extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        added: state.result.added,
         results: state.protectedData.results,
         loading: state.result.loading,
         trips: state.protectedData.trips,

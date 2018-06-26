@@ -27,7 +27,7 @@ import {
 
 const initialState = {
     results: [],
-    next_page:'',
+    next_page_token:'',
     trips: [],
     tripResults: [],
     tripPlaceDetails: [],
@@ -54,7 +54,7 @@ export default function reducer(state = initialState, action) {
     } else if(action.type === FETCH_RESULTS_SUCCESS) {
         return Object.assign({}, state, {
             results: action.results,
-            next_page: action.next_page_token,
+            next_page_token: action.next_page_token,
             loading: false
         });
     } else if(action.type === FETCH_RESULTS_ERROR) {

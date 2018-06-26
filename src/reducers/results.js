@@ -21,7 +21,8 @@ import {
 } from '../actions/results';
 
 import {
-    REMOVE_PLACE_SUCCESS
+    REMOVE_PLACE_SUCCESS,
+    FETCH_RESULTS_SUCCESS
 } from '../actions/protected-data';
 
 const initialState = {
@@ -145,6 +146,12 @@ export default function reducer(state = initialState, action) {
     else if(action.type === REMOVE_PLACE_SUCCESS) {
         return Object.assign({}, state, {
             tripPlaceDetails: null
+        });
+    }
+
+    else if(action.type === FETCH_RESULTS_SUCCESS) {
+        return Object.assign({}, state, {
+            details: null
         });
     }
 

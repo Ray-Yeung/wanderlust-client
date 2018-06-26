@@ -113,7 +113,7 @@ export default function reducer(state = initialState, action) {
         // check to see if first result of selected trip matched our deleted trip
         // if it did, remove the tripResults from the dom...
         let currentResults = [...state.tripResults];
-        if (currentResults[currentResults.length - 1].name.includes(deletedTrip[0].name)) {
+        if(currentResults[0].tripId.includes(deletedTrip[0].id)) {
             currentResults = [];
         }
         return Object.assign({}, state, {

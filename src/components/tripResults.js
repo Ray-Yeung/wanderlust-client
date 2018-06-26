@@ -80,7 +80,8 @@ class TripResults extends Component {
                     this.clicked(inc)
                 }}
                 >
-                    {result.name}
+                    <div>{result.name}</div>
+                    <div>{result.types[0]}</div>
                     {details}
                 </div>
                 )

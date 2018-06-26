@@ -27,11 +27,7 @@ export class Dashboard extends React.Component {
             <header className={'dash-header'}>
             <h1 className={"dash-name"}>Wanderlust</h1>  
                 </header>
-                <Search />
-                <GoogleMapWrapper />
-                <Trips />
-                <Results />
-                <TripResults />
+                <div className="user-info">
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>
@@ -39,6 +35,13 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
+                </div>
+                <Search />
+                <GoogleMapWrapper />
+                <Trips />
+                <Results />
+                <TripResults />
+
             </div>
         );
     }

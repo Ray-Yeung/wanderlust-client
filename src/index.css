@@ -225,6 +225,31 @@ color:white;
   height: 80%;
     width: 30%;
 }
+.result-map-view::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.result-map-view::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.result-map-view::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: rgba(128, 128, 128, 0.582);
+}
+.search-result-view{
+  padding: 20px 20px;
+  border-radius: 10px;
+  margin: 10px;
+  background: white;
+}
 .app-name-overview{
   position: absolute;
   opacity:0.3 ;
@@ -291,152 +316,3 @@ color:white;
   }
 }
 
-@keyframes ballon{
-  0% {
-    transform:  translate(-297px,-102px)  rotate(0deg) ;
-  }
-  14% {
-    transform:  translate(-117px,-94px)  rotate(-8deg) ;
-  }
-  28% {
-    transform:  translate(-83px,-115px)  rotate(-17deg) ;
-  }
-  39% {
-    transform:  translate(-56px,-131px)  rotate(-52deg) ;
-  }
-  63% {
-    transform:  translate(-2px,-139px)  rotate(-127deg) ;
-  }
-  81% {
-    transform:  translate(69px,-134px)  rotate(-258deg) ;
-  }
-  90% {
-    transform:  translate(104px,-131px)  rotate(-330deg) ;
-  }
-  91% {
-    transform:  translate(125px,-124px)  ;
-  }
-  100% {
-    transform:  translate(313px,-63px)  rotate(-330deg) ;
-  }
-}
-
-@-moz-keyframes ballon{
-  0% {
-    -moz-transform:  translate(-297px,-102px)  rotate(0deg) ;
-  }
-  14% {
-    -moz-transform:  translate(-117px,-94px)  rotate(-8deg) ;
-  }
-  28% {
-    -moz-transform:  translate(-83px,-115px)  rotate(-17deg) ;
-  }
-  39% {
-    -moz-transform:  translate(-56px,-131px)  rotate(-52deg) ;
-  }
-  63% {
-    -moz-transform:  translate(-2px,-139px)  rotate(-127deg) ;
-  }
-  81% {
-    -moz-transform:  translate(69px,-134px)  rotate(-258deg) ;
-  }
-  90% {
-    -moz-transform:  translate(104px,-131px)  rotate(-330deg) ;
-  }
-  91% {
-    -moz-transform:  translate(125px,-124px)  ;
-  }
-  100% {
-    -moz-transform:  translate(313px,-63px)  rotate(-330deg) ;
-  }
-}
-
-@-webkit-keyframes ballon {
-  0% {
-    -webkit-transform:  translate(-297px,-102px)  rotate(0deg) ;
-  }
-  14% {
-    -webkit-transform:  translate(-117px,-94px)  rotate(-8deg) ;
-  }
-  28% {
-    -webkit-transform:  translate(-83px,-115px)  rotate(-17deg) ;
-  }
-  39% {
-    -webkit-transform:  translate(-56px,-131px)  rotate(-52deg) ;
-  }
-  63% {
-    -webkit-transform:  translate(-2px,-139px)  rotate(-127deg) ;
-  }
-  81% {
-    -webkit-transform:  translate(69px,-134px)  rotate(-258deg) ;
-  }
-  90% {
-    -webkit-transform:  translate(104px,-131px)  rotate(-330deg) ;
-  }
-  91% {
-    -webkit-transform:  translate(125px,-124px)  ;
-  }
-  100% {
-    -webkit-transform:  translate(313px,-63px)  rotate(-330deg) ;
-  }
-}
-
-@-o-keyframes ballon {
-  0% {
-    -o-transform:  translate(-297px,-102px)  rotate(0deg) ;
-  }
-  14% {
-    -o-transform:  translate(-117px,-94px)  rotate(-8deg) ;
-  }
-  28% {
-    -o-transform:  translate(-83px,-115px)  rotate(-17deg) ;
-  }
-  39% {
-    -o-transform:  translate(-56px,-131px)  rotate(-52deg) ;
-  }
-  63% {
-    -o-transform:  translate(-2px,-139px)  rotate(-127deg) ;
-  }
-  81% {
-    -o-transform:  translate(69px,-134px)  rotate(-258deg) ;
-  }
-  90% {
-    -o-transform:  translate(104px,-131px)  rotate(-330deg) ;
-  }
-  91% {
-    -o-transform:  translate(125px,-124px)  ;
-  }
-  100% {
-    -o-transform:  translate(313px,-63px)  rotate(-330deg) ;
-  }
-}
-
-@-ms-keyframes ballon {
-  0% {
-    -ms-transform:  translate(-297px,-102px)  rotate(0deg) ;
-  }
-  14% {
-    -ms-transform:  translate(-117px,-94px)  rotate(-8deg) ;
-  }
-  28% {
-    -ms-transform:  translate(-83px,-115px)  rotate(-17deg) ;
-  }
-  39% {
-    -ms-transform:  translate(-56px,-131px)  rotate(-52deg) ;
-  }
-  63% {
-    -ms-transform:  translate(-2px,-139px)  rotate(-127deg) ;
-  }
-  81% {
-    -ms-transform:  translate(69px,-134px)  rotate(-258deg) ;
-  }
-  90% {
-    -ms-transform:  translate(104px,-131px)  rotate(-330deg) ;
-  }
-  91% {
-    -ms-transform:  translate(125px,-124px)  ;
-  }
-  100% {
-    -ms-transform:  translate(313px,-63px)  rotate(-330deg) ;
-  }
-}

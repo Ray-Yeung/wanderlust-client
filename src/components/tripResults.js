@@ -55,8 +55,8 @@ class TripResults extends Component {
                         <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo"/>
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
-                    <div className='delete-button'>
-                        <button onClick={(e) => { 
+                    <div className="button-placement">
+                        <button className={'delete-button'} onClick={(e) => { 
                             e.stopPropagation();
                             // console.log('clicked')
                             if (window.confirm(`Are you sure you want to delete ${this.props.results[inc].name}?`)) this.props.dispatch(removePlace(this.props.results[inc].id))

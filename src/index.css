@@ -2,6 +2,7 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 body {
  overflow-x: hidden;
@@ -14,10 +15,9 @@ body {
   height: 4.1em
  }
  .dash-name {
-  text-align: left;
-      color:white;
-      z-index: 99;
-      padding-bottom: 2em;
+  text-align: center;
+  color:white;
+  padding-bottom: 2em;
   }
 .header-name-shower{
   font-size: 72px;
@@ -84,6 +84,20 @@ z-index: -1;
   width: auto;
 }
 
+.showing-trips {
+  background: white;
+  border-radius: 5px;
+  /* border: 2px solid black; */
+  text-align: left;
+  padding: 10%;
+  margin-bottom: 2%;
+}
+.trips-list{
+
+  position: absolute;
+  top: 20%;
+  right: 0%;
+}
 
 /* this the header -- showing the Wanderlust and button within the header-bar */
 .header-bar{
@@ -95,10 +109,10 @@ z-index: -1;
   color: rgba(243, 12, 12, 0.466)
 }
 .logout-button{
-  margin-top: 2.2em;
+
   position: absolute;
-  top:40px;
-  right: 20px;
+  top:10px;
+  right: 30px;
   background-color:lightcoral;
   border-radius: 10px;
   border:none;
@@ -117,16 +131,14 @@ color:white;
   but the drag is off need to find alternative */
 
 .map-view{
- 
-
   z-index: 0;
-  height: 90%;
+  height: 100vh;
   width: 45%;
-  position: absolute;
+  position: relative;
   bottom: 100vh;
-  top:55%;
-  left: 50%;
-  transform: translate(-50%,-50%)
+  top:0;
+  left: 30%;
+  /* transform: translate(-50%,-50%) */
 }
 .gm-svpc {
   visibility: hidden;
@@ -161,7 +173,9 @@ color:white;
 /* -------------------------- */
 /* this is the search input */
 .search-input{
-  margin-top: 3em;
+  position: relative;
+  top: -18px;
+  left: 15%;
   border: 1px solid lightgray;
   border-radius: 10px;
   width: 150%;
@@ -182,14 +196,13 @@ color:white;
 }
 /* the search button  */
 .search-button{
-  margin-top: 2.7em;
   background-color:lightskyblue;
   border-radius: 10px;
   border:none;
   display: inline-block;
 position: absolute;
-top: 1em;
-left:16.5em;
+top: 0;
+left:170%;
 padding: 10px 16px;
 margin: 4px 2px;
 text-align: center;
@@ -205,13 +218,12 @@ color:white;
 /* this is showing all of our map-results */
 .result-map-view{
   position: absolute;
-  background: white;
-  left:20px;
-  top:90px;
+  left:0;
+  top:20%;
   z-index: 3;
   overflow: auto;
-  height: 500px;
-
+  height: 80%;
+    width: 30%;
 }
 .app-name-overview{
   position: absolute;
@@ -221,6 +233,38 @@ color:white;
   left: 45%;
   z-index: 10;
   
+}
+.delete-button{
+
+  background-color:#CCD1D1;
+  border-radius: 10px;
+  border:none;
+  display: inline-block;
+padding: 8px 14px;
+margin: 4px 2px;
+text-align: center;
+text-decoration: none;
+font-size: 12px;
+cursor: pointer;
+color:white;
+  z-index: 4;
+}
+.map-contianer {
+  background:#98D6A7
+}
+.trips-list{
+ margin-left: 2rem;
+}
+.delete-button {
+ 
+  display: block;
+  margin-left: 4rem;
+  
+}
+
+.search-input:focus {
+  outline: none;
+
 }
 @-webkit-keyframes roll-in-left {
   0% {

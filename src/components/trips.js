@@ -19,20 +19,23 @@ class Trip extends Component {
             trips = this.props.trips.map((trip, inc) =>
                 {  
                     return (
-                        <div key={inc} onClick={() => this.openTrip(inc)}>
+                        <div className={"trips-data"}>
+                        <div  className={"showing-trips"} key={inc} onClick={() => this.openTrip(inc)}>
                             {trip.name}
-                            <button onClick={(e) => { 
+                            <div className="delete-data" >
+                            <button className={"delete-button"} onClick={(e) => { 
                                 e.stopPropagation();
                                 if (window.confirm(`Are you sure you want to delete ${this.props.trips[inc].name}?`)) this.props.dispatch(removeTrip(this.props.trips[inc].id))
-                            }}>delete trip</button>
+                            }}>DELETE</button>
+                            </div>
                         </div>
-                        
+                        </div>
                     );
                 }
             );
         }
         return (
-            <div>
+            <div className={"trips-list"}>
                 {trips}
             </div>
         )

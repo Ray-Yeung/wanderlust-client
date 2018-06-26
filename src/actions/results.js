@@ -103,9 +103,10 @@ export const savePlaceToTripError = (err) => ({
 });
 
 export const SAVE_PLACE_TO_TRIP_SUCCESS = 'SAVE_PLACE_TO_TRIP_SUCCESS';
-export const savePlaceToTripSuccess = (place) => ({
+export const savePlaceToTripSuccess = (place, tripId) => ({
     type: SAVE_PLACE_TO_TRIP_SUCCESS,
-    place
+    place,
+    tripId
 });
 
 export const FETCH_TRIP_PLACE_DETAILS_SUCCESS = 'FETCH_TRIP_PLACE_DETAILS_SUCCESS';
@@ -207,7 +208,7 @@ export const savePlaceToTrip = (placeDetails, tripId) => (dispatch, getState) =>
         data.location.lat = parseFloat(data.location.lat, 10);
         data.location.lng = parseFloat(data.location.lng, 10);
         console.log(data);
-        dispatch(savePlaceToTripSuccess(data))
+        dispatch(savePlaceToTripSuccess(data, tripId))
     })
     .catch(err => dispatch(savePlaceToTripError(err)))
 }

@@ -7,6 +7,12 @@ export const openMoreDetails = item => ({
     item
 });
 
+export const OPEN_TRIP = 'OPEN_TRIP';
+export const openTrip = inc => ({
+    type: OPEN_TRIP,
+    inc
+});
+
 export const HOLD_DROPDOWN_ELEMENT = 'HOLD_DROPDOWN_ELEMENT';
 export const holdDropdownElement = item => ({
     type: HOLD_DROPDOWN_ELEMENT,

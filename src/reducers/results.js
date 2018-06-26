@@ -18,7 +18,8 @@ import {
     HOLD_DROPDOWN_ELEMENT,
     SAVE_PLACE_TO_TRIP_REQUEST,
     SAVE_PLACE_TO_TRIP_ERROR,
-    SAVE_PLACE_TO_TRIP_SUCCESS
+    SAVE_PLACE_TO_TRIP_SUCCESS,
+    OPEN_TRIP
 } from '../actions/results';
 
 import {
@@ -28,6 +29,7 @@ import {
 } from '../actions/protected-data';
 
 const initialState = {
+    added: false,
     open: false,
     details: null,
     tripPlaceDetails: null,
@@ -35,7 +37,8 @@ const initialState = {
     tripDropdown: false,
     tripDropdownElement: null,
     error: null,
-    loading: false
+    loading: false,
+    tripClicked: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -65,7 +68,8 @@ export default function reducer(state = initialState, action) {
         console.log(action.details);
         return Object.assign({}, state, {
             details: action.details,
-            loading: false
+            loading: false,
+            added: false
         })
     }
     else if (action.type === SAVE_PLACE_ERROR) {
@@ -110,6 +114,11 @@ export default function reducer(state = initialState, action) {
     else if (action.type === OPEN_TRIP_PLACE_MORE_DETAILS) {
         return Object.assign({}, state, {
             tripPlaceOpen: action.item
+        });
+    }
+    else if (action.type === OPEN_TRIP) {
+        return Object.assign({}, state, {
+            tripClicked: action.inc
         });
     }
     else if (action.type === CLOSE_TRIP_PLACE_MORE_DETAILS) {
@@ -165,7 +174,8 @@ export default function reducer(state = initialState, action) {
 
     else if(action.type === SAVE_PLACE_TO_TRIP_SUCCESS) {
         return Object.assign({}, state, {
-            tripPlaceOpen: false
+            tripPlaceOpen: false,
+            added: true
         });
     }
 

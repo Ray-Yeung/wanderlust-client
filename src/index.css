@@ -19,6 +19,13 @@ body {
   color:white;
   padding-bottom: 2em;
   }
+  .dashboard-username{
+    color:#FFC966;
+    position: absolute;
+     top: 5%;
+     right:20%;
+     font-size: 1.4rem;
+  }
 .header-name-shower{
   font-size: 72px;
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.24), rgb(3, 168, 11));
@@ -93,7 +100,7 @@ z-index: -1;
   margin-bottom: 2%;
 }
 .trips-list{
-
+  padding-right: 3rem;
   position: absolute;
   top: 20%;
   right: 0%;
@@ -132,10 +139,10 @@ color:white;
 
 .map-view{
   z-index: 0;
-  height: 100vh;
+  height:100vh;
   width: 45%;
   position: relative;
-  bottom: 100vh;
+  /* bottom: 100vh; */
   top:0;
   left: 30%;
   /* transform: translate(-50%,-50%) */
@@ -174,7 +181,7 @@ color:white;
 /* this is the search input */
 .search-input{
   position: relative;
-  top: -18px;
+  top: 4%;
   left: 15%;
   border: 1px solid lightgray;
   border-radius: 10px;
@@ -274,9 +281,9 @@ cursor: pointer;
 color:white;
   z-index: 4;
 }
-.map-contianer {
+/* .map-contianer {
   background:#98D6A7
-}
+} */
 .trips-list{
  margin-left: 2rem;
 }

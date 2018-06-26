@@ -73,9 +73,10 @@ class TripResults extends Component {
             }
             return (
                 <div 
+                className="trips-list-two"
                 key={inc} 
                 id={inc} 
-                style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
+                // style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
                 onClick={() => {
                     this.clicked(inc)
                 }}

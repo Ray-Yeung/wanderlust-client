@@ -123,9 +123,10 @@ class Results extends React.Component {
                     dynamicHeight = '100%'
                     details =
                         <div>
-                            <div>
+                            {!this.props.details.rating ? '' :
+                            (<div>
                                 Rating: {this.props.details.rating}
-                            </div>
+                            </div>)}
                             {/* <div>
                                 Open now: {this.props.details.opening_hours.open_now}
                             </div> */}
@@ -152,8 +153,10 @@ class Results extends React.Component {
                                 <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo" />
                                 <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                             </div>
-                            <div>
-                                Reviews: 
+                            
+                                {!this.props.details.reviews ? '' :
+                                (<div>
+                                <h2> Reviews: </h2>
                                 <ul>
                                 {this.props.details.reviews.map((review, index) => {
                                     return <li 
@@ -168,7 +171,7 @@ class Results extends React.Component {
                                 })
                                 }
                                 </ul>
-                            </div>
+                            </div>)}
                             <div>
                                 {saveTripDropdownBtn}
                                 {saveTripDropdown}

@@ -76,7 +76,8 @@ class TripResults extends Component {
                 key={inc} 
                 id={inc} 
                 style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
-                onClick={() => {
+                onClick={(e) => {
+                    e.stopPropagation();
                     this.clicked(inc)
                 }}
                 >

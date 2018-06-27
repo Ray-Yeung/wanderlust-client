@@ -31,7 +31,7 @@ class Trip extends Component {
                     }
                     return (
                         <div className={"trips-data"} key={inc}>
-                        <div className={"showing-trips"} key={inc} onClick={() => this.openTrip(inc)}>
+                        <div className={"showing-trips"} key={inc} onClick={() =>  this.openTrip(inc)}>
                             {trip.name}
                             <div className="delete-data" >
                             <button className={"delete-button"} onClick={(e) => { 

@@ -183,7 +183,6 @@ export class TripMarker extends React.Component {
         opacity={0.95}
         onMouseOver={() => this.onToggleOpen()}
         onMouseOut={() => this.onToggleOpen()}
-        // labelStyle={{ fontSize: '10px', padding: '15px', opacity: 0.50 }}
       >
           {this.props.index === this.props.clicked&&(
           <InfoWindow>

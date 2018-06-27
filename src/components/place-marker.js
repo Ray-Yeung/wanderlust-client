@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Marker, InfoWindow } from 'react-google-maps';
 import resultIcon from '../icons/resultIcon';
 import '../css/markerStyle.css';
-
+import '../css/map.css'
 export class PlaceMarker extends React.Component {
   constructor(props) {
     super(props);

@@ -4,6 +4,7 @@ import {Link, Redirect} from 'react-router-dom';
 import Photo from '../images/Clippy.png'
 import Ballon from '../images/ballon.png'
 import LoginForm from './login-form';
+import '../css/landing.css'
 const mainBg = {
     maxWith:"100%",
     backgroundRepeat: 'no-repeat',

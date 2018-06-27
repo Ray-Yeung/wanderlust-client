@@ -1,0 +1,63 @@
+.trips-list{
+  margin-left: 2rem;
+  max-width: 20%;
+ }
+ .delete-data {
+   text-align: center;
+ }
+ /* change to all input*/
+ .search-input:focus {
+   outline: none;
+ 
+ }
+ 
+ 
+ 
+ .trips-item {
+   height: auto;
+ overflow:auto;
+ clear: both;
+ }
+ 
+ 
+ 
+ .listed-trips{
+ background: rgba(128,128,128,0.61);
+ color: white;
+ text-align: center;
+   padding: 5px 5px;
+ margin: 5px 5px;
+ border: 2px solid grey;
+ border-radius: 20px;
+ overflow: none;
+ 
+ }
+ .trips-class .place-photo {
+ max-width: 100%;
+ }
+ .delete-data {
+ text-align: center;
+ }
+ .showing-trips{
+ text-align: center;
+ }
+
+.place-photo {
+  max-height: 180px;
+  width: auto;
+}
+
+.showing-trips {
+  background: white;
+  border-radius: 5px;
+  /* border: 2px solid black; */
+  text-align: left;
+  padding: 10%;
+  margin-bottom: 2%;
+}
+.trips-list{
+  padding-right: 3rem;
+  position: absolute;
+  top: 20%;
+  right: 0%;
+}

@@ -1,15 +1,12 @@
 import React from 'react';
 import GoogleMapComponent from './googleMap';
 import { connect } from 'react-redux';
-
 import { setDefaultLocation } from '../actions/protected-data';
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isMarkerShown: true,
-      popupIsOpen: false,
       location: {
         lat: 0,
 		    lng: 0
@@ -42,21 +39,10 @@ export class GoogleMapWrapper extends React.PureComponent {
     } 
   }
 
-  onToggleOpen() {
-    this.setState({
-      popupIsOpen: !this.state.popupIsOpen
-    });
-  }
-
   render() {
     return (
       <GoogleMapComponent 
-      isMarkerShown={this.state.isMarkerShown}
-      // position={this.props.defaultLocation}
       position={this.state.location}
-      onHandleClick={e => this.handleMapClick(e)}
-      isOpen={this.state.popupIsOpen}
-	    onToggleOpen={() => this.onToggleOpen()}
       results={this.props.results}
       location={this.props.location}
       tripResults={this.props.tripResults}

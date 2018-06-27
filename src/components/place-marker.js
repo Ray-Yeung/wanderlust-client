@@ -105,7 +105,7 @@ export class PlaceMarker extends React.Component {
     } else if(type === 'shoe_store') {
       return 'https://cdn4.iconfinder.com/data/icons/e-commerce-and-shopping-3/500/bag-shoe-48.png';
     } else if(type === 'shopping_mall') {
-      return 'https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_bag-48.png';
+      return 'https://cdn1.iconfinder.com/data/icons/shop-payment-2/128/Shop-Payment-52-48.png';
     } else if(type === 'spa') {
       return 'https://cdn0.iconfinder.com/data/icons/travel-and-holiday-round/64/Travel_spa-48.png';
     } else if(type === 'stadium') {

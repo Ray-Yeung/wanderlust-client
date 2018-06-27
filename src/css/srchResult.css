@@ -1,0 +1,35 @@
+
+.result-map-view{
+  position: absolute;
+  left:0;
+  top:20%;
+  z-index: 3;
+  overflow: auto;
+  height: 80%;
+    width: 30%;
+}
+.result-map-view::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.result-map-view::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.result-map-view::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: rgba(128, 128, 128, 0.582);
+}
+.search-result-view{
+  padding: 20px 20px;
+  border-radius: 10px;
+  margin: 10px;
+  background: white;
+}

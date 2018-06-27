@@ -4,11 +4,6 @@ import { Marker, InfoWindow } from 'react-google-maps';
 import tripIcon from '../icons/tripIcon';
 import '../css/markerStyle.css';
 
-const style = {
-  width:'10px',
-  height:'10px'
-}
-
 export class TripMarker extends React.Component {
   constructor(props) {
     super(props);

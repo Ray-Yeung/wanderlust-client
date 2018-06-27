@@ -4,11 +4,6 @@ import { Marker, InfoWindow } from 'react-google-maps';
 import resultIcon from '../icons/resultIcon';
 import '../css/markerStyle.css';
 
-const style = {
-  width:'10px',
-  height:'10px'
-}
-
 export class PlaceMarker extends React.Component {
   constructor(props) {
     super(props);

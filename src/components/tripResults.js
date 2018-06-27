@@ -73,9 +73,10 @@ class TripResults extends Component {
             }
             return (
                 <div 
+                className="listed-trips"
                 key={inc} 
                 id={inc} 
-                style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
+                // style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
                 onClick={(e) => {
                     e.stopPropagation();
                     this.clicked(inc)
@@ -89,7 +90,7 @@ class TripResults extends Component {
         }
         return (
             <div
-            className={'trips-class'}>
+            className='trips-item'>
                 {list}
             </div>
         );

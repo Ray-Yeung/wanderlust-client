@@ -64,7 +64,7 @@ class TripResults extends Component {
                             if (window.confirm(`Are you sure you want to delete ${this.props.results[inc].name}?`)) this.props.dispatch(removePlace(this.props.results[inc].id))
                         }}>delete place</button>
                     </div>
-                </div>
+                </div >
             }
             // keep box regular size
             else {

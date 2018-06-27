@@ -86,14 +86,12 @@ export class TripMarker extends React.Component {
       <Marker
         key={this.props.index}
         position={this.props.marker.location}
-        // label={this.props.marker.name}
         icon={tripIcon}
         opacity={0.95}
         onMouseOver={() => this.onToggleOpen()}
         onMouseOut={() => this.onToggleOpen()}
         // labelStyle={{ fontSize: '10px', padding: '15px', opacity: 0.50 }}
       >
-        {/* {this.state.isOpen && ( */}
           {this.props.index === this.props.clicked&&(
           <InfoWindow>
             <div className='clicked-marker-info'>

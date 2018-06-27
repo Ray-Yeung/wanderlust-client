@@ -117,10 +117,6 @@ export class PlaceMarker extends React.Component {
                 {this.props.marker.name} <br/>
               </h4>
               {this.placeType(this.props.marker.types)}
-              {/* <p className={'marker-extra-info'}>
-                Rating:{this.props.marker.rating}<br/>
-                {this.priceLevel(this.props.marker.price_level)}
-              </p> */}
             </div>
           </InfoWindow>
         )}

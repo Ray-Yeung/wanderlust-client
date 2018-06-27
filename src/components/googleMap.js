@@ -1,9 +1,8 @@
 // VERSION 2.0 MAP COMPONENT
-
 import React from 'react';
 import PlaceMarker from './place-marker';
 import TripMarker from './trip-marker';
-const { compose, withProps, withHandlers} = require("recompose");
+const { compose, withProps, withHandlers } = require("recompose");
 const {
   withScriptjs,
   withGoogleMap,
@@ -32,8 +31,7 @@ const GoogleMapsWrapper = compose(
 )(props =>
   <GoogleMap
     zoom={12}
-    ref={(map) => map && map.panTo(props.location)}
-    // center={props.location}
+    ref={(map) => map && map.panTo(props.location) }
   >
     {/* <TrafficLayer autoUpdate /> */}
     {/* results */}

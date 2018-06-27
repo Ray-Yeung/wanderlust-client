@@ -1,13 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Marker, InfoWindow } from 'react-google-maps';
-import DollarSign from '../images/price-tag.png'
 import resultIcon from '../icons/resultIcon';
-
-const style = {
-  width:'10px',
-  height:'10px'
-}
+import '../css/markerStyle.css';
 
 export class PlaceMarker extends React.Component {
   constructor(props) {
@@ -23,35 +18,65 @@ export class PlaceMarker extends React.Component {
     });
   }
 
-  priceLevel(priceTag){
-    if(priceTag === 1){
-      return(
-        <img  style={style} src={DollarSign} alt={"dollar signs"} />
+  markerImage(photosArray) {
+    if(photosArray.length === 0) {
+      return;
+    } else {
+      return (
+        <div>
+          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=${this.props.marker.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.marker.name}`} className="place-photo" />
+          <span className={`${this.props.marker.photos[0].html_attributions[0]}`}></span>
+        </div>
       )
     }
-    else if(priceTag === 2){
-      return(
-        <img  style={style} src={DollarSign} alt={"dollar signs"} />
-      )
+  }
+
+  priceLevel(price) {
+    if(price) {
+      if(price === 1) {
+        return (
+          <span>
+            $
+          </span>
+        )
+      } else if(price === 2) {
+        return (
+          <span>
+            $$
+          </span>
+        )
+      } else if(price === 3) {
+        return (
+          <span>
+            $$$
+          </span>
+        )
+      } else if(price === 4) {
+        return (
+          <span>
+            $$$$
+          </span>
+        )
+      }
+    } 
+    else {
+      return;
     }
-    else if(priceTag === 3){
-      return(
-        <img  style={style} src={DollarSign} alt={"dollar signs"} />
+  }
+
+  placeType(type) {
+    if(type) {
+      return (
+        <div className='marker-place-desc'>
+          {type[0]}
+        </div>
       )
-    }
-    else if(priceTag === 4){
-      return(
-        <img  style={style} src={DollarSign} alt={"dollar signs"} />
-      )
-    }
-    else{
+    } else {
       return;
     }
   }
 
   render() {
-    // let rating = this.props.marker.rating;
-    let newPrice =  this.props.marker.price_level ;
     return(
       <Marker
         key={this.props.index}
@@ -66,14 +91,15 @@ export class PlaceMarker extends React.Component {
       >
           {this.props.index === this.props.clicked&&(
           <InfoWindow>
-            <div className='marker-info'>
-              <h1 className='marker-header'>
+            <div className='clicked-marker-info'>
+              {this.markerImage(this.props.marker.photos)}
+              <h3 className='clicked-marker-header'>
                 {this.props.marker.name} <br/>
-              </h1>
-              <p className={'marker-extra-info'}>
+              </h3>
+              {this.placeType(this.props.marker.types)}
+              <p>
                 Rating:{this.props.marker.rating}<br/>
-                Price Level:{this.props.marker.price_level}<br/>
-                {this.priceLevel(newPrice)}
+                {this.priceLevel(this.props.marker.price_level)}
               </p>
             </div>
           </InfoWindow>
@@ -81,15 +107,11 @@ export class PlaceMarker extends React.Component {
 
          {this.state.isOpen&&(
           <InfoWindow>
-            <div className='marker-info'>
-              <h1 className='marker-header'>
+            <div className='unclicked-marker-info'>
+              <h4 className='unclicked-marker-header'>
                 {this.props.marker.name} <br/>
-              </h1>
-              <p className={'marker-extra-info'}>
-                Rating:{this.props.marker.rating}<br/>
-                Price Level:{this.props.marker.price_level}<br/>
-                {this.priceLevel(newPrice)}
-              </p>
+              </h4>
+              {this.placeType(this.props.marker.types)}
             </div>
           </InfoWindow>
         )}

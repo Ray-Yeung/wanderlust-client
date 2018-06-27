@@ -41,7 +41,7 @@ class TripResults extends Component {
                 console.log(this.props.details)
                 dynamicHeight = '300px'
                 details = 
-                <div className={'trips-info'}>
+                <div className={'trips-class'}>
                     <div>
                         Rating: {this.props.details.rating}
                     </div>
@@ -54,7 +54,7 @@ class TripResults extends Component {
                         {`${this.props.details.name} official website`}
                     </a>
                    <div>
-                        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo"/>
+                        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.details.name}`} className="place-photo"/>
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
                     </div>
                     <div className="button-placement">
@@ -64,7 +64,7 @@ class TripResults extends Component {
                             if (window.confirm(`Are you sure you want to delete ${this.props.results[inc].name}?`)) this.props.dispatch(removePlace(this.props.results[inc].id))
                         }}>delete place</button>
                     </div>
-                </div >
+                </div>
             }
             // keep box regular size
             else {
@@ -73,11 +73,11 @@ class TripResults extends Component {
             }
             return (
                 <div 
-                className="trips-unopened"
                 key={inc} 
                 id={inc} 
-                // style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
-                onClick={() => {
+                style={{width: '40%', innerWidth: '300px', height: dynamicHeight, border: 'solid 1px black'}} 
+                onClick={(e) => {
+                    e.stopPropagation();
                     this.clicked(inc)
                 }}
                 >
@@ -89,7 +89,7 @@ class TripResults extends Component {
         }
         return (
             <div
-            className={'trips-list'}>
+            className={'trips-class'}>
                 {list}
             </div>
         );

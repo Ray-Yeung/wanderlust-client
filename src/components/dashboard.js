@@ -6,7 +6,6 @@ import requiresLogin from './requires-login';
 import Search from './search-input';
 import Results from './results';
 import Trips from './trips';
-import TripResults from './tripResults';
 // import Map from './map';
 import GoogleMapWrapper from './googleMapWrapper';
 
@@ -37,8 +36,6 @@ export class Dashboard extends React.Component {
                 <GoogleMapWrapper />
                 <Trips />
                 <Results />
-                <TripResults />
-
             </div>
         );
     }

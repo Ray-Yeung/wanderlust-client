@@ -19,7 +19,6 @@ const GoogleMapsWrapper = compose(
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div className={'map-contianer'} />,
     mapElement: <div className="map-view" />,
-    // style={{ height: `400px` }} 
   }),
   
   withHandlers({

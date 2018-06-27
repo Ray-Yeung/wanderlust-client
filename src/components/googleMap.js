@@ -33,8 +33,9 @@ const GoogleMapsWrapper = compose(
 )(props =>
   <GoogleMap
     zoom={12}
+    // gestureHandling={greedy}
     ref={(map) => map && map.panTo(props.location) }
-    defaultOptions={{styles}} 
+    defaultOptions={{styles, scrollwheel: true}} 
   >
     {/* <TrafficLayer autoUpdate /> */}
     {/* results */}

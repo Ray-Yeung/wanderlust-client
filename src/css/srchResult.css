@@ -2,7 +2,7 @@
 .result-map-view{
   position: absolute;
   left:0;
-  top:20%;
+  top: 12%;
   z-index: 3;
   overflow: auto;
   height: 80%;
@@ -28,8 +28,10 @@
 	background-color: rgba(128, 128, 128, 0.582);
 }
 .search-result-view{
+  
   padding: 20px 20px;
   border-radius: 10px;
   margin: 10px;
   background: white;
 }
+

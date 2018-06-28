@@ -156,14 +156,14 @@ class Results extends React.Component {
                             
                                 {!this.props.details.reviews ? '' :
                                 (<div>
-                                <h2> Reviews: </h2>
-                                <ul>
+                                <h2 className="review-header"> Reviews</h2>
+                                <ul className='review-list'>
                                 {this.props.details.reviews.map((review, index) => {
                                     return <li 
                                     key={index}> 
                                     {review.author_name} 
                                     <a href={review.author_url} /> 
-                                    <img src={review.profile_photo_url} alt="reviewer's profile"/>
+                                    <img className="review-img" src={review.profile_photo_url} alt="reviewer's profile"/>
                                     <div>Rating: {review.rating} </div>
                                     {review.relative_time_description} 
                                     <p>{review.text}</p>

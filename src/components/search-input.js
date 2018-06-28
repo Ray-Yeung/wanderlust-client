@@ -6,7 +6,6 @@ import '../css/search.css'
 export class Search extends React.Component {
   onSubmit(event) {
     event.preventDefault();
-    console.log('clicked');
     const search = document.getElementById("searchInput").value;
     this.props.dispatch(fetchSearchApi(search));
   }

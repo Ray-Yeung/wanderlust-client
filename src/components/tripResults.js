@@ -24,6 +24,14 @@ class TripResults extends Component {
         }
     }
 
+    // onSubmit(e) {
+    //     e.preventDefault();
+    //     this.props.dispatch(
+    //         addComment(this.commentInput.value)
+    //     );
+    //     e.target.reset();
+    // }
+
     render() {
         let dynamicHeight;
         let list;
@@ -46,6 +54,9 @@ class TripResults extends Component {
                         Rating: {this.props.details.rating}
                     </div>
                     <div>
+                        {this.props.details.price_level}
+                    </div>
+                    <div>
                         {this.props.details.formatted_address}    
                     </div>
                     <div>       {this.props.details.formatted_phone_number}
@@ -56,7 +67,35 @@ class TripResults extends Component {
                    <div>
                         <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.details.name}`} className="place-photo"/>
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
-                    </div>
+                    </div> 
+                    {/* render comments */}
+                    {!this.props.details.comments[0] ? 'No comments' :
+                        (<div>
+                        <h2> Comments: </h2>
+                        <ul>
+                        {this.props.details.comments.map((comment, index) => {
+                            return <li 
+                            key={comment.id}>
+                        <p>{comment.comment}</p>
+                        <div>{comment.created}</div>
+                        </li>
+                        })
+                        }
+                        </ul>
+                        </div>)}
+                    <form onSubmit={e => {
+                        e.stopPropagation();
+                        this.onSubmit(e)}}>
+                        <label htmlFor="comment">Add comment:</label>
+                        <textarea
+                            id="comment"
+                            ref={input => (this.commentInput = input)}
+                            onClick={e => {
+                                e.stopPropagation();
+                            }}
+                        />
+                        <button>Submit</button>
+                    </form>
                     <div className="button-placement">
                         <button className={'delete-button'} onClick={(e) => { 
                             e.stopPropagation();
@@ -64,6 +103,13 @@ class TripResults extends Component {
                             if (window.confirm(`Are you sure you want to delete ${this.props.results[inc].name}?`)) this.props.dispatch(removePlace(this.props.results[inc].id))
                         }}>delete place</button>
                     </div>
+                    {/* <div className="button-placement">
+                        <button className={'comment-button'} onClick={(e) => { 
+                            e.stopPropagation();
+                            // console.log('clicked')
+                            
+                        }}>add comment</button>
+                    </div> */}
                 </div>
             }
             // keep box regular size

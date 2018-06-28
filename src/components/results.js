@@ -200,7 +200,7 @@ class Results extends React.Component {
                             this.clicked(inc)
                         }}
                     >
-                        {result.name}
+                        <p className="result-name">{result.name}</p>
                         {details}
                     </div>
                 )

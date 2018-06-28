@@ -22,8 +22,16 @@
 }
 
 .comment-container {
+  display: inline-block;
+  margin-top: 5px;
   border: solid 1px #39393A;
   border-radius: 5px;
+  padding-bottom: 5px;
+}
+
+.comment-text-area {
+  display: inline-block;
+  margin-bottom: 5px;
 }
 
 .add-comment-header {
@@ -31,8 +39,6 @@
   margin: 10px 0;
   font-weight: bold;
 }
-
-
  
  .listed-trips{
  background: #CCD1D1;
@@ -85,6 +91,10 @@
   color: #39393A;
 }
 
+.trip-card-name {
+  font-weight: bold;
+}
+
 .comment-submit {
   position: relative;
   border: none;
@@ -95,6 +105,8 @@
   background-color: rgb(124, 206, 124);
   color: white;
   width: 111px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
 .comment-submit:hover {

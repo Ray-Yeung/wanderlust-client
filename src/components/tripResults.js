@@ -82,12 +82,16 @@ class TripResults extends Component {
                     onClick={e => {
                         e.stopPropagation();
                         e.preventDefault();
+                        if(!this.commentInput.value) {
+                            (window.confirm('Comment cannot be empty'))
+                        } else {
                         console.log(this.props.details.id, this.commentInput.value)
                         this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
                         //need to clear input value on submit  
-                        this.commentInput.value = ''  }} >
+                        this.commentInput.value = ''  }}} >
                         <label className="add-comment-header" htmlFor="comment">Add comment</label>
                         <textarea
+                            className="comment-text-area"
                             id="comment"
                             ref={input => (this.commentInput = input)}
                             onClick={e => {
@@ -121,7 +125,7 @@ class TripResults extends Component {
                     this.clicked(inc)
                 }}
                 >
-                    <div>{result.name}</div>
+                    <div className="trip-card-name">{result.name}</div>
                     <div>{result.types[0]}</div>
                     {details}
                 </div>

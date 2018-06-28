@@ -8,7 +8,7 @@ import Results from './results';
 import Trips from './trips';
 // import Map from './map';
 import GoogleMapWrapper from './googleMapWrapper';
-
+import '../css/dashboard.css'
 
 
 export class Dashboard extends React.Component {

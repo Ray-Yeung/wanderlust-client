@@ -12,7 +12,7 @@ import {
 } from '../actions/results';
 
 import { setMarkerLocation, openMarker, closeMarker, fetchNextSearchApi } from '../actions/protected-data';
-
+import '../css/srchResult.css'
 class Results extends React.Component {
 
     constructor() {

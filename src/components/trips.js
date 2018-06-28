@@ -4,6 +4,7 @@ import { setMarkerLocation } from '../actions/protected-data';
 import {fetchTrips, fetchTripDetails, removeTrip} from '../actions/protected-data';
 import {openTrip as openClickedTrip} from '../actions/results';
 import TripResults from './tripResults';
+import '../css/trips.css'
 class Trip extends Component {
     componentDidMount() {
         this.props.dispatch(fetchTrips())

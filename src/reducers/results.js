@@ -41,7 +41,7 @@ const initialState = {
     tripClicked: false
 };
 
-export default function reducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
     if (action.type === OPEN_MORE_DETAILS) {
         return Object.assign({}, state, {
             open: action.item
@@ -182,3 +182,5 @@ export default function reducer(state = initialState, action) {
     //Create trip here
     return state;
 }
+
+export default reducer;

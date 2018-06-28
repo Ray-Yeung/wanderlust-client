@@ -45,7 +45,7 @@ const initialState = {
     comments: []
 };
 
-export default function reducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
     if (action.type === FETCH_PROTECTED_DATA_SUCCESS) {
         return Object.assign({}, state, {
             data: action.data,
@@ -186,3 +186,5 @@ export default function reducer(state = initialState, action) {
     } 
     return state;
 }
+
+export default reducer;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess } from '../actions/results';
-import { setMarkerLocation, removePlace, openMarker, closeMarker } from '../actions/protected-data';
+import { setMarkerLocation, removePlace, openMarker, closeMarker, addCommentToPlace } from '../actions/protected-data';
 
 class TripResults extends Component {
 
@@ -85,18 +85,22 @@ class TripResults extends Component {
                         }
                         </ul>
                         </div>)}
-                    <form onSubmit={e => {
-                        e.stopPropagation();
-                        this.onSubmit(e)}}>
+                    <form >
                         <label htmlFor="comment">Add comment:</label>
                         <textarea
                             id="comment"
                             ref={input => (this.commentInput = input)}
                             onClick={e => {
                                 e.stopPropagation();
+                                
                             }}
                         />
-                        <button>Submit</button>
+                        <button
+                        onSubmit={e => {
+                            e.stopPropagation();
+                            console.log(this.details.id, this.commentInput.value)
+                                    this.props.dispatch(addCommentToPlace(this.details.id, this.commentInput.value));
+                            }}>Submit</button>
                     </form>
                     <div className="button-placement">
                         <button className={'delete-button'} onClick={(e) => { 

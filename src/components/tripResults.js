@@ -53,7 +53,8 @@ class TripResults extends Component {
                     <div>
                         {this.props.details.formatted_address}    
                     </div>
-                    <div>       {this.props.details.formatted_phone_number}
+                    <div>
+                        {this.props.details.phone_number}
                     </div>
                     <a href={this.props.details.website} target="_blank">
                         {`${this.props.details.name} official website`}
@@ -77,7 +78,14 @@ class TripResults extends Component {
                         }
                         </ul>
                         </div>)}
-                    <div>
+                    <form
+                    onClick={e => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        console.log(this.props.details.id, this.commentInput.value)
+                        this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
+                        //need to clear input value on submit  
+                        this.commentInput.value = ''  }} >
                         <label htmlFor="comment">Add comment:</label>
                         <textarea
                             id="comment"
@@ -87,14 +95,15 @@ class TripResults extends Component {
                             }}
                         />
                         <button
-                        onClick={e => {
-                            e.stopPropagation();
-                            console.log(this.props.details.id, this.commentInput.value)
-                            this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
-                            //need to clear input value on submit     
-                            }}
+                        // onClick={e => {
+                        //     e.stopPropagation();
+                        //     console.log(this.props.details.id, this.commentInput.value)
+                        //     this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
+                        //     //need to clear input value on submit  
+                        //     e.target.comment.value = ''   
+                            // }}
                         >Submit</button>
-                    </div>
+                    </form>
                     <div className="button-placement">
                         <button className={'delete-button'} onClick={(e) => { 
                             e.stopPropagation();

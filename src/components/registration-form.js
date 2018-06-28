@@ -4,6 +4,7 @@ import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import {Link} from 'react-router-dom';
 const passwordLength = length({min: 8, max: 72});
 const matchesPassword = matches('password');
 
@@ -54,6 +55,9 @@ export class RegistrationForm extends React.Component {
                         disabled={this.props.pristine || this.props.submitting}>
                         Register
                     </button>
+                    <Link className="register-login-redirect" to="/">
+                        Login
+                    </Link>
                 </form>
             </div>
         );

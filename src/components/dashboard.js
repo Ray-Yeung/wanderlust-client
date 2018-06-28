@@ -27,9 +27,9 @@ export class Dashboard extends React.Component {
             <h1 className={"dash-name"}>Wanderlust</h1>  
                 </header>
                 
-                <div className="dashboard-username">
+                {/* <div className="dashboard-username">
                     Username: {this.props.username}
-                </div>
+                </div> */}
                 {/* <div className="dashboard-name">Name: {this.props.name}</div> */}
 
                 <Search />

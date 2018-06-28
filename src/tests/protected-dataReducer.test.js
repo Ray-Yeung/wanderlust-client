@@ -16,7 +16,8 @@ describe('reducer', () => {
           lat: 37.782,
           lng: -122.403
         },
-        loading: false
+        loading: false,
+        comments: []
     })
   })
   

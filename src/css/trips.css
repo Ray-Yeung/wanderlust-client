@@ -17,16 +17,31 @@
  clear: both;
  }
  
- 
+.listed-trips div {
+  margin-bottom: 5px;
+}
+
+.comment-container {
+  border: solid 1px #39393A;
+  border-radius: 5px;
+}
+
+.add-comment-header {
+  display: inline-block;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+
  
  .listed-trips{
- background: rgba(128,128,128,0.61);
- color: white;
+ background: #CCD1D1;
+ color: #39393A;
  text-align: center;
    padding: 5px 5px;
  margin: 5px 5px;
- border: 2px solid grey;
- border-radius: 20px;
+ border: 1px solid grey;
+ border-radius: 10px;
  overflow: none;
  
  }
@@ -49,15 +64,18 @@
   background: white;
   border-radius: 5px;
   /* border: 2px solid black; */
-  text-align: left;
+  text-align: center;
   padding: 10%;
   margin-bottom: 2%;
 }
+
 .trips-list{
   padding-right: 3rem;
   position: absolute;
   top: 15%;
   right: 0%;
+  width: 33.3%;
+  padding-right: 2%;
 }
 
 .trips-title {

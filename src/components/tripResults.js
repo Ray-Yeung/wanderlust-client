@@ -65,8 +65,8 @@ class TripResults extends Component {
                     </div> 
                     {/* render comments */}
                     {!this.props.details.comments[0] ? 'No comments' :
-                        (<div>
-                        <h2> Comments: </h2>
+                        (<div className="comment-container">
+                        <h2> Comments </h2>
                         <ul>
                         {this.props.details.comments.map((comment, index) => {
                             return <li 
@@ -86,7 +86,7 @@ class TripResults extends Component {
                         this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
                         //need to clear input value on submit  
                         this.commentInput.value = ''  }} >
-                        <label htmlFor="comment">Add comment:</label>
+                        <label className="add-comment-header" htmlFor="comment">Add comment</label>
                         <textarea
                             id="comment"
                             ref={input => (this.commentInput = input)}

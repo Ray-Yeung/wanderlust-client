@@ -19,7 +19,10 @@ import {
     SAVE_PLACE_TO_TRIP_REQUEST,
     SAVE_PLACE_TO_TRIP_ERROR,
     SAVE_PLACE_TO_TRIP_SUCCESS,
-    OPEN_TRIP
+    OPEN_TRIP,
+    ADD_COMMENT_REQUEST,
+    ADD_COMMENT_SUCCESS,
+    ADD_COMMENT_ERROR
 } from '../actions/results';
 
 import {
@@ -45,6 +48,26 @@ export function reducer(state = initialState, action) {
     if (action.type === OPEN_MORE_DETAILS) {
         return Object.assign({}, state, {
             open: action.item
+        });
+    }
+    else if (action.type === ADD_COMMENT_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    }
+    else if (action.type === ADD_COMMENT_SUCCESS) {
+        // console.log(state.tripPlaceDetails)
+        return Object.assign({}, state, {
+            tripPlaceDetails: action.results,
+            loading: false,
+            error: null
+        });
+    }
+    else if (action.type === ADD_COMMENT_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
         });
     }
     else if (action.type === CLOSE_MORE_DETAILS) {

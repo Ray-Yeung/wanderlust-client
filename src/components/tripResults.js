@@ -24,13 +24,6 @@ class TripResults extends Component {
         }
     }
 
-    onSubmit(e) {
-        e.preventDefault();
-        console.log(this.details.id, this.commentInput.value)
-        this.props.dispatch(addCommentToPlace(this.details.id, this.commentInput.value));
-        e.target.reset();
-    }
-
     render() {
         let dynamicHeight;
         let list;
@@ -84,24 +77,24 @@ class TripResults extends Component {
                         }
                         </ul>
                         </div>)}
-                    <form 
-                    onSubmit={e => {
-                        e.stopPropagation();
-                        // console.log(this.details.id, this.commentInput.value)
-                        // this.props.dispatch(addCommentToPlace(this.details.id, this.commentInput.value));
-                        this.onSubmit(e)       
-                        }}>
+                    <div>
                         <label htmlFor="comment">Add comment:</label>
                         <textarea
                             id="comment"
                             ref={input => (this.commentInput = input)}
                             onClick={e => {
-                                e.stopPropagation();
-                                
+                                e.stopPropagation();  
                             }}
                         />
-                        <button>Submit</button>
-                    </form>
+                        <button
+                        onClick={e => {
+                            e.stopPropagation();
+                            console.log(this.props.details.id, this.commentInput.value)
+                            this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
+                            //need to clear input value on submit     
+                            }}
+                        >Submit</button>
+                    </div>
                     <div className="button-placement">
                         <button className={'delete-button'} onClick={(e) => { 
                             e.stopPropagation();

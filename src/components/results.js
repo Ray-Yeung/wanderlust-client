@@ -208,6 +208,7 @@ class Results extends React.Component {
         }
         return (
             <div className={"result-map-view"}>
+                <h2 className="results-title">Results</h2>
                 {list}
                 {page}
             </div>

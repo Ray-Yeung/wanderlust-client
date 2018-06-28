@@ -48,9 +48,10 @@ class Trip extends Component {
             );
         }
         return (
-            <div className={"trips-list"}>
-                {trips}
-            </div>
+                <div className={"trips-list"}>
+                    <h2 className="trips-title">Trips</h2>
+                    {trips}
+                </div>
         )
     }
 }

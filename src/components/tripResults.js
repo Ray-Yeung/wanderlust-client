@@ -24,13 +24,12 @@ class TripResults extends Component {
         }
     }
 
-    // onSubmit(e) {
-    //     e.preventDefault();
-    //     this.props.dispatch(
-    //         addComment(this.commentInput.value)
-    //     );
-    //     e.target.reset();
-    // }
+    onSubmit(e) {
+        e.preventDefault();
+        console.log(this.details.id, this.commentInput.value)
+        this.props.dispatch(addCommentToPlace(this.details.id, this.commentInput.value));
+        e.target.reset();
+    }
 
     render() {
         let dynamicHeight;
@@ -85,7 +84,13 @@ class TripResults extends Component {
                         }
                         </ul>
                         </div>)}
-                    <form >
+                    <form 
+                    onSubmit={e => {
+                        e.stopPropagation();
+                        // console.log(this.details.id, this.commentInput.value)
+                        // this.props.dispatch(addCommentToPlace(this.details.id, this.commentInput.value));
+                        this.onSubmit(e)       
+                        }}>
                         <label htmlFor="comment">Add comment:</label>
                         <textarea
                             id="comment"
@@ -95,12 +100,7 @@ class TripResults extends Component {
                                 
                             }}
                         />
-                        <button
-                        onSubmit={e => {
-                            e.stopPropagation();
-                            console.log(this.details.id, this.commentInput.value)
-                                    this.props.dispatch(addCommentToPlace(this.details.id, this.commentInput.value));
-                            }}>Submit</button>
+                        <button>Submit</button>
                     </form>
                     <div className="button-placement">
                         <button className={'delete-button'} onClick={(e) => { 

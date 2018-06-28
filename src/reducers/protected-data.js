@@ -15,10 +15,7 @@ import {
     REMOVE_TRIP_SUCCESS,
     REMOVE_TRIP_ERROR,
     OPEN_MARKER,
-    CLOSE_MARKER,
-    ADD_COMMENT_REQUEST,
-    ADD_COMMENT_SUCCESS,
-    ADD_COMMENT_ERROR
+    CLOSE_MARKER
 } from '../actions/protected-data';
 
 
@@ -55,33 +52,7 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {
             error: action.error
         });
-    } else if (action.type === ADD_COMMENT_REQUEST) {
-        return Object.assign({}, state, {
-            loading: true,
-            error: null
-        });
-    }
-    else if (action.type === ADD_COMMENT_SUCCESS) {
-        //test and updatecommen
-        return Object.assign({}, state, {
-            comments: [
-                ...state.comments,
-                {
-                    comment: action.comment,
-                    created: action.created,
-                    commentId: action.id
-                }
-            ],
-            loading: false,
-            error: null
-        });
-    }
-    else if (action.type === ADD_COMMENT_ERROR) {
-        return Object.assign({}, state, {
-            loading: false,
-            error: action.error
-        });
-    }
+    } 
     else if(action.type === FETCH_RESULTS_SUCCESS) {
         return Object.assign({}, state, {
             results: action.results,

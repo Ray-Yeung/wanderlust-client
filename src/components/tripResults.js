@@ -94,15 +94,7 @@ class TripResults extends Component {
                                 e.stopPropagation();  
                             }}
                         />
-                        <button
-                        // onClick={e => {
-                        //     e.stopPropagation();
-                        //     console.log(this.props.details.id, this.commentInput.value)
-                        //     this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
-                        //     //need to clear input value on submit  
-                        //     e.target.comment.value = ''   
-                            // }}
-                        >Submit</button>
+                        <button>Submit</button>
                     </form>
                     <div className="button-placement">
                         <button className={'delete-button'} onClick={(e) => { 

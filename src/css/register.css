@@ -34,7 +34,7 @@
   border-radius: 10px;
   border: none;
   margin-top: 10%;
-  width: 100px;
+  width: 130px;
   height: 40px;
   color: white;
   font-size: 1.5em;
@@ -56,11 +56,39 @@
   text-align: center;
   margin: 0 auto;
   padding-bottom: 50px;
-  width: 90px;
-  bottom: 75px;
+  width: 120px;
+  margin-top: 15px;
   color: white;
   font-size: 1.5em;
   border-radius: 10px;
   padding: 5px;
   background-color: lightcoral;
+}
+
+@media only screen and (max-width: 850px) {
+  
+  .register-form-content > .register-responsive-linespace {
+    display: inline-block;
+    margin: 15px 0;
+    line-height: 30px;
+  }
+
+  .register-form {
+    margin: 10% 18%;
+  }
+
+}
+
+@media only screen and (max-width: 700px) {
+  
+  .register-form-content > .register-responsive-linespace {
+    display: inline-block;
+    margin: 15px 0;
+    line-height: 30px;
+  }
+
+  .register-form {
+    margin: 10% 10%;
+  }
+  
 }

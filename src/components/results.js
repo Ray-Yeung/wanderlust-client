@@ -76,7 +76,7 @@ class Results extends React.Component {
             let saveTripDropdown;
             if (this.props.trips.length >= 1) {
                 saveTripDropdownBtn =
-                    <button onClick={(e) => {
+                    <button className="add-to-trip" onClick={(e) => {
                         e.stopPropagation();
                         // show the dropdown of trips
                         this.props.dispatch(openTripDropdown());
@@ -100,7 +100,7 @@ class Results extends React.Component {
                             }}
                         >
                             {this.props.trips.map((trip, counter) => {
-                                return <button key={counter} onClick={(e) => {
+                                return <button className="dropdown-btn" key={counter} onClick={(e) => {
                                     e.stopPropagation();
                                     this.props.dispatch(savePlaceToTrip(this.props.details, this.props.trips[counter].id))
                                 }}>{trip.name}</button>
@@ -172,17 +172,17 @@ class Results extends React.Component {
                                 }
                                 </ul>
                             </div>)}
-                            <div>
-                                {this.props.added ? <p>Success!</p> : ''}
-                                {saveTripDropdownBtn}
-                                {saveTripDropdown}
-                                <button onClick={(e) => {
-                                    e.stopPropagation();
-                                    console.log('clicked');
-                                    this.saveNewTrip(inc);
-                                }}>
-                                    start new trip
-                     </button>
+                            <div className="result-btn-group">
+                                {this.props.added ? <p className="create-success">Success!</p> : ''}
+                                    {saveTripDropdownBtn}
+                                    <button className="create-new-trip" onClick={(e) => {
+                                        e.stopPropagation();
+                                        console.log('clicked');
+                                        this.saveNewTrip(inc);
+                                    }}>
+                                        start new trip
+                                    </button>
+                                    {saveTripDropdown}
                             </div>
                         </div>
                 }

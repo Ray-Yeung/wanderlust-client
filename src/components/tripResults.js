@@ -94,7 +94,7 @@ class TripResults extends Component {
                                 e.stopPropagation();  
                             }}
                         />
-                        <button>Submit</button>
+                        <button className="comment-submit">Submit</button>
                     </form>
                     <div className="button-placement">
                         <button className={'delete-button'} onClick={(e) => { 

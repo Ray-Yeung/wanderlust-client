@@ -30,7 +30,7 @@ render(){
             </header>
         <div className="header-login">
             <LoginForm />
-            <Link to="/register">Register</Link>
+            <Link to="/register" className="landing-register-link">Register</Link>
         </div>
         <img className={"clippy-man"} src={Photo} />
         <img className={'hot-air-balloon'} src={Ballon} />

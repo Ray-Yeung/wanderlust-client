@@ -72,6 +72,23 @@
   background-color:rgb(108, 164, 199);
 }
 
+.nextPage {
+  display: inline-block;
+  border: solid 1px white;
+  border-radius: 10px;
+  padding: 10px 5px;
+  font-size: 1em;
+  font-weight: bold;
+  background-color:lightskyblue;
+  color: white;
+  width: 111px;
+  margin-left: 30%;
+}
+
+.nextPage:hover {
+  background-color:rgb(108, 164, 199);
+}
+
 .dropdown-btn {
   display: block;
   border: solid 1px rgb(99, 163, 99);

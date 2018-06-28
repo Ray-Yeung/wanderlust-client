@@ -64,3 +64,43 @@
   padding: 5px;
   background-color: lightcoral;
 }
+
+@media only screen and (max-width: 950px) {
+  .register-login-redirect {
+    bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  
+  .register-form-content > .register-responsive-linespace {
+    display: inline-block;
+    margin: 15px 0;
+    line-height: 30px;
+  }
+
+  .register-form {
+    margin: 10% 18%;
+  }
+
+}
+
+@media only screen and (max-width: 700px) {
+  
+  .register-form-content > .register-responsive-linespace {
+    display: inline-block;
+    margin: 15px 0;
+    line-height: 30px;
+  }
+
+  .register-form {
+    margin: 10% 10%;
+  }
+
+}
+
+@media only screen and (max-width: 550px) {
+  .register-login-redirect {
+    bottom: 20px;
+  }
+}

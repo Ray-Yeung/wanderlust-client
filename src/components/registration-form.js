@@ -42,7 +42,7 @@ export class RegistrationForm extends React.Component {
                         name="password"
                         validate={[required, passwordLength, isTrimmed]}
                     />
-                    <label htmlFor="passwordConfirm">Confirm password</label>
+                    <label className="register-responsive-linespace" htmlFor="passwordConfirm">Confirm password</label>
                     <Field
                         component={Input}
                         type="password"

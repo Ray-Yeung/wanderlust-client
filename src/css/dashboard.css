@@ -1,7 +1,13 @@
+.dashboard{
+  max-width: 100%;
+  height: auto;
+}
+
 .dash-header{
   background: #465451;
    overflow: hidden;
-  height: 4.1em
+  height: 4.1em;
+  width: auto;
  }
  .dash-name {
   text-align: center;

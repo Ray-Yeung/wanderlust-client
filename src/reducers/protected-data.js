@@ -15,7 +15,10 @@ import {
     REMOVE_TRIP_SUCCESS,
     REMOVE_TRIP_ERROR,
     OPEN_MARKER,
-    CLOSE_MARKER
+    CLOSE_MARKER,
+    ADD_COMMENT_REQUEST,
+    ADD_COMMENT_SUCCESS,
+    ADD_COMMENT_ERROR
 } from '../actions/protected-data';
 
 
@@ -38,7 +41,8 @@ const initialState = {
       lat: 37.782,
       lng: -122.403
     },
-    loading: false
+    loading: false,
+    comments: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -51,7 +55,26 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {
             error: action.error
         });
-    } else if(action.type === FETCH_RESULTS_SUCCESS) {
+    } else if (action.type === ADD_COMMENT_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    }
+    else if (action.type === ADD_COMMENT_SUCCESS) {
+        //update
+        return Object.assign({}, state, {
+            loading: false,
+            error: null
+        });
+    }
+    else if (action.type === ADD_COMMENT_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+    }
+    else if(action.type === FETCH_RESULTS_SUCCESS) {
         return Object.assign({}, state, {
             results: action.results,
             next_page_token: action.next_page_token,

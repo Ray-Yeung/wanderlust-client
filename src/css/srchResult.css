@@ -112,6 +112,10 @@
   margin-left: 25%;
 }
 
+.result-name {
+  font-weight: bold;
+}
+
 .results-title {
   font-size: 2em;
   text-align: center;

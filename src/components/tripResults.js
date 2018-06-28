@@ -91,6 +91,7 @@ class TripResults extends Component {
                         this.commentInput.value = ''  }}} >
                         <label className="add-comment-header" htmlFor="comment">Add comment</label>
                         <textarea
+                            className="comment-text-area"
                             id="comment"
                             ref={input => (this.commentInput = input)}
                             onClick={e => {
@@ -124,7 +125,7 @@ class TripResults extends Component {
                     this.clicked(inc)
                 }}
                 >
-                    <div>{result.name}</div>
+                    <div className="trip-card-name">{result.name}</div>
                     <div>{result.types[0]}</div>
                     {details}
                 </div>

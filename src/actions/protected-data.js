@@ -270,7 +270,8 @@ export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
             'Authorization': `Bearer ${authToken}`
         },
         body: JSON.stringify({
-            comment: comment
+            comment: comment,
+            placeId: id
         })
     })
     .then(response => normalizeResponseErrors(response))

@@ -14,7 +14,7 @@ Our results should render with
 
 Onlick could display our information of the location 
 Infomation part 1| Infomation part 2
------------- | -------------
+---------------- | ----------------
 
 ![extra info part one](https://user-images.githubusercontent.com/34497456/42013154-be43f3fa-7a50-11e8-8926-411773e5e3cd.JPG)| ![information part two](https://user-images.githubusercontent.com/34497456/42013169-d4b88394-7a50-11e8-91d8-af84af728365.JPG)
 

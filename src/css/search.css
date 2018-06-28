@@ -62,3 +62,25 @@ color:white;
   font-size: 1em;
   font-weight: bolder;
 }
+/* REVIEWS */
+.review-header{
+  text-align: center;
+}
+
+.review-img {
+  max-width: 20%;
+  float: left;
+  padding-right: 5px;
+  
+}
+.review-list{
+  height: 10em;
+  overflow: auto;
+}
+.review-list li {
+  margin-bottom: 15px;  
+ }
+  .place-photo {
+    padding-top: 10px;
+    border-radius: 20px;
+}

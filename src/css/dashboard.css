@@ -4,12 +4,14 @@
 }
 
 .dash-header{
+
   background: #465451;
    overflow: hidden;
   height: 4.1em;
   width: auto;
  }
  .dash-name {
+  margin-top: 0.3em;
   text-align: center;
   color:white;
   padding-bottom: 2em;

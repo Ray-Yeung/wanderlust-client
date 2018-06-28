@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess } from '../actions/results';
-import { setMarkerLocation, removePlace, openMarker, closeMarker, addCommentToPlace } from '../actions/protected-data';
+import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess, addCommentToPlace } from '../actions/results';
+import { setMarkerLocation, removePlace, openMarker, closeMarker } from '../actions/protected-data';
 
 class TripResults extends Component {
 
@@ -103,13 +103,6 @@ class TripResults extends Component {
                             if (window.confirm(`Are you sure you want to delete ${this.props.results[inc].name}?`)) this.props.dispatch(removePlace(this.props.results[inc].id))
                         }}>delete place</button>
                     </div>
-                    {/* <div className="button-placement">
-                        <button className={'comment-button'} onClick={(e) => { 
-                            e.stopPropagation();
-                            // console.log('clicked')
-                            
-                        }}>add comment</button>
-                    </div> */}
                 </div>
             }
             // keep box regular size

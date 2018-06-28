@@ -247,5 +247,43 @@ export const fetchTripPlacesDetails = (placeId) => (dispatch) => {
     })
     .catch(err => dispatch(fetchTripPlaceDetailsError(err)))
 };
+//add comment actions
+export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST';
+export const addCommentRequest = () => ({
+    type: ADD_COMMENT_REQUEST
+})
 
+export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
+export const addCommentSuccess = (results) => ({
+    type: ADD_COMMENT_SUCCESS,
+    results
+});
 
+export const ADD_COMMENT_ERROR = 'ADD_COMMENT_ERROR';
+export const addCommentError = error => ({
+    type: ADD_COMMENT_ERROR,
+    error
+});
+
+export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
+    dispatch(addCommentRequest()); //tells us we have bugun loading
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/places/${id}/comment`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+            comment: comment,
+            placeId: id
+        })
+    })
+    .then(response => normalizeResponseErrors(response))
+    .then(response => response.json())
+    .then(results => {
+        console.log(results);
+        dispatch(addCommentSuccess(results))
+    })
+    .catch(err => dispatch(addCommentError(err)))
+}

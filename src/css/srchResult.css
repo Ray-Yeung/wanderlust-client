@@ -2,7 +2,7 @@
 .result-map-view{
   position: absolute;
   left:0;
-  top: 12%;
+  top: 15%;
   z-index: 3;
   overflow: auto;
   height: 80%;
@@ -110,6 +110,13 @@
   font-weight: bold;
   margin-bottom: 5px;
   margin-left: 25%;
+}
+
+.results-title {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 5%;
+  color: #39393A;
 }
 
 @media only screen and (max-width: 1040px) {

@@ -1,5 +1,5 @@
 # WanderLust Client
-![wanderlust](https://user-images.githubusercontent.com/34497456/42012190-cd6ec882-7a4b-11e8-86cd-5bd38f67e751.png =250x250)
+![wanderlust](https://user-images.githubusercontent.com/34497456/42012190-cd6ec882-7a4b-11e8-86cd-5bd38f67e751.png | width=100)
 > Wanderlust is a strong desire for or impulse to wander or travel and explore the world.
 ## Project Summary
 Wanderlust is an application for easy use of trip planning and discovering new trips all over the world with the use of google maps.
@@ -12,7 +12,8 @@ We can start by looking for a specific place or type of place.
 Our results should render with 
 ![wanderlust result](https://user-images.githubusercontent.com/34497456/42013038-2b932594-7a50-11e8-98d1-48c33213479e.png)
 
-Onlick could display our information of the location 
+Onlick could display our information of the location
+ 
 Infomation part 1|Infomation part 2
 ----------------- | -----------------
 

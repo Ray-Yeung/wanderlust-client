@@ -50,12 +50,14 @@ class TripResults extends Component {
                 dynamicHeight = '300px'
                 details = 
                 <div className={'trips-class'}>
-                    <div>
+                    {!this.props.details.rating ? '':
+                    (<div>
                         Rating: {this.props.details.rating}
-                    </div>
-                    <div>
-                        {this.props.details.price_level}
-                    </div>
+                    </div>)}
+                    {!this.props.details.price_level ? '' :
+                        (<div>
+                        Price Level: {this.props.details.price_level}
+                        </div>)}
                     <div>
                         {this.props.details.formatted_address}    
                     </div>

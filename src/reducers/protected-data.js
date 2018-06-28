@@ -62,8 +62,16 @@ export default function reducer(state = initialState, action) {
         });
     }
     else if (action.type === ADD_COMMENT_SUCCESS) {
-        //update
+        //test and updatecommen
         return Object.assign({}, state, {
+            comments: [
+                ...state.comments,
+                {
+                    comment: action.comment,
+                    created: action.created,
+                    commentId: action.id
+                }
+            ],
             loading: false,
             error: null
         });

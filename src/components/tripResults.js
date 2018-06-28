@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess } from '../actions/results';
-import { setMarkerLocation, removePlace, openMarker, closeMarker } from '../actions/protected-data';
+import { setMarkerLocation, removePlace, openMarker, closeMarker, addCommentToPlace } from '../actions/protected-data';
 
 class TripResults extends Component {
 
@@ -23,14 +23,6 @@ class TripResults extends Component {
             }
         }
     }
-
-    // onSubmit(e) {
-    //     e.preventDefault();
-    //     this.props.dispatch(
-    //         addComment(this.commentInput.value)
-    //     );
-    //     e.target.reset();
-    // }
 
     render() {
         let dynamicHeight;
@@ -85,19 +77,24 @@ class TripResults extends Component {
                         }
                         </ul>
                         </div>)}
-                    <form onSubmit={e => {
-                        e.stopPropagation();
-                        this.onSubmit(e)}}>
+                    <div>
                         <label htmlFor="comment">Add comment:</label>
                         <textarea
                             id="comment"
                             ref={input => (this.commentInput = input)}
                             onClick={e => {
-                                e.stopPropagation();
+                                e.stopPropagation();  
                             }}
                         />
-                        <button>Submit</button>
-                    </form>
+                        <button
+                        onClick={e => {
+                            e.stopPropagation();
+                            console.log(this.props.details.id, this.commentInput.value)
+                            this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
+                            //need to clear input value on submit     
+                            }}
+                        >Submit</button>
+                    </div>
                     <div className="button-placement">
                         <button className={'delete-button'} onClick={(e) => { 
                             e.stopPropagation();

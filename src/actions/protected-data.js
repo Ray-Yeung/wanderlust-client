@@ -259,3 +259,25 @@ export const fetchTripDetails = (tripId) => (dispatch, getState) => {
     })
     .catch(err => dispatch(fetchTripDetailsError(err)))
 };
+
+export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
+    dispatch(addCommentRequest()); //tells us we have bugun loading
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/places/${id}/comment`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+            comment: comment
+        })
+    })
+    .then(response => normalizeResponseErrors(response))
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        dispatch(addCommentSuccess(data))
+    })
+    .catch(err => dispatch(addCommentError(err)))
+}

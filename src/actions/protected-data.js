@@ -119,6 +119,11 @@ export const closeMarker = () => ({
   type: CLOSE_MARKER
 });
 
+export const CLOSE_TRIP_MARKERS = 'CLOSE_TRIP_MARKERS';
+export const closeTripMarkers = () => ({
+    type: CLOSE_TRIP_MARKERS
+});
+
 export const setDefaultLocation = locationObj => dispatch => {
   dispatch(defaultLocation(locationObj));
 };

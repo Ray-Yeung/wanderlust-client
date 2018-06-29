@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import Photo from '../images/Clippy.png'
 import Ballon from '../images/ballon.png'
+import TripImg from '../images/trips.PNG'
 import LoginForm from './login-form';
 import '../css/landing.css'
 const mainBg = {
@@ -31,6 +32,17 @@ render(){
         <div className="header-login">
             <LoginForm />
             <Link to="/register" className="landing-register-link">Register</Link>
+        </div>
+        <div className="infobox-container">
+            <div className="infobox1">
+                <p>Plan your next trip!</p>
+            </div>
+            <div className="infobox2">
+                <p>Add unique destinations!</p>
+            </div>
+            <div className="infobox3">
+                <p>Keep notes for each stop!</p>
+            </div>
         </div>
         <img className={"clippy-man"} src={Photo} />
         <img className={'hot-air-balloon'} src={Ballon} />

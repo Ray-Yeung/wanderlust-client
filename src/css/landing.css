@@ -15,8 +15,9 @@ background: url('https://images.unsplash.com/photo-1508495761350-6a8bf2a2128a?ix
 background-size: cover;
 overflow:auto;
 clip-path: polygon(68% 5%, 100% 0, 100% 80%, 100% 100%, 0 100%, 0% 80%, 0 14%);
-z-index: -1;
+z-index: -2;
 }
+
 .clippy-man{
   position: absolute;
   top: 25em;
@@ -96,15 +97,57 @@ z-index: -1;
   background-color: rgb(108, 164, 199);
 }
 
+.infobox-container {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  text-align: center;
+}
+
+.infobox-container > div {
+  width: 25%;
+  height: 275px;
+  opacity: .75;
+  background-color: #565656;
+  display: inline-block;
+  text-align: center;
+  border-radius: 15px;
+  padding-top: 25px;
+  color: white;
+  font-weight: bold;
+}
+
+.infobox1 {
+  margin-right: 50px;
+  text-align: center;
+}
+
+.infobox2 {
+  text-align: center;
+}
+
+.infobox3 {
+  margin-left: 50px;
+  text-align: center;
+}
+
 @-webkit-keyframes roll-in-left {
   0% {
     -webkit-transform: translateX(-800px) rotate(-540deg);
             transform: translateX(-800px) rotate(-540deg);
+            -webkit-transform: translateY(0px) rotate(-540deg);
+            transform: translateY(0px) rotate(-540deg);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-            transform: translateX(0) rotate(0deg);
+    -webkit-transform: translateX(800px) rotate(0deg);
+            transform: translateX(800px) rotate(0deg);
+            -webkit-transform: translateY(-300px) rotate(0deg);
+            transform: translateY(-300px) rotate(0deg);
     opacity: 1;
   }
 }
@@ -112,11 +155,15 @@ z-index: -1;
   0% {
     -webkit-transform: translateX(-800px) rotate(-540deg);
             transform: translateX(-800px) rotate(-540deg);
+            -webkit-transform: translateY(0px) rotate(-540deg);
+            transform: translateY(0px) rotate(-540deg);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-            transform: translateX(0) rotate(0deg);
+    -webkit-transform: translateX(800px) rotate(0deg);
+            transform: translateX(800px) rotate(0deg);
+            -webkit-transform: translateY(-300px) rotate(0deg);
+            transform: translateY(-300px) rotate(0deg);
     opacity: 1;
   }
 }

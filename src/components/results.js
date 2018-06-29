@@ -132,9 +132,10 @@ class Results extends React.Component {
                             </div> */}
                             <div>
                             {!this.props.details.opening_hours ? '' :
-                            (<ul>
+                            (<ul className="list-time">
                                 {this.props.details.opening_hours.weekday_text.map((day, index) => {
                                     return <li
+                                    className='opening-hours-list'
                                     key={index}>
                                     {day}
                                     </li>

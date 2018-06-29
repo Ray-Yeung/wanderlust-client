@@ -48,6 +48,8 @@ export class PlaceMarker extends React.Component {
       return 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/money-48.png';
     } else if(type === 'bar') {
       return 'https://cdn0.iconfinder.com/data/icons/ballicons/128/cocktail_glass-48.png';
+    } else if(type === 'beauty_salon') {
+      return 'https://cdn3.iconfinder.com/data/icons/hotel-services-facilities-2/256/Hair__Beauty_Salon-48.png';
     } else if(type === 'bicycle_store') {
       return 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/bike-48.png';
     } else if(type === 'book_store') {
@@ -78,6 +80,10 @@ export class PlaceMarker extends React.Component {
       return 'https://cdn4.iconfinder.com/data/icons/office-20/128/OFFice-45-48.png';
     } else if(type === 'gas_station') {
       return 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/gas-48.png';
+    } else if(type === 'gym') {
+      return 'https://cdn0.iconfinder.com/data/icons/sports-59/512/Weight-48.png';
+    } else if(type === 'health') {
+      return 'https://cdn0.iconfinder.com/data/icons/sports-icons-rounded/110/Exercise-Bike-48.png';
     } else if(type === 'hospital') {
       return 'https://cdn0.iconfinder.com/data/icons/medical-volume-2-4/256/52-48.png';
     } else if(type === 'jewelry_store') {
@@ -90,12 +96,16 @@ export class PlaceMarker extends React.Component {
       return 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/filmreel-48.png';
     } else if(type === 'museum') {
       return 'https://cdn0.iconfinder.com/data/icons/travel-volume-1-2/256/19-48.png';
+    } else if(type === 'natural_feature') {
+      return 'https://cdn4.iconfinder.com/data/icons/ballicons-2-new-generation-of-flat-icons/100/mountains-48.png';
     } else if(type === 'night_club') {
       return 'https://cdn0.iconfinder.com/data/icons/ballicons/128/dj-48.png';
     } else if(type === 'park') {
       return 'https://cdn0.iconfinder.com/data/icons/places-and-locations/512/places_and_locations_sunset_park-48.png';
     } else if(type === 'pharmacy') {
       return 'https://cdn0.iconfinder.com/data/icons/health-care-and-medical-2/256/Medical__Health_care-57-48.png';
+    } else if(type === 'point_of_interest') {
+      return 'https://cdn2.iconfinder.com/data/icons/ballicons-2-vol-2/100/star-48.png';
     } else if(type === 'police') {
       return 'https://cdn1.iconfinder.com/data/icons/avatar-3/512/Police-48.png';
     } else if(type === 'restaurant') {
@@ -111,7 +121,7 @@ export class PlaceMarker extends React.Component {
     } else if(type === 'stadium') {
       return 'https://cdn4.iconfinder.com/data/icons/new-basic-icon-vol-2/512/22-48.png';
     } else if(type === 'store') {
-      return 'https://cdn1.iconfinder.com/data/icons/ecommerce-free/96/Shop-48.png';
+      return 'https://cdn1.iconfinder.com/data/icons/shop-payment-2/128/Shop-Payment-27-48.png';
     } else if(type === 'subway_station') {
       return 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/train-48.png';
     } else if(type === 'supermarket') {
@@ -122,6 +132,8 @@ export class PlaceMarker extends React.Component {
       return 'https://cdn3.iconfinder.com/data/icons/landscape-1/402/33-48.png';
     } else if(type === 'transit_station') {
       return 'https://cdn4.iconfinder.com/data/icons/travel-1-7/151/37-48.png';
+    } else if(type === 'travel_agency') {
+      return 'https://cdn0.iconfinder.com/data/icons/ballicons/128/tourist_bag-48.png';
     } else if(type === 'zoo') {
       return 'https://cdn0.iconfinder.com/data/icons/animal-icons-flat/128/tiger-48.png';
     } else {

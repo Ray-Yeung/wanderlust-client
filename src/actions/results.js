@@ -127,6 +127,7 @@ export const fetchTripPlaceDetailsError = error => ({
     error
 });
 
+
 // COMMENTED OUT FOR NOW AS WE ARE SAVING TO TRIPS - DELETE ONCE FINISHED
 
 // export const savePlace = (placeDetails, placeId) => (dispatch, getState) => {

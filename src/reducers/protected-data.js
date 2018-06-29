@@ -15,7 +15,8 @@ import {
     REMOVE_TRIP_SUCCESS,
     REMOVE_TRIP_ERROR,
     OPEN_MARKER,
-    CLOSE_MARKER
+    CLOSE_MARKER,
+    CLOSE_TRIP_MARKERS
 } from '../actions/protected-data';
 
 
@@ -153,6 +154,10 @@ export function reducer(state = initialState, action) {
     } else if(action.type === CLOSE_MARKER) {
         return Object.assign({}, state, {
             isOpen: false
+        });
+    } else if(action.type === CLOSE_TRIP_MARKERS) {
+        return Object.assign({}, state, {
+            tripResults: []
         });
     } 
     return state;

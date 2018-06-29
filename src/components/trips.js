@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { setMarkerLocation } from '../actions/protected-data';
-import {fetchTrips, fetchTripDetails, removeTrip} from '../actions/protected-data';
+import {fetchTrips, fetchTripDetails, removeTrip, closeTripMarkers} from '../actions/protected-data';
 import {openTrip as openClickedTrip} from '../actions/results';
 import TripResults from './tripResults';
 import '../css/trips.css'
@@ -11,13 +11,14 @@ class Trip extends Component {
     }
 
     openTrip(inc) {
-        this.props.dispatch(fetchTripDetails(this.props.trips[inc].id));
-        this.props.dispatch(setMarkerLocation(this.props.trips[inc].location))
-        if (this.props.tripClicked === false) {
-            this.props.dispatch(openClickedTrip(inc));
+        if (this.props.tripClicked === inc) {
+            this.props.dispatch(openClickedTrip(false));
+            this.props.dispatch(closeTripMarkers());
         }
         else {
-            this.props.dispatch(openClickedTrip(false));
+            this.props.dispatch(openClickedTrip(inc));
+            this.props.dispatch(fetchTripDetails(this.props.trips[inc].id));
+            this.props.dispatch(setMarkerLocation(this.props.trips[inc].location))
         }
     }
 

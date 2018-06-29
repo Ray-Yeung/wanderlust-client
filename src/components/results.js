@@ -55,6 +55,23 @@ class Results extends React.Component {
         this.props.dispatch(saveTrip(this.props.details, this.props.results[inc].place_id));
     }
 
+    resultsImage(photo) {
+        if(photo) {
+           return  (
+            <div>
+            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo" />
+            <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
+            </div>
+           )
+        } else {
+            return (
+                <div>
+                    <img src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/star-48.png'/>
+                </div>
+            )
+        }
+    }
+
     render() {
         let dynamicHeight;
         let list;
@@ -62,7 +79,7 @@ class Results extends React.Component {
         let page;
 
         if (this.props.results.length >= 1) {
-            //create button if there is a next page token to paginate through results
+            //create button if there is a next page token to paginate through result
             if(this.props.next_page_token){
                 page = <button
                 className="nextPage"
@@ -150,10 +167,11 @@ class Results extends React.Component {
                             <a href={this.props.details.website} target="_blank">
                                 {`${this.props.details.name} official website`}
                             </a>
-                            <div>
+                            {this.resultsImage(this.props.details.photos)}
+                            {/* <div>
                                 <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo" />
                                 <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
-                            </div>
+                            </div> */}
                             
                                 {!this.props.details.reviews ? '' :
                                 (<div>

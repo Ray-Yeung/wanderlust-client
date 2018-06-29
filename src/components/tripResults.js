@@ -24,6 +24,23 @@ class TripResults extends Component {
         }
     }
 
+    tripResultsImage(photo) {
+        if(photo) {
+           return  (
+            <div>
+                <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo"/>
+                <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
+            </div> 
+           )
+        } else {
+            return (
+                <div>
+                    <img src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/star-48.png'/>
+                </div>
+            )
+        }
+    }
+
     render() {
         let dynamicHeight;
         let list;
@@ -59,10 +76,11 @@ class TripResults extends Component {
                     <a href={this.props.details.website} target="_blank">
                         {`${this.props.details.name} official website`}
                     </a>
-                   <div>
+                    {this.tripResultsImage(this.props.details.photos[0])}
+                   {/* <div>
                         <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo"/>
                         <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
-                    </div> 
+                    </div>  */}
                     {/* render comments */}
                     {!this.props.details.comments[0] ? 'No comments' :
                         (<div className="comment-container">

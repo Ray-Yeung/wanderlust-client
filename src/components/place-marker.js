@@ -90,6 +90,8 @@ export class PlaceMarker extends React.Component {
       return 'https://cdn3.iconfinder.com/data/icons/finance-152/64/40-48.png';
     } else if(type === 'library') {
       return 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/bookshelf-48.png';
+    } else if(type === 'locality') {
+      return 'https://cdn4.iconfinder.com/data/icons/travel-1-7/151/20-48.png';
     } else if(type === 'lodging') {
       return 'https://cdn0.iconfinder.com/data/icons/travel-volume-1-2/256/21-48.png';
     } else if(type === 'movie_theater') {

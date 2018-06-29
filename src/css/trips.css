@@ -1,14 +1,14 @@
-.trips-list{
+.trips-list {
   margin-left: 2rem;
   max-width: 20%;
  }
+ 
  .delete-data {
    text-align: center;
  }
  /* change to all input*/
  .search-input:focus {
    outline: none;
- 
  }
  
  .trips-item {

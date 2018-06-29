@@ -79,7 +79,7 @@ class Results extends React.Component {
         let page;
 
         if (this.props.results.length >= 1) {
-            //create button if there is a next page token to paginate through results
+            //create button if there is a next page token to paginate through result
             if(this.props.next_page_token){
                 page = <button
                 className="nextPage"

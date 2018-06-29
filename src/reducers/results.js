@@ -22,7 +22,10 @@ import {
     OPEN_TRIP,
     ADD_COMMENT_REQUEST,
     ADD_COMMENT_SUCCESS,
-    ADD_COMMENT_ERROR
+    ADD_COMMENT_ERROR,
+    DELETE_COMMENT_REQUEST,
+    DELETE_COMMENT_SUCCESS,
+    DELETE_COMMENT_ERROR
 } from '../actions/results';
 
 import {
@@ -57,7 +60,7 @@ export function reducer(state = initialState, action) {
         });
     }
     else if (action.type === ADD_COMMENT_SUCCESS) {
-        // console.log(state.tripPlaceDetails)
+        console.log(state.tripPlaceDetails)
         return Object.assign({}, state, {
             tripPlaceDetails: action.results,
             loading: false,
@@ -65,6 +68,26 @@ export function reducer(state = initialState, action) {
         });
     }
     else if (action.type === ADD_COMMENT_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+    }
+    else if (action.type === DELETE_COMMENT_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    }
+    else if (action.type === DELETE_COMMENT_SUCCESS) {
+        console.log(state.tripPlaceDetails)
+        return Object.assign({}, state, {
+            tripPlaceDetails: action.results,
+            loading: false,
+            error: null
+        });
+    }
+    else if (action.type === DELETE_COMMENT_ERROR) {
         return Object.assign({}, state, {
             loading: false,
             error: action.error

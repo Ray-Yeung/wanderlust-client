@@ -32,6 +32,7 @@ const initialState = {
     trips: [],
     tripResults: [],
     tripPlaceDetails: [],
+    tripPlaceDetails: null,
     data: '',
     error: null,
     isOpen: false,
@@ -54,6 +55,7 @@ export function reducer(state = initialState, action) {
             error: action.error
         });
     } 
+  
     else if(action.type === FETCH_RESULTS_SUCCESS) {
         return Object.assign({}, state, {
             results: action.results,

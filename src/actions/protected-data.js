@@ -13,23 +13,6 @@ export const fetchProtectedDataError = error => ({
     error
 });
 
-// export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST';
-// export const addCommentRequest = () => ({
-//     type: ADD_COMMENT_REQUEST
-// })
-
-// export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
-// export const addCommentSuccess = (results) => ({
-//     type: ADD_COMMENT_SUCCESS,
-//     results
-// });
-
-// export const ADD_COMMENT_ERROR = 'ADD_COMMENT_ERROR';
-// export const addCommentError = error => ({
-//     type: ADD_COMMENT_ERROR,
-//     error
-// });
-
 export const FETCH_RESULTS_SUCCESS = 'FETCH_RESULTS_SUCCESS';
 export const fetchResultsSuccess = (results, next_page_token) => ({
     type: FETCH_RESULTS_SUCCESS,
@@ -262,8 +245,32 @@ export const fetchTripDetails = (tripId) => (dispatch, getState) => {
     .catch(err => dispatch(fetchTripDetailsError(err)))
 };
 
+//add comment actions: working on a fix to update and persist in DOM!!
+// export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST';
+// export const addCommentRequest = () => ({
+//     type: ADD_COMMENT_REQUEST
+// })
+
+// export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
+// export const addCommentSuccess = (results) => ({
+//     type: ADD_COMMENT_SUCCESS,
+//     results
+// });
+
+// export const ADD_COMMENT_DETAILS = 'ADD_COMMENT_DETAILS';
+// export const addCommentDetails = (results) => ({
+//     type: ADD_COMMENT_DETAILS,
+//     results
+// });
+
+// export const ADD_COMMENT_ERROR = 'ADD_COMMENT_ERROR';
+// export const addCommentError = error => ({
+//     type: ADD_COMMENT_ERROR,
+//     error
+// });
+
 // export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
-//     dispatch(addCommentRequest()); //tells us we have bugun loading
+//     dispatch(addCommentRequest()); //tells us we have begun loading
 //     const authToken = getState().auth.authToken;
 //     return fetch(`${API_BASE_URL}/places/${id}/comment`, {
 //         method: 'PUT',
@@ -281,6 +288,45 @@ export const fetchTripDetails = (tripId) => (dispatch, getState) => {
 //     .then(results => {
 //         console.log(results);
 //         dispatch(addCommentSuccess(results))
+//         dispatch(addCommentDetails(results))
 //     })
+//     // .then(dispatch(addCommentSuccess(results)))
 //     .catch(err => dispatch(addCommentError(err)))
 // }
+// //delete comment actions
+// export const DELETE_COMMENT_REQUEST = 'DELETE_COMMENT_REQUEST';
+// export const deleteCommentRequest = () => ({
+//     type: DELETE_COMMENT_REQUEST
+// })
+
+// export const DELETE_COMMENT_SUCCESS = 'DELETE_COMMENT_SUCCESS';
+// export const deleteCommentSuccess = (results) => ({
+//     type: DELETE_COMMENT_SUCCESS,
+//     results
+// });
+
+// export const DELETE_COMMENT_ERROR = 'DELETE_COMMENT_ERROR';
+// export const deleteCommentError = error => ({
+//     type: DELETE_COMMENT_ERROR,
+//     error
+// });
+
+// export const deleteComment = (placeId, id) => (dispatch, getState) => {
+//     dispatch(deleteCommentRequest()); //tells us we have bugun loading
+//     const authToken = getState().auth.authToken;
+//     return fetch(`${API_BASE_URL}/places/${placeId}/comment/${id}`, {
+//         method: 'DELETE',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${authToken}`
+//         }
+//     })
+//     .then(response => response.json())
+//     .then(results => {
+//         console.log(results)
+//         dispatch(deleteCommentSuccess(results))
+//     })
+//     .catch(error => dispatch(deleteCommentError(error)))
+// };
+

@@ -267,7 +267,7 @@ export const addCommentError = error => ({
 });
 
 export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
-    dispatch(addCommentRequest()); //tells us we have bugun loading
+    dispatch(addCommentRequest()); //tells us we have begun loading
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/places/${id}/comment`, {
         method: 'PUT',
@@ -286,5 +286,43 @@ export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
         console.log(results);
         dispatch(addCommentSuccess(results))
     })
+    // .then(dispatch(fetchTripPlacesDetails(id)))
     .catch(err => dispatch(addCommentError(err)))
 }
+
+//delete comment actions
+export const DELETE_COMMENT_REQUEST = 'DELETE_COMMENT_REQUEST';
+export const deleteCommentRequest = () => ({
+    type: DELETE_COMMENT_REQUEST
+})
+
+export const DELETE_COMMENT_SUCCESS = 'DELETE_COMMENT_SUCCESS';
+export const deleteCommentSuccess = (results) => ({
+    type: DELETE_COMMENT_SUCCESS,
+    results
+});
+
+export const DELETE_COMMENT_ERROR = 'DELETE_COMMENT_ERROR';
+export const deleteCommentError = error => ({
+    type: DELETE_COMMENT_ERROR,
+    error
+});
+
+export const deleteComment = (placeId, id) => (dispatch, getState) => {
+    dispatch(deleteCommentRequest()); //tells us we have bugun loading
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/places/${placeId}/comment/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(results => {
+        console.log(results)
+        dispatch(deleteCommentSuccess(results))
+    })
+    .catch(error => dispatch(deleteCommentError(error)))
+};

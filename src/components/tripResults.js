@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess, addCommentToPlace } from '../actions/results';
+import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess, addCommentToPlace, deleteComment } from '../actions/results';
 import { setMarkerLocation, removePlace, openMarker, closeMarker } from '../actions/protected-data';
 
 class TripResults extends Component {
@@ -72,6 +72,13 @@ class TripResults extends Component {
                             return <li 
                             key={comment.id}>
                         <p>{comment.comment}</p>
+                        <div className="button-placement">
+                            <button className={'delete-button'} name={comment.id} onClick={(e) => { 
+                                e.stopPropagation();
+                                console.log(comment.id, this.props.details, this.props.details.id)
+                                if (window.confirm(`Are you sure you want to delete this comment?`)) this.props.dispatch(deleteComment(this.props.details.id, comment.id))
+                            }}>delete comment</button>
+                        </div>
                         <div>{comment.created}</div>
                         </li>
                         })
@@ -83,7 +90,7 @@ class TripResults extends Component {
                         e.stopPropagation();
                         e.preventDefault();
                         if(!this.commentInput.value) {
-                            (window.confirm('Comment cannot be empty'))
+                            alert('Comment cannot be empty')
                         } else {
                         console.log(this.props.details.id, this.commentInput.value)
                         this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));

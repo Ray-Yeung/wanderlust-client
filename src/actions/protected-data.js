@@ -13,23 +13,6 @@ export const fetchProtectedDataError = error => ({
     error
 });
 
-// export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST';
-// export const addCommentRequest = () => ({
-//     type: ADD_COMMENT_REQUEST
-// })
-
-// export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
-// export const addCommentSuccess = (results) => ({
-//     type: ADD_COMMENT_SUCCESS,
-//     results
-// });
-
-// export const ADD_COMMENT_ERROR = 'ADD_COMMENT_ERROR';
-// export const addCommentError = error => ({
-//     type: ADD_COMMENT_ERROR,
-//     error
-// });
-
 export const FETCH_RESULTS_SUCCESS = 'FETCH_RESULTS_SUCCESS';
 export const fetchResultsSuccess = (results, next_page_token) => ({
     type: FETCH_RESULTS_SUCCESS,

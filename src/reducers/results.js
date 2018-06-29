@@ -80,7 +80,7 @@ export function reducer(state = initialState, action) {
         });
     }
     else if (action.type === DELETE_COMMENT_SUCCESS) {
-        // console.log(state.tripPlaceDetails)
+        console.log(state.tripPlaceDetails)
         return Object.assign({}, state, {
             tripPlaceDetails: action.results,
             loading: false,

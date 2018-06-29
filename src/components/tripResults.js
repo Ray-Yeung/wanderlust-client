@@ -153,7 +153,8 @@ const mapStateToProps = state => {
     return {
         results: state.protectedData.tripResults,
         details: state.result.tripPlaceDetails,
-        clicked: state.result.tripPlaceOpen
+        clicked: state.result.tripPlaceOpen,
+        // details: state.protectedData.tripPlaceDetails
     }
 }
 

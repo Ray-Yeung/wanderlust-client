@@ -267,7 +267,7 @@ export const addCommentError = error => ({
 });
 
 export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
-    dispatch(addCommentRequest()); //tells us we have bugun loading
+    dispatch(addCommentRequest()); //tells us we have begun loading
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/places/${id}/comment`, {
         method: 'PUT',
@@ -281,13 +281,12 @@ export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
         })
     })
     .then(response => normalizeResponseErrors(response))
-    .then(response => {
-        
-        response.json()})
+    .then(response => response.json())
     .then(results => {
         console.log(results);
         dispatch(addCommentSuccess(results))
     })
+    // .then(dispatch(fetchTripPlacesDetails(id)))
     .catch(err => dispatch(addCommentError(err)))
 }
 
@@ -320,8 +319,7 @@ export const deleteComment = (placeId, id) => (dispatch, getState) => {
             'Authorization': `Bearer ${authToken}`
         }
     })
-    .then(response => 
-        response.json())
+    .then(response => response.json())
     .then(results => {
         console.log(results)
         dispatch(deleteCommentSuccess(results))

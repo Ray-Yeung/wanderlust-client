@@ -6,7 +6,7 @@ import requiresLogin from './requires-login';
 import Search from './search-input';
 import Results from './results';
 import Trips from './trips';
-import {GOOGLE_API_KEY} from '../config';
+import GOOGLE_API_KEY from '../config';
 // import Map from './map';
 import GoogleMapWrapper from './googleMapWrapper';
 import '../css/dashboard.css'

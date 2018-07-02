@@ -6,6 +6,7 @@ import requiresLogin from './requires-login';
 import Search from './search-input';
 import Results from './results';
 import Trips from './trips';
+import {GOOGLE_API_KEY} from '../config';
 // import Map from './map';
 import GoogleMapWrapper from './googleMapWrapper';
 import '../css/dashboard.css'
@@ -19,7 +20,7 @@ export class Dashboard extends React.Component {
     
     render() {
         // console.log(this.props.name)
-        console.log(this.props)
+        console.log(GOOGLE_API_KEY)
         // console.log(this.props.currentUser)
         return (
             <div className="dashboard">

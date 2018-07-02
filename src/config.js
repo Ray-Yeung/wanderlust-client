@@ -5,8 +5,8 @@ export const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:3000
 
 export const IMAGE_KEY = process.env.IMAGE_KEY
 
-export const GOOGLE_API_KEY = process.env.GOOGLE_API
+export const GOOGLE_API_KEY = process.env.REACT_APP_API_GOOGLE
 
 console.log('key',GOOGLE_API_KEY);
-console.log('entry key',process.env.GOOGLE_API);
+console.log('entry key',process.env.REACT_APP_API_GOOGLE);
 console.log('base url', API_BASE_URL);

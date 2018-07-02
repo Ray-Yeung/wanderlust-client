@@ -17,19 +17,6 @@ export class TripMarker extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
-  
-  // markerImage(photosArray) {
-  //   if(photosArray.length === 0) {
-  //     return;
-  //   } else {
-  //     return (
-  //       <div className='clicked-marker-photo'>
-  //         <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=110&photoreference=${this.props.marker.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.marker.name}`} className="place-photo" />
-  //         <span className={`${this.props.marker.photos[0].html_attributions[0]}`}></span>
-  //       </div>
-  //     )
-  //   }
-  // }
 
   markerImage(type) {
     if(type === 'airport') {

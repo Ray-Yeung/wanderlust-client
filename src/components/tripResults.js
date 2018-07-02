@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { openTripPlaceMoreDetails, closeTripPlaceMoreDetails, fetchTripPlaceDetailsError, fetchTripPlaceDetailsSuccess, addCommentToPlace, deleteComment } from '../actions/results';
 import { setMarkerLocation, removePlace, openMarker, closeMarker } from '../actions/protected-data';
+import {GOOGLE_API_KEY} from '../config';
 
 class TripResults extends Component {
 
@@ -28,7 +29,7 @@ class TripResults extends Component {
         if(photo) {
            return  (
             <div>
-                <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo"/>
+                <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=${GOOGLE_API_KEY}`} alt={`${this.props.details.name}`} className="place-photo"/>
                 <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
             </div> 
            )
@@ -77,10 +78,7 @@ class TripResults extends Component {
                         {`${this.props.details.name} official website`}
                     </a>
                     {this.tripResultsImage(this.props.details.photos[0])}
-                   {/* <div>
-                        <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo"/>
-                        <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
-                    </div>  */}
+                    
                     {/* render comments */}
                     {!this.props.details.comments[0] ? 'No comments' :
                         (<div className="comment-container">

@@ -1,4 +1,4 @@
-import {API_BASE_URL} from '../config';
+import {API_BASE_URL, GOOGLE_API_KEY} from '../config';
 import {normalizeResponseErrors} from './utils';
 
 export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
@@ -176,7 +176,7 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 
 export const fetchSearchApi = (data) => (dispatch, getState) =>{
     const authToken = getState().auth.authToken;
-    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`, {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=${GOOGLE_API_KEY}`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -195,7 +195,7 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
 
 export const fetchNextSearchApi = (data) => (dispatch, getState) =>{
     const authToken = getState().auth.authToken;
-    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?pagetoken=${data}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`, {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?pagetoken=${data}&key=${GOOGLE_API_KEY}`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

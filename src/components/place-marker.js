@@ -18,19 +18,6 @@ export class PlaceMarker extends React.Component {
     });
   }
 
-  // markerImage(photosArray) {
-  //   if(photosArray.length === 0) {
-  //     return;
-  //   } else {
-  //     return (
-  //       <div>
-  //         <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=${this.props.marker.photos[0].photo_reference}&key=AIzaSyCVzd2XPl8f7NZk1PN03mzAC7aI1ybumLM`} alt={`${this.props.marker.name}`} className="place-photo" />
-  //         <span className={`${this.props.marker.photos[0].html_attributions[0]}`}></span>
-  //       </div>
-  //     )
-  //   }
-  // }
-
   markerImage(type) {
     if(type === 'airport') {
       return 'https://cdn0.iconfinder.com/data/icons/travel-volume-1-2/256/16-48.png';

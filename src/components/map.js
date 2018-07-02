@@ -6,6 +6,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { GoogleMap, Marker, withScriptjs, withGoogleMap } from 'react-google-maps';
 
+import {GOOGLE_API_KEY} from '../config';
+
 const MapWithAMarker = withScriptjs(withGoogleMap(props => 
     <GoogleMap
       defaultZoom={8}
@@ -27,7 +29,7 @@ class Map extends React.Component {
   render() {
     return (
     <MapWithAMarker
-    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU&v=3.exp&libraries=geometry,drawing,places"
+    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
     loadingElement={<div style={{ height: `100%` }} />}
     containerElement={<div style={{ height: `400px` }} />}
     mapElement={<div style={{ height: `100%` }} />}

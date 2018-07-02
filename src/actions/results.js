@@ -1,4 +1,4 @@
-import {API_BASE_URL} from '../config';
+import {API_BASE_URL, GOOGLE_API_KEY} from '../config';
 import {normalizeResponseErrors} from './utils';
 
 export const OPEN_MORE_DETAILS = 'OPEN_MORE_DETAILS';
@@ -222,7 +222,7 @@ export const savePlaceToTrip = (placeDetails, tripId) => (dispatch, getState) =>
 
 export const fetchPlacesDetails = (placeId) => (dispatch) => {
     dispatch(fetchDetailsRequest());
-    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id,opening_hours&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`, {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id,opening_hours&key=${GOOGLE_API_KEY}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -236,7 +236,7 @@ export const fetchPlacesDetails = (placeId) => (dispatch) => {
 };
 
 export const fetchTripPlacesDetails = (placeId) => (dispatch) => {
-    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id,opening_hours&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`, {
+return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,rating,formatted_phone_number,photo,reviews,types,website,geometry,price_level,formatted_address,place_id,opening_hours&key=${GOOGLE_API_KEY}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

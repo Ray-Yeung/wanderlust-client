@@ -11,6 +11,8 @@ import {
     saveTrip
 } from '../actions/results';
 
+import {GOOGLE_API_KEY} from '../config';
+
 import { setMarkerLocation, openMarker, closeMarker, fetchNextSearchApi } from '../actions/protected-data';
 import '../css/srchResult.css'
 class Results extends React.Component {
@@ -59,7 +61,7 @@ class Results extends React.Component {
         if(photo) {
            return  (
             <div>
-            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo" />
+            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=${GOOGLE_API_KEY}`} alt={`${this.props.details.name}`} className="place-photo" />
             <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
             </div>
            )
@@ -168,10 +170,6 @@ class Results extends React.Component {
                                 {`${this.props.details.name} official website`}
                             </a>
                             {this.resultsImage(this.props.details.photos)}
-                            {/* <div>
-                                <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2000&photoreference=${this.props.details.photos[0].photo_reference}&key=AIzaSyDcXgfc08bFKvh2HkOilaX112ghHvyRBkU`} alt={`${this.props.details.name}`} className="place-photo" />
-                                <span className={`${this.props.details.photos[0].html_attributions[0]}`}></span>
-                            </div> */}
                             
                                 {!this.props.details.reviews ? '' :
                                 (<div>

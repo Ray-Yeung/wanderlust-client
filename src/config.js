@@ -9,3 +9,4 @@ export const GOOGLE_API_KEY = process.env.GOOGLE_API
 
 console.log('key',GOOGLE_API_KEY);
 console.log('entry key',process.env.GOOGLE_API);
+console.log('base url', API_BASE_URL);

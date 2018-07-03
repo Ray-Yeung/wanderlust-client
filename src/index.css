@@ -4,10 +4,10 @@
   padding: 0;
   font-family: sans-serif;
 }
-body {
- overflow-x: hidden;
- background-color: #98D6A7;
 
+body {
+  background: url('https://assets.rappler.com/873DDD7B6CA841D5A3A015C812DDEA6E/img/106FDBD1A04B42CA810E751495A0AFBE/20160421-Manjuyod_Sandbar-001.jpg');
+  background-size: cover;
 }
 
 .delete-button{

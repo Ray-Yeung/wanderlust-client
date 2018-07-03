@@ -12,7 +12,7 @@ export function RegistrationPage(props) {
     }
     return (
         <div className="register-page">
-            <h2 className="register-header">Register</h2>
+            <h2 className="header-name-shower margin-fix">Register</h2>
             <RegistrationForm />
         </div>
     );

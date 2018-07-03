@@ -5,7 +5,7 @@
   top: 15%;
   z-index: 3;
   overflow: auto;
-  height: 80%;
+  height: 85%;
     width: 30%;
 }
 .result-map-view::-webkit-scrollbar-track
@@ -28,7 +28,7 @@
 	background-color: rgba(128, 128, 128, 0.582);
 }
 .search-result-view{
-  
+  overflow: auto;
   padding: 20px 20px;
   border-radius: 10px;
   margin: 10px;
@@ -37,11 +37,13 @@
 
 .result-btn-group {
   display: block;
+  position: relative;
   margin-top: 10px;
 }
 
 .add-to-trip {
-  position: relative;
+  position: absolute;
+  left: 0;
   border: solid 1px #CCD1D1;
   padding: 10px 16px;
   font-size: 1em;
@@ -73,16 +75,18 @@
 }
 
 .nextPage {
-  display: inline-block;
+  display: block;
   border: solid 1px white;
   border-radius: 10px;
   padding: 10px 5px;
   font-size: 1em;
   font-weight: bold;
-  background-color:lightskyblue;
+  background-color:rgb(102, 157, 190);
   color: white;
   width: 111px;
-  margin-left: 30%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .nextPage:hover {
@@ -117,7 +121,7 @@
 }
 
 .results-title {
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
   margin-bottom: 5%;
   color: #39393A;

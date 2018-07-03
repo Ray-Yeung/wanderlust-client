@@ -4,7 +4,6 @@
 }
 
 .dash-header{
-
   background: #465451;
    overflow: hidden;
   height: 4.1em;
@@ -14,7 +13,6 @@
   margin-top: 0.3em;
   text-align: center;
   color:white;
-  padding-bottom: 2em;
   }
   .dashboard-username{
     color:#FFC966;
@@ -40,5 +38,9 @@
   cursor: pointer;
   color:white;
     z-index: 4;
+  }
+
+  .logout-button:hover {
+    background-color:rgb(209, 111, 111);
   }
   

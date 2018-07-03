@@ -18,7 +18,7 @@ export class GoogleMapWrapper extends React.PureComponent {
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          console.log("this is our position coords", position.coords);
+          // console.log("this is our position coords", position.coords);
           const userlocation = {
             lat: position.coords.latitude,
             lng: position.coords.longitude

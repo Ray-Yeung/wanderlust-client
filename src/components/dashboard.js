@@ -20,7 +20,6 @@ export class Dashboard extends React.Component {
     
     render() {
         // console.log(this.props.name)
-        console.log('new',GOOGLE_API_KEY)
         // console.log(this.props.currentUser)
         return (
             <div className="dashboard">

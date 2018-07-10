@@ -1,4 +1,5 @@
 import {
+    LOGIN_CLICKED_SUCCESS,
     FETCH_PROTECTED_DATA_SUCCESS,
     FETCH_PROTECTED_DATA_ERROR,
     FETCH_RESULTS_SUCCESS,
@@ -27,6 +28,7 @@ import {
 } from '../actions/results'
 
 const initialState = {
+    loggingIn: false,
     results: [],
     next_page_token:'',
     trips: [],
@@ -161,7 +163,12 @@ export function reducer(state = initialState, action) {
         return Object.assign({}, state, {
             tripResults: []
         });
-    } 
+    } else if(action.type === LOGIN_CLICKED_SUCCESS) {
+        console.log('here fam');
+        return Object.assign({}, state, {
+            loggingIn: !state.loggingIn
+        });
+    }
     return state;
 }
 

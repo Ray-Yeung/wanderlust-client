@@ -11,23 +11,24 @@
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 3%;
+  margin-top: 8%;
 }
 
 .header-login{
-  border: 0.2em solid white;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -40%);
-  width: 40%;
+  border: 0.2em solid rgb(165, 216, 224 .8);
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  width: 100%;
   padding-bottom: 1em;
-  overflow: auto;
-  height: 60%;
-  text-align: center;
-  background-color: white;
+  text-align: right;
+  background-color: rgb(165, 216, 224, .8);
+  border-bottom: solid 1px rgb(40, 63, 66);
   border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  height: 60px;
+  z-index: 10;
 }
 
 .login-btn {
@@ -36,30 +37,52 @@
   border-radius: 10px;
   margin: 10px 0;
   margin-top: 5%;
+  margin-left: 20px;
+  margin-right: 15px;
   padding: 5px 0;
   font-size: 1em;
   font-weight: bold;
-  background-color: rgb(124, 206, 124);
+  background-color: rgb(101, 175, 101);
   color: white;
   width: 170px;
-  height: 40px;
+  height: 30px;
 }
 
-.login-form {
-  margin-top: 10%;
+.login-form > div {
+  display: inline;
+}
+
+.login-form > .form-input > label > div {
+  display: inline;
+  margin-right: 5px;
 }
 
 .login-form > div > input {
-  width: 70%;
-  height: 40px;
+  width: 20%;
+  height: 30px;
   text-align: center;
   font-size: 1.3em;
   border: solid 1px grey;
   border-radius: 15px;
 }
 
+.login-name-input {
+  margin-right: 10px;
+}
+
 .login-pass-input {
   margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.login-form {
+  position: absolute;
+  left: 3%;
+  display: inline-block;
+  text-align: left;
+  margin-right: 10px;
+  margin-top: -24px;
 }
 
 .login-form > label {
@@ -74,36 +97,38 @@
 
 .landing-register-link {
   position: relative;
-  display: block;
+  display: inline-block;
   text-decoration: none;
   margin: 0 auto;
   color: white;
   font-size: 1em;
   font-weight: bold;
+  margin-top: 25px;
   border-radius: 10px;
-  padding: 5px;
-  padding-top: 12px;
-  background-color: lightskyblue;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgb(31, 127, 187);
   width: 170px;
-  height: 30px;
+  height: 20px;
+  text-align: center;
+  margin-right: 3%;
 }
 
 .landing-register-link:hover {
-  background-color: rgb(108, 164, 199);
+  background-color: rgb(24, 106, 156);
 }
 
 .info-bkg {
   position: absolute;
-  top: 100vh;
   width: 100%;
-  height: 350%;
-  background: linear-gradient(rgb(70, 206, 216, 0), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(70, 206, 216), rgb(70, 206, 216), 
+  height: 2500px;
+  background: linear-gradient(rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, .9), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(70, 206, 216), rgb(70, 206, 216), 
   rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216),
    rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216));
 }
 
 .info-box {
-  top: 15%;
+  top: 2%;
   position: absolute;
   left: 15%;
   width: 70%;
@@ -134,4 +159,144 @@
   border: solid 2px gray;
   margin-top: 3%;
   margin-bottom: 3%;
+}
+
+.login-small {
+  width: 140px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(101, 175, 101);
+  margin-top: 22px;
+  display: none;
+  font-size: 1.2em;
+}
+
+.login-small:hover {
+  background-color: rgb(99, 163, 99);
+}
+
+.loggingIn {
+  height: 400px;
+}
+
+.loggingIn > .login-small {
+  background-color: lightcoral;
+}
+
+@media only screen and (max-width: 1400px) {
+}
+
+@media only screen and (max-width: 1300px) {
+  .login-form {
+    display: none;
+  }
+  .landing-register-link {
+    display: none;
+  }
+  .loggingIn > .login-form {
+    display: block;
+    position: relative;
+    height: 35%;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    left: 0;
+  }
+  .loggingIn > .login-form > .login-btn {
+    margin-top: 10px;
+  }
+  .loggingIn > .login-form > *{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .loggingIn > .login-form > .login-name-input{
+    margin-top: 20px;
+  }
+  .loggingIn > .login-form > div > input {
+    width: 80%;
+  }
+  .loggingIn > .landing-register-link {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin-top: 70px;
+    margin-right: 0;
+  }
+  .loggingIn > .login-form > .form-input > label > div {
+    display: block;
+  }
+
+  .header-login {
+    text-align: center;
+  }
+  .login-small {
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .header-name-shower {
+    margin-top: 11%;
+    font-size: 4em;
+  }
+  .info-box{
+    top: 1%;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .info-box {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .header-name-shower {
+    margin-top: 13%;
+    font-size: 3.5em;
+  }
+  .info-section > h2 {
+    font-size: 2.4em;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .info-box {
+    width: 90%;
+    left: 5%;
+  }
+  .header-name-shower {
+    margin-top: 15%;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .header-name-shower {
+    margin-top: 20%;
+    font-size: 3em;
+  }
+  .info-section > h2 {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .header-name-shower {
+    margin-top: 24%;
+    font-size: 2.5em;
+  }
+  .info-section > h2 {
+    font-size: 1.8em;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .header-name-shower {
+    margin-top: 28%;
+    font-size: 2.5em;
+  }
 }

@@ -1,6 +1,11 @@
 import {API_BASE_URL, GOOGLE_API_KEY} from '../config';
 import {normalizeResponseErrors} from './utils';
 
+export const LOGIN_CLICKED_SUCCESS = 'LOGIN_CLICKED_SUCCESS';
+export const loginClickedSuccess = () => ({
+    type: LOGIN_CLICKED_SUCCESS
+});
+
 export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
 export const fetchProtectedDataSuccess = data => ({
     type: FETCH_PROTECTED_DATA_SUCCESS,

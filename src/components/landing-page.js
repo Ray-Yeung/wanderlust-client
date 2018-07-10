@@ -8,6 +8,9 @@ import appPic3 from '../images/pic3.PNG'
 import TripImg from '../images/trips.PNG'
 import LoginForm from './login-form';
 import '../css/landing.css'
+
+import {loginClickedSuccess} from '../actions/protected-data';
+
 const mainBg = {
     maxWith:"100%",
     backgroundRepeat: 'no-repeat',
@@ -22,13 +25,22 @@ const mainBg = {
     // If we are logged in redirect straight to the user's dashboard
     
 render(){
+    let loggingIn = "";
+    let btnName = "login";
     if (this.props.loggedIn) {
         return <Redirect to="/dashboard" />;
+    }
+    if (this.props.loggingIn) {
+        loggingIn = "loggingIn";
+        btnName = "Cancel";
     }
     return (
         <div className="home">
             <h1 className={"header-name-shower"}>wanderLust</h1>
-            <div className="header-login">
+            <div className={`header-login ${loggingIn}`}>
+                <button className="login-small" onClick={() => {
+                    this.props.dispatch(loginClickedSuccess());
+                }}>{`${btnName}`}</button>
                 <LoginForm />
                 <Link to="/register" className="landing-register-link">Register</Link>
             </div>
@@ -53,7 +65,8 @@ render(){
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    loggingIn: state.protectedData.loggingIn
 });
 
 export default connect(mapStateToProps)(LandingPage);

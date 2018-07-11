@@ -121,7 +121,7 @@
 .info-bkg {
   position: absolute;
   width: 100%;
-  height: 2500px;
+  height: 2150px;
   background: linear-gradient(rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, .9), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(70, 206, 216), rgb(70, 206, 216), 
   rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216),
    rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216));
@@ -130,9 +130,9 @@
 .info-box {
   top: 2%;
   position: absolute;
+  display: flex;
   left: 15%;
   width: 70%;
-  height: 80%;
   background-color: white;
   border-radius: 10px;
 }
@@ -155,7 +155,7 @@
 
 .app-image {
   width: 100%;
-  height: 100%;
+  height: 24%;
   border: solid 2px gray;
   margin-top: 3%;
   margin-bottom: 3%;
@@ -186,6 +186,9 @@
 }
 
 @media only screen and (max-width: 1400px) {
+  .info-box {
+    height: 2000px;
+  }
 }
 
 @media only screen and (max-width: 1300px) {
@@ -244,6 +247,12 @@
   }
   .info-box{
     top: 1%;
+    height: 2100px;
+  }
+  .info-bkg {
+    background: linear-gradient(rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(70, 206, 216), rgb(70, 206, 216), 
+  rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216),
+   rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216));
   }
 }
 
@@ -254,6 +263,14 @@
   }
 }
 
+@media only screen and (max-width: 677px) {
+  .info-bkg {
+    height: 2300px;
+  }
+  .info-box {
+    height: 2250px;
+  }
+}
 @media only screen and (max-width: 640px) {
   .header-name-shower {
     margin-top: 13%;
@@ -271,6 +288,11 @@
   }
   .header-name-shower {
     margin-top: 15%;
+  }
+  .info-bkg {
+    background: linear-gradient(rgb(70, 206, 216, 0), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(70, 206, 216), rgb(70, 206, 216), 
+  rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216),
+   rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216));
   }
 }
 

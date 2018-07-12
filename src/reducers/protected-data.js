@@ -164,7 +164,6 @@ export function reducer(state = initialState, action) {
             tripResults: []
         });
     } else if(action.type === LOGIN_CLICKED_SUCCESS) {
-        console.log('here fam');
         return Object.assign({}, state, {
             loggingIn: !state.loggingIn
         });

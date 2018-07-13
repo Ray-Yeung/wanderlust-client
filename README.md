@@ -29,7 +29,7 @@ adding a trip| rendering a trip
 
 
 ## View the Project live here:
-https://sleepy-leakey-e90827.netlify.com/
+https://wanderlust-travel.netlify.com/
 
 ## View the Backend code here:
 https://github.com/JeffVega/Best-coast-backend

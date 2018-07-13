@@ -7,6 +7,7 @@ import appPic2 from '../images/pic2.PNG'
 import appPic3 from '../images/pic3.PNG'
 import TripImg from '../images/trips.PNG'
 import LoginForm from './login-form';
+import {login} from '../actions/auth';
 import '../css/landing.css'
 
 import {loginClickedSuccess} from '../actions/protected-data';
@@ -41,6 +42,18 @@ render(){
                 <button className="login-small" onClick={() => {
                     this.props.dispatch(loginClickedSuccess());
                 }}>{`${btnName}`}</button>
+                <button className="demo-small" onClick={() => {
+                    if (this.props.loggingIn) {
+                    this.props.dispatch(loginClickedSuccess());
+                    }
+                    this.props.dispatch(login("demoUser", "demoPassword123"));
+                }}>demo</button>
+                <button className="demo-lrg" onClick={() => {
+                    if (this.props.loggingIn) {
+                    this.props.dispatch(loginClickedSuccess());
+                    }
+                    this.props.dispatch(login("demoUser", "demoPassword123"));
+                }}>demo</button>
                 <LoginForm />
                 <Link to="/register" className="landing-register-link">Register</Link>
             </div>

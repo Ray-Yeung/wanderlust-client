@@ -4,14 +4,13 @@
 }
 
 .header-name-shower{
-  font-size: 5em;
-  background: -webkit-linear-gradient(white, white, white, white, 
-  rgb(0, 187, 201), white);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 6em;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 8%;
+  color: rgb(91, 150, 125);
+  text-shadow: 0 2px black, 2px 0 black, -1px 0 black, 0 -1px black;
+  margin-top: 12%;
+  margin-bottom: 2%;
 }
 
 .header-login{
@@ -46,7 +45,7 @@
   font-weight: bold;
   background-color: rgb(101, 175, 101);
   color: white;
-  width: 170px;
+  width: 140px;
   height: 30px;
 }
 
@@ -57,6 +56,7 @@
 .login-form > .form-input > label > div {
   display: inline;
   margin-right: 5px;
+  color: rgb(223, 76, 76);
 }
 
 .login-form > div > input {
@@ -85,8 +85,7 @@
   left: 3%;
   display: inline-block;
   text-align: left;
-  margin-right: 10px;
-  margin-top: -24px;
+  bottom: 11px;
 }
 
 .login-form > label {
@@ -109,10 +108,10 @@
   font-weight: bold;
   margin-top: 25px;
   border-radius: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 7px;
+  padding-bottom: 3px;
   background-color: rgb(31, 127, 187);
-  width: 170px;
+  width: 140px;
   height: 20px;
   text-align: center;
   margin-right: 30px;
@@ -126,9 +125,9 @@
   position: absolute;
   width: 100%;
   height: 2150px;
-  background: linear-gradient(rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(70, 206, 216, .9), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(70, 206, 216), rgb(70, 206, 216), 
-  rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216),
-   rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216));
+  background: linear-gradient(rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(47,74,67, 0), rgb(47,74,67, 0), rgb(47,74,67, .9), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), 
+  rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67),
+  rgb(47,74,67), rgb(47,74,67), rgb(47,74,67));
 }
 
 .info-box {
@@ -181,6 +180,40 @@
   background-color: rgb(99, 163, 99);
 }
 
+.demo-small {
+  width: 140px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(179, 93, 190);
+  margin-top: 22px;
+  display: none;
+  font-size: 1.2em;
+}
+
+.demo-small:hover {
+  background-color: rgb(156, 85, 165);
+}
+
+.demo-lrg {
+  width: 140px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(179, 93, 190);
+  margin-top: 25px;
+  display: inline-block;
+  font-size: 1.2em;
+  margin-right: 20px;
+  z-index: 5;
+}
+
+.demo-lrg:hover {
+  background-color: rgb(156, 85, 165);
+}
+
 .loggingIn > .login-small {
   background-color: lightcoral;
 }
@@ -195,7 +228,7 @@
   }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1440px) {
   .loggingIn {
     height: 400px;
   }
@@ -211,7 +244,7 @@
     height: 35%;
     margin: 0 auto;
     text-align: center;
-    width: 100%;
+    width: 60%;
     left: 0;
   }
   .loggingIn > .login-form > .login-btn {
@@ -248,10 +281,28 @@
   }
   .login-small {
     display: inline-block;
+    margin-right: 10px;
   }
+  .demo-small {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  .demo-lrg {
+    display: none;
+  }
+  .login-form > .form-input > label > div {
+    display: inline;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    color: rgb(223, 76, 76);
+  }
+  
 }
 
 @media only screen and (max-width: 950px) {
+  .loggingIn > .login-form {
+    width: 80%;
+  }
   .header-name-shower {
     margin-top: 11%;
     font-size: 4em;
@@ -261,9 +312,9 @@
     height: 2100px;
   }
   .info-bkg {
-    background: linear-gradient(rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(70, 206, 216), rgb(70, 206, 216), 
-  rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216),
-   rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216));
+    background: linear-gradient(rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), 
+    rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67),
+    rgb(47,74,67), rgb(47,74,67), rgb(47,74,67));
   }
 }
 
@@ -301,9 +352,9 @@
     margin-top: 15%;
   }
   .info-bkg {
-    background: linear-gradient(rgb(70, 206, 216, 0), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(78, 210, 219), rgb(70, 206, 216), rgb(70, 206, 216), 
-  rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216),
-   rgb(70, 206, 216), rgb(70, 206, 216), rgb(70, 206, 216));
+    background: linear-gradient(rgb(70, 206, 216, 0), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), 
+    rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67),
+    rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67));
   }
 }
 
@@ -325,6 +376,9 @@
   .info-section > h2 {
     font-size: 1.8em;
   }
+  .loggingIn > .login-form {
+    width: 90%;
+  }
 }
 
 @media only screen and (max-width: 350px) {
@@ -332,4 +386,8 @@
     margin-top: 28%;
     font-size: 2.5em;
   }
+}
+
+.login-form {
+  margin-right: 0px;
 }

@@ -181,10 +181,6 @@
   background-color: rgb(99, 163, 99);
 }
 
-.loggingIn {
-  height: 400px;
-}
-
 .loggingIn > .login-small {
   background-color: lightcoral;
 }
@@ -200,6 +196,9 @@
 }
 
 @media only screen and (max-width: 1300px) {
+  .loggingIn {
+    height: 400px;
+  }
   .login-form {
     display: none;
   }

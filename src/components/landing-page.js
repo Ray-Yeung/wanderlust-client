@@ -26,7 +26,7 @@ const mainBg = {
     
 render(){
     let loggingIn = "";
-    let btnName = "login";
+    let btnName = "login / register";
     if (this.props.loggedIn) {
         return <Redirect to="/dashboard" />;
     }

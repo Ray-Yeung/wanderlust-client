@@ -1,7 +1,7 @@
 
 .map-view{
   z-index: 0;
-  height:90vh;
+  height: 100%;
   width: 45%;
   position: relative;
   /* bottom: 100vh; */
@@ -11,7 +11,84 @@
 }
 
  div .map-contianer{
-  height: 90vh;
+  height: 94.5vh;
   width: 100%;
   z-index: -1;
+}
+
+.map-view {
+  width: 100%;
+  left: 0;
+}
+
+.map-right {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+}
+
+.map-left {
+  position: absolute;
+  width: 50%;
+  right: 50%;
+}
+
+@media only screen and (max-width: 2000px) and (max-height: 1200px) {
+  div .map-contianer {
+    height: 93vh;
+  }
+  .map-view {
+    height: 91%;
+  }
+}
+
+@media only screen and (max-width: 2000px) and (max-height: 940px) {
+  div .map-contianer {
+    height: 91vh;
+  }
+}
+
+@media only screen and (max-width: 2000px) and (max-height: 750px) {
+  div .map-contianer {
+    height: 90vh;
+  }
+}
+
+@media only screen and (max-width: 2000px) and (max-height: 652px) {
+  div .map-contianer {
+    height: 89vh;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (max-height: 800px) {
+  div .map-contianer {
+    height: 90vh;
+  }
+  .map-view {
+    height: 90.5%;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (max-height: 660px) {
+  div .map-contianer {
+    height: 89vh;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (max-height: 600px) {
+  div .map-contianer {
+    height: 85.65vh;
+  }
+  .map-view {
+    height: 92%;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (max-height: 454px) {
+  div .map-contianer {
+    height: 82.65vh;
+  }
+  .map-view {
+    height: 92%;
+  }
 }

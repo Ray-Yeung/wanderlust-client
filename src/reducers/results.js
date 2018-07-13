@@ -25,7 +25,9 @@ import {
     ADD_COMMENT_ERROR,
     DELETE_COMMENT_REQUEST,
     DELETE_COMMENT_SUCCESS,
-    DELETE_COMMENT_ERROR
+    DELETE_COMMENT_ERROR,
+    TOGGLE_RESULTS,
+    TOGGLE_TRIPS
 } from '../actions/results';
 
 import {
@@ -44,7 +46,9 @@ const initialState = {
     tripDropdownElement: null,
     error: null,
     loading: false,
-    tripClicked: false
+    tripClicked: false,
+    toggleResults: false,
+    toggleTrips: false
 };
 
 export function reducer(state = initialState, action) {
@@ -222,6 +226,20 @@ export function reducer(state = initialState, action) {
         return Object.assign({}, state, {
             tripPlaceOpen: false,
             added: true
+        });
+    }
+
+    else if(action.type === TOGGLE_RESULTS) {
+        return Object.assign({}, state, {
+            toggleResults: !state.toggleResults,
+            toggleTrips: false
+        });
+    }
+
+    else if(action.type === TOGGLE_TRIPS) {
+        return Object.assign({}, state, {
+            toggleResults: false,
+            toggleTrips: !state.toggleTrips
         });
     }
 

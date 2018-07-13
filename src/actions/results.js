@@ -1,6 +1,16 @@
 import {API_BASE_URL, GOOGLE_API_KEY} from '../config';
 import {normalizeResponseErrors} from './utils';
 
+export const TOGGLE_RESULTS = 'TOGGLE_RESULTS';
+export const toggleResults = () => ({
+    type: TOGGLE_RESULTS
+});
+
+export const TOGGLE_TRIPS = 'TOGGLE_TRIPS';
+export const toggleTrips = () => ({
+    type: TOGGLE_TRIPS
+});
+
 export const OPEN_MORE_DETAILS = 'OPEN_MORE_DETAILS';
 export const openMoreDetails = item => ({
     type: OPEN_MORE_DETAILS,

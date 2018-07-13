@@ -223,11 +223,23 @@ class Results extends React.Component {
                 )
             });
         }
+
+        // SMALLER SCREEN WIDTHS LOGIC
+        let display = "";
+        let filler = "";
+        if (this.props.displayResults) {
+            display = "display-results";
+            filler = "results-filler";
+        }
+        
         return (
-            <div className={"result-map-view"}>
-                <h2 className="results-title">Results</h2>
-                {list}
-                {page}
+            <div>
+                <div className={`result-map-view ${display}`}>
+                    {list}
+                    {page}
+                </div>
+                <div className={filler}>
+                </div>
             </div>
         );
     }
@@ -243,7 +255,8 @@ const mapStateToProps = state => {
         details: state.result.details,
         tripDropdown: state.result.tripDropdown,
         dropdownElement: state.result.tripDropdownElement,
-        next_page_token: state.protectedData.next_page_token
+        next_page_token: state.protectedData.next_page_token,
+        displayResults: state.result.toggleResults
     }
 };
 

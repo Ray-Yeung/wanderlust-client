@@ -48,18 +48,31 @@ class Trip extends Component {
                 }
             );
         }
+
+        // SMALLER SCREEN WIDTHS LOGIC
+        let display = "";
+        let filler = "";
+        if (this.props.displayTrips) {
+            display = "display-trips";
+            filler = "trips-filler";
+        }
+
         return (
-                <div className={"trips-list"}>
-                    <h2 className="trips-title">Trips</h2>
+            <div>
+                <div className={`trips-list ${display}`}>
                     {trips}
                 </div>
+                <div className={filler}>
+                </div>
+            </div>
         )
     }
 }
 const mapStateToProps = state => {
     return {
         trips: state.protectedData.trips,
-        tripClicked: state.result.tripClicked
+        tripClicked: state.result.tripClicked,
+        displayTrips: state.result.toggleTrips
     }
 }
 

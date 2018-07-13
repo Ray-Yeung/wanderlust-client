@@ -11,6 +11,8 @@ import {GOOGLE_API_KEY} from '../config';
 import GoogleMapWrapper from './googleMapWrapper';
 import '../css/dashboard.css'
 
+import { toggleResults, toggleTrips } from '../actions/results';
+
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -21,21 +23,49 @@ export class Dashboard extends React.Component {
     render() {
         // console.log(this.props.name)
         // console.log(this.props.currentUser)
+
+        let highlightResults = "";
+        let highlightTrips = "";
+        
+        let mapPosition = "";
+
+        if (this.props.displayResults) {
+            highlightResults = "highlight-buttons";
+            mapPosition = "map-right";
+        }
+        if (this.props.displayTrips) {
+            highlightTrips = "highlight-buttons";
+            mapPosition = "map-left";
+        }
         return (
             <div className="dashboard">
             <header className={'dash-header'}>
-            <h1 className={"dash-name"}>Wanderlust</h1>  
+            <h1 className={"dash-name"}>Wanderlust</h1>
+            <div className="arrow-holder"><div className="expand-arrow"></div></div>
                 </header>
-                
-                {/* <div className="dashboard-username">
-                    Username: {this.props.username}
-                </div> */}
-                {/* <div className="dashboard-name">Name: {this.props.name}</div> */}
 
                 <Search />
+                <div className={mapPosition}>
                 <GoogleMapWrapper />
+                </div>
                 <Trips />
                 <Results />
+                <div className="result-trips-footer">
+                    <div className="expand-btns">
+                        <button className={`expand-results ${highlightResults}`} 
+                            onClick={() => {
+                                this.props.dispatch(toggleResults());
+                                }}>
+                            Results
+                        </button>
+                        <button className={`expand-trips ${highlightTrips}`}
+                            onClick={() => {
+                                this.props.dispatch(toggleTrips());
+                                }}>
+                            Trips
+                        </button>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -47,7 +77,9 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstname} ${currentUser.lastname}`,
-        protectedData: state.protectedData.data
+        protectedData: state.protectedData.data,
+        displayResults: state.result.toggleResults,
+        displayTrips: state.result.toggleTrips
     };
 };
 

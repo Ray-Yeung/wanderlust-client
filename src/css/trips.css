@@ -8,9 +8,7 @@
  }
  
  .trips-item {
-   height: auto;
- overflow:auto;
- clear: both;
+   overflow:auto;
  }
  
 .listed-trips div {
@@ -20,18 +18,40 @@
 .comment-container {
   display: inline-block;
   margin-top: 5px;
-  border: solid 1px #39393A;
+  border: solid 1px rgb(102, 102, 102);
   border-radius: 5px;
-  padding-bottom: 5px;
+  width: 90%;
+  padding: 10px;
+}
+
+.comment-container > ul > li {
+  background-color: white;
+  padding: 7px;
+  width: 80%;
+  margin: 5px auto;
+  border-radius: 10px;
+  border: 1px solid rgb(148, 147, 147);
+}
+
+.trip-comment-h {
+  margin-bottom: 10px;
+}
+
+.trip-comment {
+  margin-bottom: 7px;
 }
 
 .comment-text-area {
-  display: inline-block;
-  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+  width: 60%;
+  height: 60px;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .add-comment-header {
-  display: inline-block;
+  display: block;
   margin: 10px 0;
   font-weight: bold;
 }
@@ -70,16 +90,17 @@
   /* border: 2px solid black; */
   text-align: center;
   padding: 10%;
+  padding-left: 2%;
+  padding-right: 2%;
   margin-bottom: 2%;
-  max-height: 70%;
   width: 80%;
 }
 
 .trips-list{
   position: absolute;
   top: 4.1em;
-  right: 0%;
-  width: 33.3%;
+  right: 0;
+  width: 23.3%;
   height: 85%;
   overflow: auto;
 }
@@ -112,6 +133,13 @@
 
 .trip-card-name {
   font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.trip-card-result-name {
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .comment-submit {
@@ -165,3 +193,32 @@
     width: 100%;
   }
 }
+
+.trips-data {
+  text-align: center;
+}
+.showing-trips {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  width: 90%;
+}
+.trips-data:last-child {
+  margin-bottom: 10px;
+}
+
+.delete-comment-button {
+  background-color: rgb(189, 79, 79);
+  border-radius: 10px;
+  border:none;
+  display: inline-block;
+  padding: 5px 8px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  color:white;
+  z-index: 4;
+}
+

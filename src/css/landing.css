@@ -124,7 +124,7 @@
 .info-bkg {
   position: absolute;
   width: 100%;
-  height: 2150px;
+  height: 2250px;
   background: linear-gradient(rgb(70, 206, 216, 0), rgb(70, 206, 216, 0), rgb(47,74,67, 0), rgb(47,74,67, 0), rgb(47,74,67, .9), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), 
   rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67), rgb(47,74,67),
   rgb(47,74,67), rgb(47,74,67), rgb(47,74,67));
@@ -162,6 +162,24 @@
   border: solid 2px gray;
   margin-top: 3%;
   margin-bottom: 3%;
+}
+
+.app-image-md {
+  width: 100%;
+  height: 24%;
+  border: solid 2px gray;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: none;
+}
+
+.app-image-sm {
+  width: 100%;
+  height: 24%;
+  border: solid 2px gray;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: none;
 }
 
 .login-small {
@@ -220,6 +238,12 @@
 
 .login-form > * {
   color: white;
+}
+
+@media only screen and (max-width: 1500px) {
+  .info-bkg {
+    height: 2150px;
+  }
 }
 
 @media only screen and (max-width: 1400px) {
@@ -299,6 +323,15 @@
   
 }
 
+@media only screen and (max-width: 1200px) {
+  .app-image {
+    display: none;
+  }
+  .app-image-md {
+    display: inline-block;
+  }
+}
+
 @media only screen and (max-width: 950px) {
   .loggingIn > .login-form {
     width: 80%;
@@ -318,6 +351,15 @@
   }
 }
 
+@media only screen and (max-width: 850px) {
+  .info-bkg {
+    height: 2280px;
+  }
+  .info-box {
+    height: 2200px;
+  }
+}
+
 @media only screen and (max-width: 810px) {
   .info-box {
     width: 80%;
@@ -327,19 +369,26 @@
 
 @media only screen and (max-width: 677px) {
   .info-bkg {
-    height: 2300px;
+    height: 2450px;
   }
   .info-box {
-    height: 2250px;
+    height: 2390px;
   }
 }
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 650px) {
   .header-name-shower {
     margin-top: 13%;
     font-size: 3.5em;
   }
   .info-section > h2 {
     font-size: 2.4em;
+  }
+  .app-image-md {
+    display: none;
+  }
+  .app-image-sm {
+    display: inline-block;
+    height: 25%;
   }
 }
 
@@ -368,6 +417,15 @@
   }
 }
 
+@media only screen and (max-width: 435px) {
+  .info-bkg {
+    height: 2600px;
+  }
+  .info-box {
+    height: 2530px;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .header-name-shower {
     margin-top: 24%;
@@ -390,4 +448,22 @@
 
 .login-form {
   margin-right: 0px;
+}
+
+@media only screen and (max-width: 345px) {
+  .app-image-sm {
+    height: 24%;
+  }
+  .info-bkg {
+    height: 2650px;
+  }
+  .info-box {
+    height: 2550px;
+  }
+}
+
+@media only screen and (max-width: 323px) {
+  .app-image-sm {
+    height: 23%;
+  }
 }

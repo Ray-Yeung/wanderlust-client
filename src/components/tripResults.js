@@ -82,20 +82,20 @@ class TripResults extends Component {
                     {/* render comments */}
                     {!this.props.details.comments[0] ? 'No comments' :
                         (<div className="comment-container">
-                        <h2> Comments </h2>
+                        <h2 className="trip-comment-h"> Comments </h2>
                         <ul>
                         {this.props.details.comments.map((comment, index) => {
                             return <li 
                             key={comment.id}>
-                        <p>{comment.comment}</p>
+                        <p className="trip-comment">{comment.comment}</p>
+                        <div className="trip-comment-date">{comment.created}</div>
                         <div className="button-placement">
-                            <button className={'delete-button'} name={comment.id} onClick={(e) => { 
+                            <button className={'delete-comment-button'} name={comment.id} onClick={(e) => { 
                                 e.stopPropagation();
                                 console.log(comment.id, this.props.details, this.props.details.id)
                                 if (window.confirm(`Are you sure you want to delete this comment?`)) this.props.dispatch(deleteComment(this.props.details.id, comment.id))
                             }}>delete comment</button>
                         </div>
-                        <div>{comment.created}</div>
                         </li>
                         })
                         }
@@ -148,7 +148,7 @@ class TripResults extends Component {
                     this.clicked(inc)
                 }}
                 >
-                    <div className="trip-card-name">{result.name}</div>
+                    <div className="trip-card-result-name">{result.name}</div>
                     <div>{result.types[0]}</div>
                     {details}
                 </div>

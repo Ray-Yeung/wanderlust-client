@@ -143,7 +143,7 @@ class Results extends React.Component {
                     details =
                         <div>
                             {!this.props.details.rating ? '' :
-                            (<div>
+                            (<div className="result-rating">
                                 Rating: {this.props.details.rating}
                             </div>)}
                             {/* <div>
@@ -161,13 +161,14 @@ class Results extends React.Component {
                                 })}
                             </ul>)}
                             </div>
-                            <div>
+                            <div className="result-address">
                                 {this.props.details.formatted_address}
                             </div>
-                            <div>       {this.props.details.formatted_phone_number}
+                            <div className="result-phone">
+                                {this.props.details.formatted_phone_number}
                             </div>
                             <a href={this.props.details.website} target="_blank">
-                                {`${this.props.details.name} official website`}
+                                <p className="result-site">{`${this.props.details.name} official website`}</p>
                             </a>
                             {this.resultsImage(this.props.details.photos)}
                             
@@ -178,12 +179,12 @@ class Results extends React.Component {
                                 {this.props.details.reviews.map((review, index) => {
                                     return <li 
                                     key={index}> 
-                                    {review.author_name} 
+                                    <p className="review-author">{review.author_name}</p> 
                                     <a href={review.author_url} /> 
                                     <img className="review-img" src={review.profile_photo_url} alt="reviewer's profile"/>
-                                    <div>Rating: {review.rating} </div>
-                                    {review.relative_time_description} 
-                                    <p>{review.text}</p>
+                                    <div className="review-rating">Rating: {review.rating} </div>
+                                    <p className="review-desc">{review.relative_time_description}</p>
+                                    <p className="review-text">{review.text}</p>
                                     </li>
                                 })
                                 }

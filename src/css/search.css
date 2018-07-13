@@ -20,9 +20,6 @@
   opacity: 0.8;
 
 }
-.search-result{
-  float: left;
-}
 
 .place-photo{
   max-width: 20em;
@@ -71,20 +68,27 @@ color:white;
 /* REVIEWS */
 .review-header{
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .review-img {
-  max-width: 20%;
-  float: left;
+  position: absolute;
+  max-width: 11%;
+  left: 10%;
+  top: 5px;
   padding-right: 5px;
-  
 }
 .review-list{
   height: 10em;
   overflow: auto;
 }
 .review-list li {
-  margin-bottom: 15px;  
+  position: relative;
+  border: 1px solid rgb(161, 159, 159);
+  border-radius: 40px;
+  padding: 15px;
+  margin-bottom: 15px;
  }
   .place-photo {
     padding-top: 10px;
@@ -98,14 +102,14 @@ color:white;
 }
 
 .list-time{
-  border :1px solid lightgrey;
+  border: 1px solid lightgrey;
   text-align: center;
-  margin-bottom: 10px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 300px;
 }
 .opening-hours-list {
   margin: 5px 5px;
-  
-
 }
 .result-btn-group {
   text-align: center;

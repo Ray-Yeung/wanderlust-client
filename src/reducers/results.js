@@ -64,7 +64,6 @@ export function reducer(state = initialState, action) {
         });
     }
     else if (action.type === ADD_COMMENT_SUCCESS) {
-        console.log(state.tripPlaceDetails)
         return Object.assign({}, state, {
             tripPlaceDetails: action.results,
             loading: false,
@@ -84,7 +83,6 @@ export function reducer(state = initialState, action) {
         });
     }
     else if (action.type === DELETE_COMMENT_SUCCESS) {
-        console.log(state.tripPlaceDetails)
         return Object.assign({}, state, {
             tripPlaceDetails: action.results,
             loading: false,
@@ -115,7 +113,6 @@ export function reducer(state = initialState, action) {
         })
     }
     else if (action.type === FETCH_DETAILS_SUCCESS) {
-        console.log(action.details);
         return Object.assign({}, state, {
             details: action.details,
             loading: false,
@@ -151,7 +148,6 @@ export function reducer(state = initialState, action) {
         });
     }
     else if(action.type === FETCH_TRIP_PLACE_DETAILS_SUCCESS) {
-        console.log(action.details)
         return Object.assign({}, state, {
             tripPlaceDetails: action.details
         });

@@ -47,8 +47,6 @@ const MapWithASearchBox = compose(
     componentWillMount() {
         
       const refs = {}
-        console.log("here is my refs",refs)
-        console.log('what does LoDash', {_})
       this.setState({
         bounds: null,
         center: {
@@ -147,7 +145,6 @@ export default class MyFancyComponent extends React.PureComponent {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position => {
-                    console.log(position.coords);
                     this.setState(prevState => ({
                         currentLatLng: {
                             ...prevState.currentLatLng,

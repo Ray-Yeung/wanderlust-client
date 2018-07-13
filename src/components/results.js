@@ -87,7 +87,6 @@ class Results extends React.Component {
                 className="nextPage"
                 onClick={ (e) => {
                     //    e.preventDefault();
-                    console.log('clicked', this.props);
                     this.props.dispatch(fetchNextSearchApi(this.props.next_page_token))}}
                 >Next Page</button>}
             // create button allowing user to save a place to a trip if they have a trip
@@ -195,7 +194,6 @@ class Results extends React.Component {
                                     {saveTripDropdownBtn}
                                     <button className="create-new-trip" onClick={(e) => {
                                         e.stopPropagation();
-                                        console.log('clicked');
                                         this.saveNewTrip(inc);
                                     }}>
                                         start new trip

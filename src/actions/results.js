@@ -187,7 +187,6 @@ export const saveTrip = (placeDetails, placeId) => (dispatch, getState) => {
     .then(response => normalizeResponseErrors(response))
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         data.location.lat = parseFloat(data.location.lat, 10);
         data.location.lng = parseFloat(data.location.lng, 10);
         dispatch(savePlaceToTrip(placeDetails, data.id));
@@ -224,7 +223,6 @@ export const savePlaceToTrip = (placeDetails, tripId) => (dispatch, getState) =>
     .then(data => {
         data.location.lat = parseFloat(data.location.lat, 10);
         data.location.lng = parseFloat(data.location.lng, 10);
-        console.log(data);
         dispatch(savePlaceToTripSuccess(data, tripId))
     })
     .catch(err => dispatch(savePlaceToTripError(err)))
@@ -293,7 +291,6 @@ export const addCommentToPlace = (id, comment) => (dispatch, getState) => {
     .then(response => normalizeResponseErrors(response))
     .then(response => response.json())
     .then(results => {
-        console.log(results);
         dispatch(addCommentSuccess(results))
     })
     // .then(dispatch(fetchTripPlacesDetails(id)))
@@ -331,7 +328,6 @@ export const deleteComment = (placeId, id) => (dispatch, getState) => {
     })
     .then(response => response.json())
     .then(results => {
-        console.log(results)
         dispatch(deleteCommentSuccess(results))
     })
     .catch(error => dispatch(deleteCommentError(error)))

@@ -191,7 +191,6 @@ export const fetchSearchApi = (data) => (dispatch, getState) =>{
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.results, data.next_page_token);
         dispatch(fetchResultsSuccess(data.results, data.next_page_token))
         dispatch(setSearchLocation(data.results[0].geometry.location))
     })

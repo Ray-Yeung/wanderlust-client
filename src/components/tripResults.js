@@ -17,7 +17,7 @@ class TripResults extends Component {
             try {
                 this.props.dispatch(fetchTripPlaceDetailsSuccess(this.props.results[inc]));
                 this.props.dispatch(setMarkerLocation(this.props.results[inc].location))
-                console.log(this.props.results[inc])
+
             }
             catch(err) {
                 this.props.dispatch(fetchTripPlaceDetailsError('Sorry something went wrong with grabbing that place!'));
@@ -56,7 +56,6 @@ class TripResults extends Component {
             if (this.props.details !== null && inc === Number(this.props.clicked) && this.props.clicked !== false 
             // &&this.props.photo !== null
             ) {
-                console.log(this.props.details)
                 dynamicHeight = '300px'
                 details = 
                 <div className={'trips-class'}>
@@ -92,7 +91,6 @@ class TripResults extends Component {
                         <div className="button-placement">
                             <button className={'delete-comment-button'} name={comment.id} onClick={(e) => { 
                                 e.stopPropagation();
-                                console.log(comment.id, this.props.details, this.props.details.id)
                                 if (window.confirm(`Are you sure you want to delete this comment?`)) this.props.dispatch(deleteComment(this.props.details.id, comment.id))
                             }}>delete comment</button>
                         </div>
@@ -108,7 +106,6 @@ class TripResults extends Component {
                         if(!this.commentInput.value) {
                             alert('Comment cannot be empty')
                         } else {
-                        console.log(this.props.details.id, this.commentInput.value)
                         this.props.dispatch(addCommentToPlace(this.props.details.id, this.commentInput.value));
                         //need to clear input value on submit  
                         this.commentInput.value = ''  }}} >

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { fetchSearchApi } from '../actions/protected-data';
 import '../css/search.css'
+
 export class Search extends React.Component {
   onSubmit(event) {
     event.preventDefault();

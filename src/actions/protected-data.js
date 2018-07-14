@@ -272,10 +272,7 @@ export const fetchGeolocationAddress = (lat, lng) => (dispatch, getState) => {
         },
     })
     .then(response => response.json())
-    .then(data => {
-        console.log(data.results[0].formatted_address);
-        dispatch(setGeolocationAddress(data.results[0].formatted_address))
-    })
+    .then(data => dispatch(setGeolocationAddress(data.results[0].formatted_address)))
     .catch(err => dispatch(setGeolocationAddressError(err)))
 };
 

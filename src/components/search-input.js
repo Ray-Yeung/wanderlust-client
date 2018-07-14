@@ -8,7 +8,6 @@ export class Search extends React.Component {
     event.preventDefault();
     const search = document.getElementById("searchInput").value;
     const location = document.getElementById("locationInput").value;
-    console.log(this.props.locationAddress);
     if(search && location) {
       this.props.dispatch(fetchSearchApi(search, location));
     } else {
@@ -24,15 +23,15 @@ export class Search extends React.Component {
             type="text"
             className={'search-input'}
             id="searchInput"
-            placeholder="Restaurants in San Francisco"
-          /> <br/>
+            placeholder="Search"
+          /> 
           <input 
             type="text"
             className={'location-input'}
             id="locationInput"
             placeholder="Location"
           />
-          <button className={"search-button"} type="submit" aria-label="search"></button>
+          <button className={"search-button"} type="submit" aria-label="search">SEARCH</button>
           <br/>
         </form>
       </div>

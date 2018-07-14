@@ -112,6 +112,18 @@ export const closeTripMarkers = () => ({
     type: CLOSE_TRIP_MARKERS
 });
 
+export const SET_GEOLOCATION_ADDRESS = 'SET_GEOLOCATION_ADDRESS';
+export const setGeolocationAddress = address => ({
+    type: SET_GEOLOCATION_ADDRESS,
+    address
+});
+
+export const SET_GEOLOCATION_ADDRESS_ERROR = 'SET_GEOLOCATION_ADDRESS_ERROR';
+export const setGeolocationAddressError = error => ({
+    type: SET_GEOLOCATION_ADDRESS_ERROR,
+    error
+});
+
 export const setDefaultLocation = locationObj => dispatch => {
   dispatch(defaultLocation(locationObj));
 };
@@ -179,9 +191,9 @@ export const fetchProtectedData = () => (dispatch, getState) => {
         });
 };
 
-export const fetchSearchApi = (data) => (dispatch, getState) =>{
+export const fetchSearchApi = (query, location) => (dispatch, getState) =>{
     const authToken = getState().auth.authToken;
-    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${data}&key=${GOOGLE_API_KEY}`, {
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}%20${location}&key=${GOOGLE_API_KEY}`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -247,6 +259,24 @@ export const fetchTripDetails = (tripId) => (dispatch, getState) => {
         dispatch(fetchTripDetailsSuccess(data))
     })
     .catch(err => dispatch(fetchTripDetailsError(err)))
+};
+
+export const fetchGeolocationAddress = (lat, lng) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`https://fast-beach-47884.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_API_KEY}`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.results[0].formatted_address);
+        dispatch(setGeolocationAddress(data.results[0].formatted_address))
+    })
+    .catch(err => dispatch(setGeolocationAddressError(err)))
 };
 
 //add comment actions: working on a fix to update and persist in DOM!!

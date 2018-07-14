@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleMapComponent from './googleMap';
 import { connect } from 'react-redux';
-import { setDefaultLocation } from '../actions/protected-data';
+import { setDefaultLocation, fetchGeolocationAddress } from '../actions/protected-data';
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
@@ -24,6 +24,7 @@ export class GoogleMapWrapper extends React.PureComponent {
             lng: position.coords.longitude
           };
           this.props.dispatch(setDefaultLocation(userlocation));
+          this.props.dispatch(fetchGeolocationAddress(userlocation.lat, userlocation.lng));
           this.setState(prevState => ({
             location: {
               ...prevState.location,

@@ -17,7 +17,9 @@ import {
     REMOVE_TRIP_ERROR,
     OPEN_MARKER,
     CLOSE_MARKER,
-    CLOSE_TRIP_MARKERS
+    CLOSE_TRIP_MARKERS,
+    SET_GEOLOCATION_ADDRESS,
+    SET_GEOLOCATION_ADDRESS_ERROR
 } from '../actions/protected-data';
 
 
@@ -42,6 +44,7 @@ const initialState = {
       lat: 37.782,
       lng: -122.403
     },
+    locationAddress: null,
     loading: false,
     comments: []
 };
@@ -166,6 +169,14 @@ export function reducer(state = initialState, action) {
     } else if(action.type === LOGIN_CLICKED_SUCCESS) {
         return Object.assign({}, state, {
             loggingIn: !state.loggingIn
+        });
+    } else if(action.type === SET_GEOLOCATION_ADDRESS) {
+        return Object.assign({}, state, {
+            locationAddress: action.address
+        });
+    } else if(action.type === SET_GEOLOCATION_ADDRESS_ERROR) {
+        return Object.assign({}, state, {
+            error: action.error
         });
     }
     return state;
